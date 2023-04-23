@@ -1,0 +1,13 @@
+cr\ac\una\tareav2\App.class
+cr\ac\una\tareav2\controller\LogInViewController.class
+cr\ac\una\tareav2\controller\RegistroController.class
+cr\ac\una\tareav2\controller\RegistroDeEmpresasController.class
+cr\ac\una\tareav2\util\Mensaje.class
+cr\ac\una\tareav2\util\BindingUtils.class
+cr\ac\una\tareav2\util\Formato.class
+cr\ac\una\tareav2\controller\Controller.class
+cr\ac\una\tareav2\util\Respuesta.class
+cr\ac\una\tareav2\Tours.class
+cr\ac\una\tareav2\controller\PaginaPrincipalController.class
+cr\ac\una\tareav2\util\FlowController.class
+cr\ac\una\tareav2\util\AppContext.class

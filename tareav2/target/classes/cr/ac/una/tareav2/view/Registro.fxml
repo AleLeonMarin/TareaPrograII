@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="rootRegister" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareav2.controller.RegistroController">
+   <children>
+      <StackPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #23395d;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="600.0">
+                     <children>
+                        <MFXButton fx:id="btnLogInView" onAction="#onActionBtnLogInView" style="-fx-background-color: #23395d;" text="&lt; Inicio de Sesion">
+                           <HBox.margin>
+                              <Insets right="140.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <ImageView fitHeight="54.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/User.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="200.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <MFXTextField fx:id="txfName" maxHeight="-Infinity" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Ingrese el Nombre" style="-fx-background-color: #23395d;" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfLastName" maxHeight="-Infinity" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Ingrese Los Apellidos" style="-fx-background-color: #23395d;" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfID" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Ingrese la cedula" style="-fx-background-color: #23395d;" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfNumber" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Numero de telefono" style="-fx-background-color: #23395d;" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfEmail" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Correo" style="-fx-background-color: #23395d;" VBox.vgrow="ALWAYS" />
+                  <MFXDatePicker fx:id="dpDate" minHeight="36.0" prefWidth="200.0" style="-fx-background-color: #23395d;" VBox.vgrow="ALWAYS" />
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXButton fx:id="btnLogIn" onAction="#onActionBtnLogIn" style="-fx-background-color: #01ac15;" text="Ingresar" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <MFXButton fx:id="btnCancel" onAction="#onActionBtnCancel" style="-fx-background-color: #01ac15;" text="Cancelar" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
