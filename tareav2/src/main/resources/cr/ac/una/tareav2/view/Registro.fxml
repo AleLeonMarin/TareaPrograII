@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="rootRegister" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareav2.controller.RegistroController">
+   <children>
+      <StackPane prefHeight="400.0" prefWidth="600.0" styleClass="anchorPane-contenedor" stylesheets="@Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="600.0">
+                     <children>
+                        <MFXButton fx:id="btnLogInView" onAction="#onActionBtnLogInView" text="&lt; Inicio de Sesion">
+                           <HBox.margin>
+                              <Insets right="140.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <ImageView fitHeight="54.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/User.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="70.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <MFXCheckbox fx:id="checkboxCliente" onAction="#onActionCheckBoxCliente" text="Cliente">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </MFXCheckbox>
+                        <MFXCheckbox fx:id="checkboxAdmin" onAction="#onActionCheckBoxAdmin" text="Administrador" />
+                     </children>
+                  </HBox>
+                  <MFXTextField fx:id="txfName" maxHeight="-Infinity" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Ingrese el Nombre" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfLastName" maxHeight="-Infinity" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Ingrese Los Apellidos" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfID" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Ingrese la cedula" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfNumber" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Numero de telefono" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfEmail" minHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Correo" VBox.vgrow="ALWAYS" />
+                  <MFXTextField fx:id="txfDate" minHeight="36.0" prefWidth="200.0" promptText="Fecha de Nacimiento" />
+                  <MFXTextField fx:id="psfClave" minHeight="36.0" prefWidth="200.0" promptText="Clave" />
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXButton fx:id="btnLogIn" onAction="#onActionBtnLogIn" text="Ingresar" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <MFXButton fx:id="btnCancel" onAction="#onActionBtnCancel" text="Cancelar" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

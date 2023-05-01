@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareav2.controller.RegistroDeEmpresasController">
+   <children>
+      <StackPane layoutX="115.0" layoutY="60.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #23395d;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="600.0">
+                     <children>
+                        <MFXButton fx:id="btnInicio" onAction="#onActionBtnInicio" style="-fx-background-color: #23395d;" text="&lt; Inicio de Sesion">
+                           <HBox.margin>
+                              <Insets right="150.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <ImageView fitHeight="67.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/LogInAvatar.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="270.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <MFXTextField fx:id="txfNomEmpresa" floatingText="Nombre de la Empresa" minHeight="36.0" minWidth="150.0" />
+                  <MFXTextField fx:id="txfCedulaJur" floatingText="Cedula Juridica" minHeight="36.0" minWidth="150.0" />
+                  <MFXTextField fx:id="txfRuta" floatingText="Ruta del logo" minHeight="36.0" minWidth="150.0" />
+                  <MFXTextField fx:id="txfTelefono" floatingText="Telefono " minHeight="36.0" minWidth="150.0" />
+                  <MFXTextField fx:id="txfEmail" floatingText="Email" minHeight="36.0" minWidth="150.0" />
+                  <MFXTextField fx:id="txfEmail" floatingText="Ano de fundacion" minHeight="36.0" minWidth="150.0" />
+                  <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="600.0">
+                     <children>
+                        <MFXButton fx:id="btnRegistrar" buttonType="RAISED" minHeight="36.0" minWidth="150.0" onAction="#onActionBtnRegistrar" text="Registrar ">
+                           <HBox.margin>
+                              <Insets right="150.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <MFXButton fx:id="btnCancelar" minHeight="36.0" minWidth="150.0" onAction="#btnCancelar" text="Cancelar " />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

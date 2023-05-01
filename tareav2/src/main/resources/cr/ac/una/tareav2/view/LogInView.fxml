@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootLog" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareav2.controller.LogInViewController">
+    <stylesheets>
+        <URL value="@Styles.css" />
+    </stylesheets>
+   <children>
+      <StackPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <MFXButton fx:id="BtnPrincipalPage" onAction="#onActionBtnPrincipalPage" prefHeight="25.0" prefWidth="115.0" text="&lt; Pagina Principal" textAlignment="CENTER" textFill="GREY">
+                           <HBox.margin>
+                              <Insets right="150.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <ImageView fitHeight="90.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/LogInAvatar.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <MFXButton fx:id="btnRegister" onAction="#onActionBtnRegister" text="Registrarse" textFill="GREY">
+                           <HBox.margin>
+                              <Insets left="150.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/User.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <MFXTextField fx:id="txfUser" prefHeight="49.0" prefWidth="279.0" promptText="Usuario">
+                           <HBox.margin>
+                              <Insets bottom="13.0" left="13.0" right="13.0" top="13.0" />
+                           </HBox.margin>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../resources/Password.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <MFXTextField fx:id="psfPass" prefHeight="49.0" prefWidth="279.0" promptText="Clave">
+                           <HBox.margin>
+                              <Insets bottom="13.0" left="13.0" right="13.0" top="13.0" />
+                           </HBox.margin>
+                        </MFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
+                     <children>
+                        <MFXButton fx:id="btnLogIn" onAction="#onActionBtnLogIn" prefHeight="50.0" prefWidth="112.0" stylesheets="@Styles.css" text="Ingresar">
+                           <HBox.margin>
+                              <Insets left="50.0" top="20.0" />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="mfx-button" />
+                              <String fx:value="mfx-button" />
+                           </styleClass>
+                        </MFXButton>
+                        <MFXButton fx:id="btnCancel" onAction="#onActionBtnCancel" prefHeight="50.0" prefWidth="112.0" text="Cancelar">
+                           <HBox.margin>
+                              <Insets left="50.0" top="20.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="anchorPane" />
+   </styleClass>
+</AnchorPane>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="anchorPane" fx:id="rootPrincipalPage" prefHeight="400.0" prefWidth="600.0" styleClass="anchorPane-contenedor" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareav2.controller.PaginaPrincipalController">
+   <children>
+      <BorderPane layoutX="234.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox alignment="CENTER" prefHeight="72.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MFXButton ellipsisString="" prefHeight="52.0" prefWidth="60.0" styleClass="mfx-button-search" stylesheets="@Styles.css" textOverrun="CLIP">
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnLogIn" onAction="#onActionBtnLogIn" prefHeight="52.0" prefWidth="45.0" stylesheets="@Styles.css" textOverrun="CLIP">
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="mxf-button-login" />
+                        <String fx:value="mfx-button" />
+                     </styleClass>
+                  </MFXButton>
+                  <MFXButton fx:id="btnBuy" ellipsisString="" onAction="#onActionBtnBuy" prefHeight="52.0" prefWidth="52.0" styleClass="mxf-button-buy" stylesheets="@Styles.css" textOverrun="CLIP">
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <Label styleClass="labels-titulos" stylesheets="@Styles.css" text="Equilibrio Tours" />
+                  <SplitMenuButton fx:id="splitFilter" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#onActionSplitFilter" styleClass="mfx-button" stylesheets="@Styles.css" text="Filtros">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                     <HBox.margin>
+                        <Insets left="40.0" top="46.0" />
+                     </HBox.margin>
+                  </SplitMenuButton>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <MFXButton fx:id="btnBack" onAction="#onActionBtnBack" styleClass="mfx-button" stylesheets="@Styles.css" text="&lt;" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <MFXButton fx:id="btnNext" onAction="#onActionBtnNext" text="&gt;" BorderPane.alignment="CENTER" />
+         </right>
+         <center>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="space1" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="stack-pane-tours" stylesheets="@Styles.css" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="space2" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="stack-pane-tours" stylesheets="@Styles.css" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="space3" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="stack-pane-tours" stylesheets="@Styles.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="103.0" prefWidth="554.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="space4" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="stack-pane-tours" stylesheets="@Styles.css" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="space5" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="stack-pane-tours" stylesheets="@Styles.css" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="space6" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="stack-pane-tours" stylesheets="@Styles.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
