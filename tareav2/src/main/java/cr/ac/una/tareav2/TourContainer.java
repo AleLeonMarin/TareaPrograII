@@ -22,6 +22,14 @@ public class TourContainer extends VBox {
     private String Tour;
     private ImageView info = new ImageView(new Image("cr/ac/una/tareav2/resources/Logo.png", 100, 100, false, true));
     Label nombre = new Label();
+    Label empresas = new Label();
+    Label categorias = new Label();
+    Label precio = new Label();
+    Label fechaDeSalida = new Label();
+    Label fechaDeLlegada = new Label();
+    Label cupos = new Label();
+    Label orden = new Label();
+    Label itinerario = new Label();
 
     public TourContainer(String name) {
 
@@ -34,6 +42,30 @@ public class TourContainer extends VBox {
         this.setPrefSize(300, 300);
         this.getChildren().add(nombre);
         this.getChildren().add(info);
+
+    }
+
+    public TourContainer(String name, String empresa, String categoria, String Precio, String FechaDeSalida, String FechaDellegada, String Cupos, String Orden, String Itinerario) {
+
+        this.nombre.setText(name);
+        this.empresas.setText(empresa);
+        this.categorias.setText(categoria);
+        this.precio.setText(Precio);
+        this.fechaDeSalida.setText(FechaDeSalida);
+        this.fechaDeLlegada.setText(FechaDellegada);
+        this.cupos.setText(Cupos);
+        this.orden.setText(Orden);
+        this.itinerario.setText(Itinerario);
+        this.setPrefSize(200, 200);
+        this.getChildren().add(nombre);
+        this.getChildren().add(empresas);
+        this.getChildren().add(categorias);
+        this.getChildren().add(precio);
+        this.getChildren().add(fechaDeSalida);
+        this.getChildren().add(fechaDeLlegada);
+        this.getChildren().add(cupos);
+        this.getChildren().add(orden);
+        this.getChildren().add(itinerario);
 
     }
 }
