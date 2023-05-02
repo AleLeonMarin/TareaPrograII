@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cr.ac.una.tareav2;
 
 import cr.ac.una.tareav2.util.FlowController;
@@ -32,21 +29,16 @@ public class TourContainer extends VBox {
     Label itinerario = new Label();
 
     public TourContainer(String name) {
-
         this.nombre.setText(name);
         info.setOnMouseClicked(event -> {
-
             FlowController.getInstance().goViewInWindow("VistaInfo");
-
         });
         this.setPrefSize(300, 300);
         this.getChildren().add(nombre);
         this.getChildren().add(info);
-
     }
 
     public TourContainer(String name, String empresa, String categoria, String Precio, String FechaDeSalida, String FechaDellegada, String Cupos, String Orden, String Itinerario) {
-
         this.nombre.setText(name);
         this.empresas.setText(empresa);
         this.categorias.setText(categoria);
@@ -66,6 +58,5 @@ public class TourContainer extends VBox {
         this.getChildren().add(cupos);
         this.getChildren().add(orden);
         this.getChildren().add(itinerario);
-
     }
 }
