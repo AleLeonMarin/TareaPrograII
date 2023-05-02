@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\util\Mensaje.java
 C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\util\FlowController.java
 C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\TourContainer.java
@@ -13,3 +14,18 @@ C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\util\Respue
 C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\util\AppContext.java
 C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\controller\VistaInfoController.java
 C:\Users\Alejandro\Downloads\tareav2\src\main\java\cr\ac\una\tareav2\App.java
+=======
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/controller/PaginaPrincipalController.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/controller/RegistroController.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/util/FlowController.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/controller/LogInViewController.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/controller/RegistroDeEmpresasController.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/App.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/util/AppContext.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/util/Formato.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/Tours.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/util/Respuesta.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/util/Mensaje.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/util/BindingUtils.java
+/home/araya/Documents/Repositories/alejandro/TareaPrograII/tareav2/src/main/java/cr/ac/una/tareav2/controller/Controller.java
+>>>>>>> eccb2ac ([old version])
