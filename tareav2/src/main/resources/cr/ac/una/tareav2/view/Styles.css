@@ -2,40 +2,38 @@
  * Empty Stylesheet file.
  */
 
-.stack-pane-tours{
-    
-    -fx-background-color:#FFFFFF;
-    
+.stack-pane-tours {
+  background-color: #ffffff;
+  -fx-background-color: #ffffff;
 }
 
-.mfx-button:focus{
-    
-	-fx-background-color-: #01ac15;
-}
-.anchorPane-contenedor{
-
-    -fx-background-color : #23395d;
-}
-.mxf-button-login>ImageView{
-    
-    -fx-image : url("../resources/User.png");
+.mfx-button:focus {
+  background-color: #01ac15;
+  -fx-background-color: #01ac15;
 }
 
-.mxf-button-buy>ImageView{
-    
-    -fx-image : url("../resources/cart.png");
+.anchorPane-contenedor {
+  background-color: #23395d;
+  -fx-background-color: #23395d;
 }
 
-.mfx-button-search>ImageView{
-    
-    -fx-image : url(../resources/searchIcon.png);
+/*
+ * Esto esta interesante, deberia de mostrarme como funciona
+*/
+.mxf-button-login > ImageView {
+  -fx-image: url("../resources/User.png");
 }
 
-.labels-titulos{
-    
-    -fx-font-size:24.0px;
-    -fx-text-fill:#01ac15;
-    
+.mxf-button-buy > ImageView {
+  -fx-image: url("../resources/cart.png");
 }
 
+.mfx-button-search > ImageView {
+  -fx-image: url(../resources/searchIcon.png);
+}
 
+.labels-titulos {
+  font-size: 24px;
+  -fx-font-size: 24px;
+  -fx-text-fill: #01ac15;
+}

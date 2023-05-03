@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareav2.controller;
 
 import cr.ac.una.tareav2.Tours;
@@ -22,6 +18,12 @@ import javafx.scene.layout.HBox;
  */
 public class VistaInfoController extends Controller implements Initializable {
 
+    /*
+     * Tratemos siempre de separar la logica de la vista del controlador
+     */
+    public static List<HBox> pane = new ArrayList<>();
+    private Tours infomaTours = new Tours();
+
     @FXML
     private HBox pane1;
     @FXML
@@ -32,9 +34,6 @@ public class VistaInfoController extends Controller implements Initializable {
     private HBox pane4;
     @FXML
     private HBox pane5;
-
-    public static List<HBox> pane = new ArrayList<>();
-    private Tours infomaTours = new Tours();
     @FXML
     private MFXButton btnCancelar;
     @FXML
@@ -53,12 +52,10 @@ public class VistaInfoController extends Controller implements Initializable {
         pane.add(pane4);
         pane.add(pane5);
         infomaTours.mostrarInfo(true);
-
     }
 
     @Override
     public void initialize() {
-
     }
 
     @FXML

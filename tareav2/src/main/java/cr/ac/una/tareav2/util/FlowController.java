@@ -22,8 +22,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-
-
 public class FlowController {
 
     private static FlowController INSTANCE = null;
@@ -58,8 +56,8 @@ public class FlowController {
 
     public void InitializeFlow(Stage stage, ResourceBundle idioma) {
         getInstance();
-        this.mainStage = stage;
-        this.idioma = idioma;
+        FlowController.mainStage = stage;
+        FlowController.idioma = idioma;
     }
 
     private FXMLLoader getLoader(String name) {
@@ -68,12 +66,13 @@ public class FlowController {
             synchronized (FlowController.class) {
                 if (loader == null) {
                     try {
-                        loader = new FXMLLoader(App.class.getResource("view/" + name + ".fxml"), this.idioma);
+                        loader = new FXMLLoader(App.class.getResource("view/" + name + ".fxml"), FlowController.idioma);
                         loader.load();
                         loaders.put(name, loader);
                     } catch (Exception ex) {
                         loader = null;
-                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Creando loader [" + name + "].", ex);
+                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE,
+                                "Creando loader [" + name + "].", ex);
                     }
                 }
             }
@@ -83,10 +82,12 @@ public class FlowController {
 
     public void goMain() {
         try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/Principal2.fxml"), this.idioma)));
-            this.mainStage.show();
+            FlowController.mainStage
+                    .setScene(new Scene(FXMLLoader.load(App.class.getResource("view/Principal2.fxml"), FlowController.idioma)));
+            FlowController.mainStage.show();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
+            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE,
+                    "Error inicializando la vista base.", ex);
         }
     }
 
@@ -105,7 +106,7 @@ public class FlowController {
         controller.initialize();
         Stage stage = controller.getStage();
         if (stage == null) {
-            stage = this.mainStage;
+            stage = FlowController.mainStage;
             controller.setStage(stage);
         }
         switch (location) {
@@ -133,6 +134,10 @@ public class FlowController {
         stage.getScene().setRoot(loader.getRoot());
     }
 
+    /*
+     * No deberia estar tan implicitamente la ruta de la imagen,
+     * deberia ser una constante para evitar errores.
+     */
     public void goViewInWindow(String viewName) {
         FXMLLoader loader = getLoader(viewName);
         Controller controller = loader.getController();
@@ -150,7 +155,6 @@ public class FlowController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-
     }
 
     public void goViewInWindowModal(String viewName, Stage parentStage, Boolean resizable) {
@@ -158,7 +162,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        //stage.getIcons().add(new Image("cr/ac/una/resources/tareav2/PrincipalBackGround.jpg"));
+        // stage.getIcons().add(new
+        // Image("cr/ac/una/resources/tareav2/PrincipalBackGround.jpg"));
         stage.setTitle("Tours");
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
@@ -173,7 +178,6 @@ public class FlowController {
         stage.initOwner(parentStage);
         stage.centerOnScreen();
         stage.showAndWait();
-
     }
 
     public Controller getController(String viewName) {
@@ -183,13 +187,13 @@ public class FlowController {
     public static void setIdioma(ResourceBundle idioma) {
         FlowController.idioma = idioma;
     }
-    
+
     public void initialize() {
-        this.loaders.clear();
+        FlowController.loaders.clear();
     }
 
     public void salir() {
-        this.mainStage.close();
+        FlowController.mainStage.close();
     }
 
 }

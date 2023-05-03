@@ -38,7 +38,12 @@ public class TourContainer extends VBox {
         this.getChildren().add(info);
     }
 
-    public TourContainer(String name, String empresa, String categoria, String Precio, String FechaDeSalida, String FechaDellegada, String Cupos, String Orden, String Itinerario) {
+    /*
+     * III. Reducir codigo, es mejor a la hora de leer y depurar
+     * Separar el codigo en muchas partes.
+     */
+    public TourContainer(String name, String empresa, String categoria, String Precio, String FechaDeSalida,
+            String FechaDellegada, String Cupos, String Orden, String Itinerario) {
         this.nombre.setText(name);
         this.empresas.setText(empresa);
         this.categorias.setText(categoria);

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareav2.controller;
 
 import cr.ac.una.tareav2.util.FlowController;
@@ -51,7 +47,6 @@ public class RegistroController extends Controller implements Initializable {
     private MFXCheckbox checkboxCliente;
     @FXML
     private MFXCheckbox checkboxAdmin;
-
     @FXML
     private MFXTextField txfDate;
     @FXML
@@ -65,54 +60,45 @@ public class RegistroController extends Controller implements Initializable {
         // TODO
     }
 
+    /*
+     * I. Reducir codigo
+     * Hay que buscar una mejor manera de hacer esto.
+     */
     @FXML
     private void onActionBtnLogIn(ActionEvent event) {
-
         try {
-
             if (txfName.getText() == null || txfName.getText().isBlank()) {
-
-                new Mensaje().show(AlertType.ERROR, "Validacion de Nombre", getStage(), "Es necesario digitar un nombre para registrar");
-
+                new Mensaje().show(AlertType.ERROR, "Validacion de Nombre", getStage(),
+                        "Es necesario digitar un nombre para registrar");
             } else if (txfLastName.getText() == null || txfLastName.getText().isBlank()) {
-
-                new Mensaje().show(AlertType.ERROR, "Validacion de Apellidos", getStage(), "Es necesario digitar apellidos para registrar");
-
+                new Mensaje().show(AlertType.ERROR, "Validacion de Apellidos", getStage(),
+                        "Es necesario digitar apellidos para registrar");
             } else if (txfID.getText() == null || txfID.getText().isBlank()) {
-
-                new Mensaje().show(AlertType.ERROR, "Validacion de Cedula", getStage(), "Es necesario digitar una cedula para registrar");
-
+                new Mensaje().show(AlertType.ERROR, "Validacion de Cedula", getStage(),
+                        "Es necesario digitar una cedula para registrar");
             } else if (txfNumber.getText() == null || txfNumber.getText().isBlank()) {
-
-                new Mensaje().show(AlertType.ERROR, "Validacion de Numero telefonico", getStage(), "Es necesario digitar un numero telefonico para registrar");
-
+                new Mensaje().show(AlertType.ERROR, "Validacion de Numero telefonico", getStage(),
+                        "Es necesario digitar un numero telefonico para registrar");
             } else if (txfEmail.getText() == null || txfEmail.getText().isBlank()) {
-
-                new Mensaje().show(AlertType.ERROR, "Validacion de Correo", getStage(), "Es necesario digitar un correo electronico para registrar");
-
+                new Mensaje().show(AlertType.ERROR, "Validacion de Correo", getStage(),
+                        "Es necesario digitar un correo electronico para registrar");
             } else if (txfDate.getText() == null || txfDate.getText().isBlank()) {
-
-                new Mensaje().show(AlertType.ERROR, "Validacion de Fecha de Nacimiento", getStage(), "Es necesario digitar una fecha de nacimiento para registrar");
-
+                new Mensaje().show(AlertType.ERROR, "Validacion de Fecha de Nacimiento", getStage(),
+                        "Es necesario digitar una fecha de nacimiento para registrar");
             } else if (psfClave.getText() == null || psfClave.getText().isBlank()) {
-                new Mensaje().show(AlertType.ERROR, "Validacion de clave de ingreso", getStage(), "Es necesario ingresar una clave");
+                new Mensaje().show(AlertType.ERROR, "Validacion de clave de ingreso", getStage(),
+                        "Es necesario ingresar una clave");
             } else {
-
                 FlowController.getInstance().goViewInWindow("LogInVIew");
-
             }
-
         } catch (Exception ex) {
-
             Logger.getLogger(RegistroController.class.getName()).log(Level.SEVERE, "Error ingresado", ex);
             new Mensaje().show(Alert.AlertType.ERROR, "Registro", getStage(), "Error al sistema ingresado");
         }
-
     }
 
     @FXML
     private void onActionBtnCancel(ActionEvent event) {
-
         txfName.clear();
         txfLastName.clear();
         txfID.clear();
@@ -126,14 +112,12 @@ public class RegistroController extends Controller implements Initializable {
 
     @FXML
     private void onActionBtnLogInView(ActionEvent event) {
-
         FlowController.getInstance().goViewInWindow("LogInView");
         ((Stage) btnLogIn.getScene().getWindow()).close();
     }
 
     @Override
     public void initialize() {
-
     }
 
     @FXML

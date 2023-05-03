@@ -46,33 +46,24 @@ public class RegistroDeEmpresasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void onActionBtnRegistrar(ActionEvent event) {
-        
-        
-        
-        
-        
     }
 
     @FXML
     private void btnCancelar(ActionEvent event) {
-        
         txfNomEmpresa.clear();
         txfCedulaJur.clear();
         txfRuta.clear();
         txfTelefono.clear();
         txfEmail.clear();
-   
     }
 
     @FXML
     private void onActionBtnInicio(ActionEvent event) {
-        
         FlowController.getInstance().goViewInWindow("LogInView");
-        
     }
-    
+
 }
