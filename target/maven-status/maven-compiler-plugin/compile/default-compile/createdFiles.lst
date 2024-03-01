@@ -9,4 +9,5 @@ cr\ac\una\tarea\util\Formato.class
 cr\ac\una\tarea\controller\Controller.class
 cr\ac\una\tarea\App.class
 cr\ac\una\tarea\controller\ProfeViewController.class
+cr\ac\una\tarea\controller\ManCuentasViewController.class
 cr\ac\una\tarea\controller\AsociadosViewController.class
