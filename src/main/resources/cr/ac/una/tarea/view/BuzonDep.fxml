@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.BuzonDepController">
+   <children>
+      <ImageView fitHeight="164.0" fitWidth="214.0" layoutX="372.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../buzon.jpg" />
+         </image>
+      </ImageView>
+      <StackPane layoutX="32.0" layoutY="87.0" prefHeight="294.0" prefWidth="252.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
