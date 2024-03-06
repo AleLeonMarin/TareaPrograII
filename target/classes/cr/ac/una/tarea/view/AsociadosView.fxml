@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,15 +9,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tarea.controller.AsociadosViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.AsociadosViewController">
    <children>
       <BorderPane fx:id="BorderPane" layoutX="59.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="101.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
                   <MFXButton fx:id="btnRegistrar" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnRegistrar" text="Registrar" textAlignment="CENTER" />
-                  <MFXButton fx:id="btnConsultas" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnConsultas" text="Consulta de Cuentas" textAlignment="CENTER" wrapText="true" />
+                  <MFXButton fx:id="btnConsultas" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnConsultas" text="Consulta de Cuentas" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></MFXButton>
                </children>
             </VBox>
          </left>
