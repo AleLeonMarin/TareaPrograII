@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
    <children>
       <BorderPane fx:id="BorderPane" layoutX="122.0" layoutY="81.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <VBox prefHeight="119.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <MenuBar>
+                  <MenuBar fx:id="mnOpciones">
                     <menus>
                       <Menu mnemonicParsing="false" text="Opciones">
                         <items>

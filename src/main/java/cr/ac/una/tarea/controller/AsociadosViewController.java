@@ -4,6 +4,7 @@
  */
 package cr.ac.una.tarea.controller;
 
+import cr.ac.una.tarea.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +41,7 @@ public class AsociadosViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnRegistrar(ActionEvent event) {
+        FlowController.getInstance().goView("RegistrarAsociado");
     }
 
     @FXML
@@ -48,10 +50,12 @@ public class AsociadosViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnSalir(ActionEvent event) {
+        FlowController.getInstance().salir();
     }
 
     @FXML
     private void onActionBtnConsultas(ActionEvent event) {
+
     }
 
     @Override

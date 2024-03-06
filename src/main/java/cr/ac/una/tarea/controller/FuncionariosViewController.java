@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package cr.ac.una.tarea.controller;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -19,6 +19,9 @@ public class FuncionariosViewController extends Controller implements Initializa
 
     @FXML
     private BorderPane BorderPane;
+    @FXML
+    private MenuBar mnOpciones;
+
 
     /**
      * Initializes the controller class.

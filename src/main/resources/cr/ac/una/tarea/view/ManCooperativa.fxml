@@ -1,50 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tarea.controller.ManCooperativaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ManCooperativaController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="581.0" layoutX="9.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../../MantCoopeFondo.jpg" />
-         </image>
-      </ImageView>
-      <VBox layoutX="24.0" layoutY="32.0" prefHeight="282.0" prefWidth="179.0">
+      <StackPane layoutX="25.0" layoutY="151.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="ChangeLogo" mnemonicParsing="false" prefHeight="45.0" prefWidth="114.0" text="Cambiar logo ">
-               <font>
-                  <Font name="Heebo Regular" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets bottom="20.0" top="20.0" />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="100.0" />
-               </VBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="ChangeName" mnemonicParsing="false" prefHeight="51.0" prefWidth="114.0" text="Cambiar Nombre">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+               <children>
+                  <MFXTextField fx:id="txfNomCooperativa" alignment="CENTER" prefWidth="300.0" promptText="Editar Nombre Cooperativa" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <ImageView fx:id="imgvLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <MFXButton fx:id="btnLogo" onAction="#onActionBtnLogo" prefHeight="80.0" prefWidth="120.0" text="Seleccionar Logo" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </StackPane>
    </children>
 </AnchorPane>
