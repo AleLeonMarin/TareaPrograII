@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -51,13 +52,13 @@ public class LogInViewController extends Controller implements Initializable {
 
     @FXML
     private void onActionBtnProfes(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("ProfeView");
+        FlowController.getInstance().goMain("ProfeView");
         ((Stage)btnProfes.getScene().getWindow()).close();
     }
 
     @FXML
     private void onActionBtnFuncionarios(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("FuncionariosView");
+        FlowController.getInstance().goMain("FuncionariosView");
         ((Stage)btnFuncionarios.getScene().getWindow()).close();
     }
 
