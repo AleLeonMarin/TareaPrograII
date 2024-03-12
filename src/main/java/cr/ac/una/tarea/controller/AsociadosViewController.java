@@ -41,6 +41,7 @@ public class AsociadosViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnRegistrar(ActionEvent event) {
+
         FlowController.getInstance().goView("RegistrarAsociado");
     }
 

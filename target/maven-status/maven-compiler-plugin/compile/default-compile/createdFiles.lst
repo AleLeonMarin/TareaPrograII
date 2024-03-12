@@ -1,6 +1,5 @@
-cr/ac/una/tarea/controller/BuzonDepController.class
-cr/ac/una/tarea/controller/RegistrarAsociadoController.class
 cr/ac/una/tarea/util/FlowController.class
+cr/ac/una/tarea/controller/RegistrarAsociadoController.class
 cr/ac/una/tarea/controller/FuncionariosViewController.class
 cr/ac/una/tarea/App.class
 cr/ac/una/tarea/controller/Controller.class

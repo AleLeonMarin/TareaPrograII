@@ -49,7 +49,7 @@ public class ProfeViewController extends Controller implements Initializable {
     @FXML
     private void onActionBtmManCoope(ActionEvent event) {
 
-        FlowController.getInstance().goView("ManCoopeView");
+        FlowController.getInstance().goView("ManCooperativa");
         
     }
     

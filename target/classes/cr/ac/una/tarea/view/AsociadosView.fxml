@@ -4,44 +4,43 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.AsociadosViewController">
-   <children>
-      <BorderPane fx:id="BorderPane" layoutX="59.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="101.0" spacing="30.0" BorderPane.alignment="CENTER">
-               <children>
-                  <MFXButton fx:id="btnRegistrar" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnRegistrar" text="Registrar" textAlignment="CENTER" />
-                  <MFXButton fx:id="btnConsultas" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnConsultas" text="Consulta de Cuentas" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin></MFXButton>
-               </children>
-            </VBox>
-         </left>
-         <top>
-            <HBox prefHeight="15.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="101.0" fitWidth="601.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../resources/UNA-KIDS.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </top>
-         <right>
-            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="101.0" spacing="30.0" BorderPane.alignment="CENTER">
-               <children>
-                  <MFXButton fx:id="btnDepositos" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnDepositos" text="Depositos" textAlignment="CENTER" />
-                  <MFXButton fx:id="btnSalir" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnSalir" text="Salir" textAlignment="CENTER" />
-               </children>
-            </VBox>
-         </right>
-      </BorderPane>
-   </children>
-</AnchorPane>
+<BorderPane fx:id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.AsociadosViewController">
+   <left>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="101.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <MFXButton fx:id="btnRegistrar" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnRegistrar" text="Registrar" textAlignment="CENTER" />
+            <MFXButton fx:id="btnConsultas" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnConsultas" text="Consulta de Cuentas" textAlignment="CENTER" wrapText="true">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </MFXButton>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox prefHeight="15.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="101.0" fitWidth="601.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/UNA-KIDS.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="101.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <MFXButton fx:id="btnDepositos" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnDepositos" text="Depositos" textAlignment="CENTER" />
+            <MFXButton fx:id="btnSalir" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnSalir" text="Salir" textAlignment="CENTER" />
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

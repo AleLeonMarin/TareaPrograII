@@ -1,39 +1,74 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tarea.controller;
-import java.net.URL;
-import java.util.ResourceBundle;
+
+import cr.ac.una.tarea.util.FlowController;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 
-/**
- * FXML Controller class
- *
- * @author aletr
- */
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.Flow;
+
 public class FuncionariosViewController extends Controller implements Initializable {
 
     @FXML
     private BorderPane BorderPane;
+
     @FXML
-    private MenuBar mnOpciones;
+    private MFXButton btnAperCuentas;
 
+    @FXML
+    private MFXButton btnCarnet;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private MFXButton btnManAso;
+
+    @FXML
+    private MFXButton btnRetirDepo;
+
+    @FXML
+    private MFXButton btnSalir;
+
+    @FXML
+    void onActionBtnAperCuentas(ActionEvent event) {
+        FlowController.getInstance().goView("ConsultaCuenta");
+
+    }
+
+    @FXML
+    void onActionBtnCarnet(ActionEvent event) {
+        FlowController.getInstance().goView("ImpresCarnet");
+
+    }
+
+    @FXML
+    void onActionBtnManAso(ActionEvent event) {
+        FlowController.getInstance().goView("RegistrarAsociado");
+
+    }
+
+    @FXML
+    void onActionBtnRetirDepo(ActionEvent event) {
+        FlowController.getInstance().goView("RetirDepos");
+
+    }
+
+    @FXML
+    void onActionBtnSalir(ActionEvent event) {
+
+        FlowController.getInstance().salir();
+
+    }
 
     @Override
     public void initialize() {
-        
+
     }
-    
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

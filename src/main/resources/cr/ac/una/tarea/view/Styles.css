@@ -1,1 +1,23 @@
+*{
+    -fx-font-family: Roboto Mono;
+    -fx-font-size: 12;
+    -fx-font-alignment: center;
+    -fx-font-color: #000000;
+}
 
+/*********************************************************/
+/*            |CSS para funcionarios|                   */
+/*******************************************************/
+
+#btnManAso{
+    -fx-background-color: #EE7214;
+    -fx-font-size: 10;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+
+}
