@@ -9,8 +9,8 @@
 /*            |CSS para funcionarios|                   */
 /*******************************************************/
 
-#btnManAso{
-    -fx-background-color: #EE7214;
+.btnManAso {
+    -fx-background-color: rgb(238, 114, 20);
     -fx-font-size: 10;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
@@ -19,5 +19,14 @@
     -fx-background-radius: 10;
     -fx-pref-width: 150;
     -fx-pref-height: 60;
-
+    -fx-cursor: hand;
 }
+.btnManAso:hover{
+    -fx-background-color: rgb(200,100,10);
+    -fx-text-fill: #000000;
+}
+.btnManAso:pressed{
+    -fx-background-color: rgb(150,80,0);
+    -fx-text-fill: #000000;
+}
+

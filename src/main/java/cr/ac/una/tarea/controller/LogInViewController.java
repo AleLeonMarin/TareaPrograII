@@ -64,7 +64,7 @@ public class LogInViewController extends Controller implements Initializable {
 
     @FXML
     private void onActionBtnAsociados(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("AsociadosView");
+        FlowController.getInstance().goMain("AsociadosView");
         ((Stage)btnAsociados.getScene().getWindow()).close();
     }
     

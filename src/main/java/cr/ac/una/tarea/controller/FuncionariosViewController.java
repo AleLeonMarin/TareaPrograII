@@ -45,7 +45,7 @@ public class FuncionariosViewController extends Controller implements Initializa
 
     @FXML
     void onActionBtnManAso(ActionEvent event) {
-        FlowController.getInstance().goView("RegistrarAsociado");
+        FlowController.getInstance().goView("EditarAsociado");
 
     }
 

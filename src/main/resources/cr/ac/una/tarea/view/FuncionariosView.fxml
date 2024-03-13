@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="BorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
+<BorderPane fx:id="BorderPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
    <top>
       <VBox prefHeight="119.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,7 +22,7 @@
    <left>
       <VBox alignment="CENTER" prefHeight="181.0" prefWidth="113.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <MFXButton fx:id="btnManAso" buttonType="RAISED" depthLevel="LEVEL5" onAction="#onActionBtnManAso" prefHeight="44.0" prefWidth="120.0" text="Mantenimiento Asociados" textAlignment="CENTER" wrapText="true" />
+            <MFXButton fx:id="btnManAso" buttonType="RAISED" depthLevel="LEVEL5" onAction="#onActionBtnManAso" prefHeight="44.0" prefWidth="120.0" styleClass="btnManAso" stylesheets="@Styles.css" text="Mantenimiento Asociados" textAlignment="CENTER" wrapText="true" />
             <MFXButton fx:id="btnCarnet" buttonType="RAISED" depthLevel="LEVEL5" onAction="#onActionBtnCarnet" text="Impresion Carnet" textAlignment="CENTER" wrapText="true" />
          </children>
       </VBox>

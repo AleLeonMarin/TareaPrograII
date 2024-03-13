@@ -47,10 +47,13 @@ public class AsociadosViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnDepositos(ActionEvent event) {
+
+        FlowController.getInstance().goView("RetirDepos");
     }
 
     @FXML
     private void onActionBtnSalir(ActionEvent event) {
+
         FlowController.getInstance().salir();
     }
 
