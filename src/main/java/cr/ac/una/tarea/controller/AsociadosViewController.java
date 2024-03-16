@@ -60,6 +60,8 @@ public class AsociadosViewController extends Controller implements Initializable
     @FXML
     private void onActionBtnConsultas(ActionEvent event) {
 
+        FlowController.getInstance().goView("ConsultaCuenta");
+
     }
 
     @Override
