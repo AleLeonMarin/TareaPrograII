@@ -36,6 +36,13 @@ public class CameraController extends Controller implements Initializable {
 
     private Webcam webcam;
     private boolean isRunning;
+    
+    /*imagen debe guardarse con el numero de folio 
+    el folio seran las iniciales de cada nombre 
+    con un consecutivo progresivo inicando del 00 hasta n xd :)
+    en caso de que no se pueda las iniciales se debera agarrar la primera letra 
+    del primer apellido y darle el consecutivo '0000' y ser de igual manera progesivo
+    */
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,6 +100,10 @@ public class CameraController extends Controller implements Initializable {
     @Override
     public void initialize() {
         
+    }
+
+    @FXML
+    private void HandleLook(ActionEvent event) {
     }
     
 }

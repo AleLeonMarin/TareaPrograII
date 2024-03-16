@@ -46,7 +46,9 @@ public class EditarAsociadoController extends Controller implements Initializabl
 
     @FXML
     void onActionBtnFoto(ActionEvent event) {
+
         FlowController.getInstance().goViewInWindow("Camera");
+
     }
 
     @FXML

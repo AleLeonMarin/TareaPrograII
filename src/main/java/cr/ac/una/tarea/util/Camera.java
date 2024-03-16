@@ -1,4 +1,5 @@
-package cr.ac.una.tarea.controller;
+package cr.ac.una.tarea.util
+        ;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
