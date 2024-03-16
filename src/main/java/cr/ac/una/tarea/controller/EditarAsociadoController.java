@@ -1,5 +1,6 @@
 package cr.ac.una.tarea.controller;
 
+import cr.ac.una.tarea.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
@@ -45,7 +46,7 @@ public class EditarAsociadoController extends Controller implements Initializabl
 
     @FXML
     void onActionBtnFoto(ActionEvent event) {
-
+        FlowController.getInstance().goViewInWindow("Camera");
     }
 
     @FXML
@@ -62,4 +63,5 @@ public class EditarAsociadoController extends Controller implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+    
 }
