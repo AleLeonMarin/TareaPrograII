@@ -1,5 +1,6 @@
 package cr.ac.una.tarea.controller;
 
+import cr.ac.una.tarea.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
@@ -31,12 +32,9 @@ public class RegistrarAsociadoController extends Controller implements Initializ
         //TODO
     }
 
-    @FXML
-    void onActionBtnFoto(ActionEvent event) {
-
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 }
