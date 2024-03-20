@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Flow;
 
-public class FuncionariosViewController extends Controller implements Initializable {
+public class  FuncionariosViewController extends Controller implements Initializable {
 
     @FXML
     private BorderPane BorderPane;

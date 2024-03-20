@@ -17,19 +17,14 @@
       </StackPane>
       <HBox alignment="CENTER" layoutX="241.0" layoutY="510.0" prefHeight="100.0" prefWidth="480.0">
          <children>
-            <MFXButton fx:id="startButton" onAction="#handleStartStopAction" prefHeight="58.0" prefWidth="140.0" text="Encender Camara">
+            <MFXButton fx:id="SetCameraState" onAction="#handleCloseCamera" prefHeight="58.0" prefWidth="140.0" text="Encender Camara">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton fx:id="TakePic" onAction="#HandleTake" prefHeight="58.0" prefWidth="140.0" text="Tomar Foto">
+            <MFXButton fx:id="TakePic" onAction="#onHandleTakePic" prefHeight="58.0" prefWidth="140.0" text="Tomar Foto">
                <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </MFXButton>
-            <MFXButton fx:id="LookPhoto" onAction="#HandleLook" prefHeight="58.0" prefWidth="150.0" text="Ver foto">
-               <HBox.margin>
-                  <Insets left="10.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
             </MFXButton>
          </children>

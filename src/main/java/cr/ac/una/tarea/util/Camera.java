@@ -1,5 +1,4 @@
-package cr.ac.una.tarea.util
-        ;
+package cr.ac.una.tarea.util;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -18,7 +17,7 @@ public class Camera {
         }
 
         // Optionally set the resolution (default is 640x480)
-        webcam.setViewSize(new Dimension(1280, 720)); // Example for 720p resolution
+        webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
         webcam.open(); // Open the webcam
     }
 
