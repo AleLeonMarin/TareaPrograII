@@ -1,7 +1,11 @@
 package cr.ac.una.tarea.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import cr.ac.una.tarea.util.FlowController;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.Initializable;
 
 import com.github.sarxos.webcam.Webcam;
@@ -22,53 +26,45 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
+public class CameraController extends Controller implements Initializable {
 
-public class CameraController extends Controller implements Initializable { 
-    
     @FXML
-    private MFXButton startButton;
+    private MFXButton SetCameraState;
     @FXML
     private ImageView previewImageView;
     @FXML
     private MFXButton TakePic;
     @FXML
-    private MFXButton LookPhoto;
+    private MFXButton CheckPic;
 
     private Webcam webcam;
     private boolean isRunning;
-    
-    /*imagen debe guardarse con el numero de folio 
-    el folio seran las iniciales de cada nombre 
-    con un consecutivo progresivo inicando del 00 hasta n xd :)
-    en caso de que no se pueda las iniciales se debera agarrar la primera letra 
-    del primer apellido y darle el consecutivo '0000' y ser de igual manera progesivo
-    */
 
+    @Override
+    public void initialize() {
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         webcam = Webcam.getDefault();
         if (webcam == null) {
             System.err.println("No webcam found!");
-            startButton.setDisable(true); // Disable button if no webcam
+            SetCameraState.setDisable(true); // Disable button if no webcam
         } else {
             webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
         }
     }
 
     @FXML
-    public void handleStartStopAction(ActionEvent event) {
+    private void handleCloseCamera(ActionEvent event){
         if (!isRunning) {
             startCameraPreview();
-            startButton.setText("Stop");
+            SetCameraState.setText("Stop");
         } else {
             stopCameraPreview();
-            startButton.setText("Start");
+            SetCameraState.setText("Start");
         }
         isRunning = !isRunning;
-    }
-    @FXML
-    public void HandleTake(ActionEvent event){
-      //  ImageIO.write(webcam.getImage(), 'JPG', new File("PhotoTaken.jpg"));
     }
 
     private void startCameraPreview() {
@@ -81,9 +77,9 @@ public class CameraController extends Controller implements Initializable {
                         BufferedImage image = webcam.getImage();
                         Image javafxImage = SwingFXUtils.toFXImage(image, null);
                         Platform.runLater(() -> previewImageView.setImage(javafxImage));
-                        Thread.sleep(63); // Update preview at 30 FPS (adjust as needed)
+                        Thread.sleep(103); // Update preview at 30 FPS (adjust as needed)
                     }
-                    webcam.close(); // Close the webcam directly (no SwingUtilities)
+                    webcam.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -97,13 +93,16 @@ public class CameraController extends Controller implements Initializable {
         webcam.close();
     }
 
-    @Override
-    public void initialize() {
-        
-    }
-
     @FXML
-    private void HandleLook(ActionEvent event) {
+    public void onHandleTakePic(ActionEvent event) throws IOException {
+        try {
+            // Capture the image
+            BufferedImage image = webcam.getImage();
+            // Generate a unique filename (refer to your existing code for this)
+            ImageIO.write(image, "JPG", new File("New_photo.jpg"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error capturing image!");
+        }
     }
-    
 }
