@@ -1,32 +1,66 @@
-*{
-    -fx-font-family: Roboto Mono;
-    -fx-font-size: 12;
-    -fx-font-alignment: center;
-    -fx-font-color: #000000;
+/******************************************/
+/*                                        */
+/*            Background conf             */
+/*                                        */
+/******************************************/
+.root{
+    -fx-background-image:url('../resources/Background.jpeg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: false;
 }
 
-/*********************************************************/
-/*            |CSS para funcionarios|                   */
-/*******************************************************/
+.borderPane{
+    -fx-background-color: rgba(255,255,255,0.3);
+}
 
-.btnManAso {
-    -fx-background-color: rgb(238, 114, 20);
-    -fx-font-size: 10;
-    -fx-font-weight: bold;
-    -fx-text-fill: #000000;
-    -fx-border-color: #000000;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
+/******************************************/
+/*                                        */
+/*            Funcionarios confs          */
+/*                                        */
+/******************************************/
+
+.mfxButtonManAso{
     -fx-pref-width: 150;
     -fx-pref-height: 60;
-    -fx-cursor: hand;
-}
-.btnManAso:hover{
-    -fx-background-color: rgb(200,100,10);
-    -fx-text-fill: #000000;
-}
-.btnManAso:pressed{
-    -fx-background-color: rgb(150,80,0);
-    -fx-text-fill: #000000;
+    -fx-text-alignment:center;
+    -fx-background-color: #E1AFD1;
 }
 
+.mfxBtnImpreCarnet{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8DDFCB;
+}
+
+.mfxBtnDepos{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #A5DD9B;
+}
+
+.mfxBtnAccount{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #F1EB90;
+}
+
+.mfxBtnSalir{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #EB4747;
+}
+/******************************************/
+/*                                        */
+/*            Btn Images confs            */
+/*                                        */
+/******************************************/
+.mfxButtonManAso > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxBtnImpreCarnet > ImageView {-fx-image: url('../resources/card.png')}
+.mfxBtnAccount > ImageView {-fx-image: url('../resources/Accounts.png')}
+.mfxBtnDepos ImageView {-fx-image: url('../resources/Money.png')}
+.mfxBtnSalir ImageView {-fx-image: url('../resources/Salir.png')}
