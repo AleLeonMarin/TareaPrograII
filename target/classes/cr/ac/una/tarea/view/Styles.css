@@ -7,7 +7,7 @@
     -fx-background-image:url('../resources/Background.jpeg');
     -fx-background-size: stretch;
     -fx-background-position: center;
-    -fx-background-repeat: false;
+    -fx-background-repeat: no-repeat;
 }
 
 .borderPane{
@@ -20,12 +20,17 @@
 /*                                        */
 /******************************************/
 
-.mfxButtonManAso{
+.mfxButtonManAso {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment:center;
     -fx-background-color: #E1AFD1;
 }
+
+.mfxButtonManAso:selected{
+    -fx-background-color: #E1AFD1;
+}
+
 
 .mfxBtnImpreCarnet{
     -fx-pref-width: 150;
