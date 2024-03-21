@@ -11,7 +11,7 @@
 }
 
 .borderPane{
-    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-color: rgba(255,255,255,0.5);
 }
 
 /******************************************/
@@ -54,6 +54,48 @@
     -fx-text-alignment: center;
     -fx-background-color: #EB4747;
 }
+
+
+/******************************************/
+/*                                        */
+/*    Mantenimiento Asociados confs       */
+/*                                        */
+/******************************************/
+
+.mfxBtnPhotoView{
+    -fx-pref-height: 60;
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
+    -fx-background-color: #D6DAC8;
+}
+
+.mfxBtnSave{
+
+    -fx-pref-height: 60;
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
+    -fx-background-color: #80BCBD;
+}
+
+.mfxBtnSearch{
+    -fx-pref-height: 60;
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
+    -fx-background-color: #F7FDB1;
+
+}
+
+/******************************************/
+/*                                        */
+/*            Camera View confs           */
+/*                                        */
+/******************************************/
+
+.mfxBtnTakePhoto{
+    ;
+}
+
+
 /******************************************/
 /*                                        */
 /*            Btn Images confs            */
@@ -64,3 +106,6 @@
 .mfxBtnAccount > ImageView {-fx-image: url('../resources/Accounts.png')}
 .mfxBtnDepos ImageView {-fx-image: url('../resources/Money.png')}
 .mfxBtnSalir ImageView {-fx-image: url('../resources/Salir.png')}
+.mfxBtnPhotoView ImageView {-fx-image: url('../resources/Camera.png')}
+.mfxBtnSave ImageView {-fx-image: url('../resources/Save.png')}
+.mfxBtnSearch ImageView {-fx-image: url('../resources/Search.png')}

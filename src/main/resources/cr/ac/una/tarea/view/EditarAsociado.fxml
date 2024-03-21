@@ -23,15 +23,25 @@
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
                      <children>
                         <ImageView fx:id="imgFoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <MFXButton fx:id="btnFoto" onAction="#onActionBtnFoto" text="Tomar Foto" />
+                        <MFXButton fx:id="btnFoto" onAction="#onActionBtnFoto" prefHeight="120.0" prefWidth="0.0" styleClass="mfxBtnPhotoView" stylesheets="@Styles.css" text="Tomar Foto">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </MFXButton>
                      </children>
                   </VBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                <children>
-                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" text="Buscar" />
-                  <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" text="Guardar" />
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></MFXButton>
+                  <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" styleClass="mfxBtnSave" stylesheets="@Styles.css" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></MFXButton>
                </children>
             </HBox>
          </children>
