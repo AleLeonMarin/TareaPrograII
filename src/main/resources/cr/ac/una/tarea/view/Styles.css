@@ -144,6 +144,29 @@
 
 /******************************************/
 /*                                        */
+/*            Profesores confs            */
+/*                                        */
+/******************************************/
+
+.mfxButtonManCuentas{
+
+    -fx-background-color: #50C4ED;
+    -fx-pref-height: 60;
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonManCoope{
+
+    -fx-background-color: #836FFF;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 60px;
+    -fx-text-alignment: center;
+}
+
+
+/******************************************/
+/*                                        */
 /*            Btn Images confs            */
 /*                                        */
 /******************************************/
@@ -159,6 +182,11 @@
 .mfxBtnTake > ImageView {-fx-image: url('../resources/Camera.png')}
 .mfxBtnDetail > ImageView {-fx-image: url('../resources/List.png')}
 .mfxBtnResume > ImageView {-fx-image: url('../resources/List.png')}
+.mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxBtnAdd > ImageView {-fx-image: url('../resources/Add.png')}
+.mfxBtnDelete > ImageView {-fx-image: url('../resources/Delete.png')}
+.mxfBtnEdit > ImageView {-fx-image: url('../resources/Edit.png')}
 
 /*                      Billetes y Monedas                          */
 

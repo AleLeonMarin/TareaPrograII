@@ -1,0 +1,11 @@
+#Archivos Binarios
+
+*.jar
+*.class
+
+#Directorios
+
+target/
+.idea/
+
+#Otros

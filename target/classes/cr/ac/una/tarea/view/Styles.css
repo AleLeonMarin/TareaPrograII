@@ -134,6 +134,36 @@
 
 }
 
+.separator{
+    -fx-border-color: #222831;
+    -fx-background-color: #222831;
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+}
+
+
+/******************************************/
+/*                                        */
+/*            Profesores confs            */
+/*                                        */
+/******************************************/
+
+.mfxButtonManCuentas{
+
+    -fx-background-color: #50C4ED;
+    -fx-pref-height: 60;
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonManCoope{
+
+    -fx-background-color: #836FFF;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 60px;
+    -fx-text-alignment: center;
+}
+
 
 /******************************************/
 /*                                        */
@@ -152,6 +182,8 @@
 .mfxBtnTake > ImageView {-fx-image: url('../resources/Camera.png')}
 .mfxBtnDetail > ImageView {-fx-image: url('../resources/List.png')}
 .mfxBtnResume > ImageView {-fx-image: url('../resources/List.png')}
+.mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
 
 /*                      Billetes y Monedas                          */
 
