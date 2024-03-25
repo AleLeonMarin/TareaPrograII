@@ -1,0 +1,75 @@
+/******************************************/
+/*                                        */
+/*            Background conf             */
+/*                                        */
+/******************************************/
+.root{
+    -fx-background-image:url('../resources/Background.jpeg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: false;
+}
+
+.borderPane{
+    -fx-background-color: rgba(255,255,255,0.5);
+}
+
+/******************************************/
+/*                                        */
+/*            Funcionarios confs          */
+/*                                        */
+/******************************************/
+
+.mfxButtonManAso{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment:center;
+    -fx-background-color: #E1AFD1;
+}
+
+.mfxBtnImpreCarnet{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8DDFCB;
+}
+
+.mfxBtnDepos{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #A5DD9B;
+}
+
+.mfxBtnAccount{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #F1EB90;
+}
+
+.mfxBtnSalir{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #EB4747;
+}
+
+/******************************************/
+/*                                        */
+/*            Camera view conf            */
+/*                                        */
+/******************************************/
+
+
+
+/******************************************/
+/*                                        */
+/*            Btn Images confs            */
+/*                                        */
+/******************************************/
+.mfxButtonManAso > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxBtnImpreCarnet > ImageView {-fx-image: url('../resources/card.png')}
+.mfxBtnAccount > ImageView {-fx-image: url('../resources/Accounts.png')}
+.mfxBtnDepos ImageView {-fx-image: url('../resources/Money.png')}
+.mfxBtnSalir ImageView {-fx-image: url('../resources/Salir.png')}
