@@ -9,3 +9,7 @@ target/
 .idea/
 
 #Otros
+
+dependency-reduced-pom.xml
+nbactions.xml
+tarea1.iml
