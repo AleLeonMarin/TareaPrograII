@@ -46,6 +46,9 @@ public class CameraController extends Controller implements Initializable {
         webcam = Webcam.getDefault();
         webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
         startCameraPreview(); // Start preview immediately
+
+       // ViewPhoto.setDisable(true);
+        //ViewPhoto.setVisible(false);
     }
 
     private void startCameraPreview() {
@@ -89,9 +92,4 @@ public class CameraController extends Controller implements Initializable {
         stopCameraPreview();
     }
 
-    @FXML
-    public void onHandleViewPhoto(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("ViewPhoto");
-        stopCameraPreview();
-    }
 }

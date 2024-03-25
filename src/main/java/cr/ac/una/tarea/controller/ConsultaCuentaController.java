@@ -34,11 +34,6 @@ public class ConsultaCuentaController extends Controller implements Initializabl
 
     }
 
-    @FXML
-    void onActionBtnSalir(ActionEvent event) {
-
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

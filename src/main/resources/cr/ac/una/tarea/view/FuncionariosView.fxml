@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="BorderPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
+<BorderPane fx:id="BorderPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
    <top>
-      <VBox prefHeight="119.0" prefWidth="600.0" styleClass="borderPane" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="119.0" prefWidth="600.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <VBox alignment="CENTER" prefHeight="181.0" prefWidth="150.0" spacing="40.0" styleClass="borderPane" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="181.0" prefWidth="150.0" spacing="40.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
             <MFXButton fx:id="btnManAso" buttonType="RAISED" depthLevel="LEVEL5" maxWidth="1.7976931348623157E308" onAction="#onActionBtnManAso" prefHeight="44.0" prefWidth="120.0" styleClass="mfxButtonManAso" stylesheets="@Styles.css" text="Mantenimiento Asociados" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                <graphic>
@@ -25,7 +25,7 @@
       </VBox>
    </left>
    <right>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="40.0" styleClass="borderPane" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="40.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
             <MFXButton fx:id="btnAperCuentas" buttonType="RAISED" depthLevel="LEVEL5" maxWidth="1.7976931348623157E308" onAction="#onActionBtnAperCuentas" styleClass="mfxBtnAccount" stylesheets="@Styles.css" text="Apertura de Cuentas" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                <graphic>
@@ -39,7 +39,7 @@
       </VBox>
    </right>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="borderPane" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
             <MFXButton fx:id="btnSalir" buttonType="RAISED" depthLevel="LEVEL5" onAction="#onActionBtnSalir" styleClass="mfxBtnSalir" stylesheets="@Styles.css" text="Salir">
                <graphic>
@@ -49,6 +49,6 @@
       </HBox>
    </bottom>
    <center>
-      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="188.0" prefWidth="387.0" styleClass="borderPane" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="188.0" prefWidth="387.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
