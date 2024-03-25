@@ -57,10 +57,6 @@ public class EditarAsociadoController extends Controller implements Initializabl
 
     @Override
     public void initialize() {
-        Image image = new Image(getClass().getResourceAsStream("../resources/Person.png"));
-
-        imgFoto.setImage(image);
-
     }
 
     @Override
