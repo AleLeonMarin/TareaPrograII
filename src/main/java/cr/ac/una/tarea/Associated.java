@@ -1,12 +1,21 @@
 package cr.ac.una.tarea;
 
+import cr.ac.una.tarea.util.FlowController;
+import io.github.palexdev.virtualizedfx.utils.VSPUtils;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
 public class Associated {
 
+    public ArrayList<String> arr = new ArrayList<>();
     public String name;
     public int age;
     public String Folio;
     public String Photo;
     public String Cuentas;
+    public int Cont;
 
 
     public Associated(String name, int age, String folio, String photo, String cuentas) {
@@ -52,7 +61,5 @@ public class Associated {
     public void createFolio(String name, int age){
         String Folio = name.substring(0,1) + age;
     }
-
-
 
 }
