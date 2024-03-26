@@ -37,6 +37,8 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     @FXML
     private MFXTextField txfApellido;
 
+    Associated asociado = new Associated();
+
 
 
     @Override
@@ -77,10 +79,13 @@ public class RegistrarAsociadoController extends Controller implements Initializ
                 asociado.Associate.add(asociado.createFolio(asociado.getName(), asociado.getAge()));
                 asociado.Associate.add(asociado.getPhoto());
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(), "Asociado registrado con éxito, su numero de folio es: " + asociado.createFolio(asociado.getName(), asociado.getAge()));
+                asociado.createFile(asociado);
             }
         }catch (Exception ex){
             Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE,"Error al Registrar Asociado",ex);
         }
+
+
 
     }
 

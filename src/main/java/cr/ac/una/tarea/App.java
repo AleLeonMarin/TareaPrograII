@@ -22,14 +22,14 @@ public class App extends Application {
 
     private static Scene scene;
 
-    Associated asociado = new Associated();
+
 
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
         stage.setTitle("Cooperativa UNA-KIDS");
         FlowController.getInstance().goViewInWindow("LogInView");
-        asociado.createFile(asociado);
+
 
     }
 

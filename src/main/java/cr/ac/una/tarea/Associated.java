@@ -95,15 +95,18 @@ public class Associated {
         return Folio;
     }
 
-    public void addAssociated(String name, String lastName, int age, String photo) {
-        Associated asociado = new Associated(name, lastName, age, photo);
+    public void addAssociated() {
+        Associated asociado = new Associated(name, lastName, age, Photo);
         asociado.Associate.add(asociado.getName());
         asociado.Associate.add(String.valueOf(asociado.getAge()));
         asociado.Associate.add(asociado.createFolio(asociado.getName(), asociado.getAge()));
         asociado.Associate.add(asociado.getPhoto());
     }
 
-    public void createFile(Associated asociado) throws IOException {
+    public void addToFile(Associated asociado) throws IOException {
+
+        asociado.addAssociated();
+
         BufferedWriter writer = new BufferedWriter(new FileWriter("Asociados.txt"));
         try {
 
@@ -115,6 +118,12 @@ public class Associated {
             e.printStackTrace();
         }
     }
+
+    public void createFile(Associated asociado) throws IOException {
+       asociado.addToFile(asociado);
+    }
+
+
 
 }
 
