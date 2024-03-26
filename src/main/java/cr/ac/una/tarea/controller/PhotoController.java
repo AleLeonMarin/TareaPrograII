@@ -44,12 +44,12 @@ public class PhotoController extends Controller implements Initializable {
 
     @FXML
     public void handleSavePic(ActionEvent event) {
-        // Implement logic to save the image using imageFileToSave
+        System.out.println("hi");
     }
 
     @FXML
     public void handleRepeatPic(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("Camera");
+        System.out.println("hola");
     }
     
 }

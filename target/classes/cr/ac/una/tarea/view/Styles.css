@@ -134,6 +134,13 @@
 
 }
 
+.separator{
+    -fx-border-color: #222831;
+    -fx-background-color: #222831;
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+}
+
 
 /******************************************/
 /*                                        */

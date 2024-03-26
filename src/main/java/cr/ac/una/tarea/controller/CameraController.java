@@ -26,48 +26,52 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import javax.imageio.ImageIO;
+
 public class CameraController extends Controller implements Initializable {
 
     @FXML
     private ImageView previewImageView;
     @FXML
     private MFXButton TakePic;
-    @FXML
-    private MFXButton ViewPhoto;
+ 
     private Webcam webcam;
+
     @Override
     public void initialize() {
 
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        webcam = Webcam.getDefault();
-        webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
-        startCameraPreview(); // Start preview immediately
-
-       // ViewPhoto.setDisable(true);
-        //ViewPhoto.setVisible(false);
+        try {
+            webcam = Webcam.getDefault(); // Assign the default webcam to the variable
+            webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(),WebcamResolution.VGA.getHeight()));
+            TakePic.setDisable(false);
+            startCameraPreview();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error initializing camera!");
+        }
     }
-
+    
     private void startCameraPreview() {
-        Task<Void> task = new Task<Void>() {
+        Task<Void> task;
+        task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
                 try {
                     webcam.open();
-                    while (true) { // Loop continuously for preview
+                    while(true){
                         BufferedImage image = webcam.getImage();
                         Image javafxImage = SwingFXUtils.toFXImage(image, null);
-                        Platform.runLater(() -> previewImageView.setImage(javafxImage));
-                        Thread.sleep(103); // Update preview at 30 FPS (adjust as needed)
+                        Platform.runLater(() -> previewImageView.setImage (javafxImage));
+                        Thread.sleep(30);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                } finally {
-                    webcam.close();
-                }
+                    System.err.println("Camera closed!");
+                }  
                 return null;
             }
         };
@@ -75,21 +79,21 @@ public class CameraController extends Controller implements Initializable {
     }
 
     private void stopCameraPreview() {
-        webcam.close();
+       webcam.close();    
     }
-
+    
     @FXML
     public void onHandleTakePic(ActionEvent event) throws IOException {
         try {
             BufferedImage image = webcam.getImage();
             String filename = "New_photo.jpg";
             ImageIO.write(image, "JPG", new File(filename));
-            webcam.close();
+            Stage stage = (Stage) previewImageView.getScene().getWindow(); // Get the current stage
+            stage.close(); // Close the stage
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error capturing image!");
         }
-        stopCameraPreview();
+       stopCameraPreview();
     }
-
 }

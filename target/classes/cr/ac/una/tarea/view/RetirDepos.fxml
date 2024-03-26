@@ -21,7 +21,7 @@
                   <MFXComboBox fx:id="cmbCuentas" onAction="#onActionCmbCombox" prefWidth="200.0" promptText="Seleccione la Cuenta" />
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" stylesheets="@Styles.css" />
             <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="333.0" spacing="30.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="200.0">
@@ -76,7 +76,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Separator layoutX="110.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" />
+            <Separator layoutX="110.0" layoutY="10.0" orientation="VERTICAL" prefHeight="670.0" prefWidth="0.0" stylesheets="@Styles.css" />
             <VBox alignment="CENTER" layoutX="116.0" layoutY="10.0" prefHeight="200.0" prefWidth="333.0" spacing="20.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0">
