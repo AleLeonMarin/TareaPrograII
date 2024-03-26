@@ -4,16 +4,17 @@ public class Associated {
 
     public String name;
     public int age;
-
     public String Folio;
-
     public String Photo;
+    public String Cuentas;
 
-    public Associated(String name, int age, String folio, String photo) {
+
+    public Associated(String name, int age, String folio, String photo, String cuentas) {
         this.name = name;
         this.age = age;
         Folio = folio;
         Photo = photo;
+        this.Cuentas = cuentas;
     }
 
     public String getName() {
@@ -48,7 +49,10 @@ public class Associated {
         Photo = photo;
     }
 
-    public void createFolio(){
-
+    public void createFolio(String name, int age){
+        String Folio = name.substring(0,1) + age;
     }
+
+
+
 }
