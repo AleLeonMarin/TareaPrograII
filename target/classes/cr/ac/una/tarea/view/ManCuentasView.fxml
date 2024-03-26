@@ -20,9 +20,18 @@
                   <MFXTextField fx:id="txfId" alignment="CENTER" prefHeight="50.0" prefWidth="219.0" promptText="ID" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <MFXButton fx:id="btnSalir" onAction="#onActionBtnSalir" text="Editar" />
-                        <MFXButton fx:id="btnAgregar" onAction="#onActionBtnAgregar" text="Agregar" />
-                        <MFXButton fx:id="btnEliminar" onAction="#onActionBtnEliminar" text="Eliminar" />
+                        <MFXButton fx:id="btnSalir" onAction="#onActionBtnSalir" styleClass="mxfBtnEdit" stylesheets="@Styles.css" text="Editar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
+                        <MFXButton fx:id="btnAgregar" onAction="#onActionBtnAgregar" styleClass="mfxBtnAdd" stylesheets="@Styles.css" text="Agregar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
+                        <MFXButton fx:id="btnEliminar" onAction="#onActionBtnEliminar" styleClass="mfxBtnDelete" stylesheets="@Styles.css" text="Eliminar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
                         <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" styleClass="mfxBtnSave" stylesheets="@Styles.css" text="Guardar">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
