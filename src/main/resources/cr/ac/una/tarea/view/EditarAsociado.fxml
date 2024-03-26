@@ -7,23 +7,23 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.EditarAsociadoController">
+<StackPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.EditarAsociadoController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="300.0" prefWidth="600.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="40.0">
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="300.0" spacing="40.0" HBox.hgrow="ALWAYS">
                      <children>
                         <MFXTextField fx:id="txfFolio" floatingText="Ingrese el Numero de Folio" prefWidth="200.0" />
                         <MFXTextField fx:id="txfNombre" floatingText="Ingrese el Nombre" prefWidth="200.0" />
                         <MFXTextField fx:id="txfFechNacimeinto" floatingText="Fecha de Nacimiento" prefWidth="200.0" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="300.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
                         <ImageView fx:id="imgFoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <MFXButton fx:id="btnFoto" onAction="#onActionBtnFoto" prefHeight="120.0" prefWidth="0.0" styleClass="mfxBtnCamera" stylesheets="@Styles.css" text="Tomar Foto">
+                        <MFXButton fx:id="btnFoto" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#onActionBtnFoto" prefHeight="120.0" prefWidth="0.0" styleClass="mfxBtnCamera" stylesheets="@Styles.css" text="Tomar Foto" VBox.vgrow="ALWAYS">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
@@ -32,7 +32,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="40.0" VBox.vgrow="ALWAYS">
                <children>
                   <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefWidth="150.0" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
                      <graphic>

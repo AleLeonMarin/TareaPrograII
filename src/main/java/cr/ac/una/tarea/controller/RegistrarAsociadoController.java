@@ -37,4 +37,9 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
     }
 
+    @FXML
+    void onActionBtnCamera(ActionEvent event) {
+
+    }
+
 }

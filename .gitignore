@@ -1,0 +1,15 @@
+#Archivos Binarios
+
+*.jar
+*.class
+
+#Directorios
+
+target/
+.idea/
+
+#Otros
+
+dependency-reduced-pom.xml
+nbactions.xml
+tarea.iml
