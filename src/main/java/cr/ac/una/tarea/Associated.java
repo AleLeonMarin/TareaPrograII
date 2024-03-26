@@ -107,11 +107,13 @@ public class Associated {
 
         asociado.addAssociated();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Asociados.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Asociados.txt",true));
         try {
 
-                writer.write(asociado.getAssociate().toString());
-                writer.close();
+                    writer.write(asociado.getAssociate().toString());
+                    writer.close();
+
+
 
 
         } catch (IOException e) {
