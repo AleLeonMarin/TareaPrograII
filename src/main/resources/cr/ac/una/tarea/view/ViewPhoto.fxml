@@ -14,8 +14,8 @@
    <children>
       <HBox alignment="CENTER" layoutX="163.0" layoutY="326.0" prefHeight="68.0" prefWidth="274.0" spacing="20.0">
          <children>
-            <MFXButton fx:id="btnRepeatPic" onAction="#HandleRepeatPic" prefHeight="58.0" prefWidth="198.0" text="Tomar de nuevo" />
-            <MFXButton fx:id="btnSavePic" onAction="#onHandleSavePic" prefHeight="58.0" prefWidth="198.0" text="Guardar" />
+            <MFXButton fx:id="btnRepeatPic" onAction="#onEventRepeatPic" prefHeight="58.0" prefWidth="198.0" text="Tomar de nuevo" />
+            <MFXButton fx:id="btnSavePic" onAction="#onEventSavePic" prefHeight="58.0" prefWidth="198.0" text="Guardar" />
          </children>
          <opaqueInsets>
             <Insets />
