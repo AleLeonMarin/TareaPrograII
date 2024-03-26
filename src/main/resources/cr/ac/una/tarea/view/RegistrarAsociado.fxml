@@ -16,8 +16,9 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="40.0">
                      <children>
-                        <MFXTextField fx:id="txfNombre" prefHeight="40.0" prefWidth="150.0" promptText="Ingrese el Nombre" />
-                        <MFXTextField fx:id="txfEdad" prefHeight="40.0" prefWidth="150.0" promptText="Ingrese la edad " />
+                        <MFXTextField fx:id="txfNombre" prefHeight="40.0" prefWidth="170.0" promptText="Ingrese el Nombre" />
+                        <MFXTextField fx:id="txfApellido" prefHeight="40.0" prefWidth="170.0" promptText="Ingrese el Primer Apellido" />
+                        <MFXTextField fx:id="txfEdad" prefHeight="40.0" prefWidth="170.0" promptText="Ingrese la edad " />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="40.0">
@@ -35,7 +36,7 @@
          <bottom>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
                <children>
-                  <MFXButton styleClass="mfxBtnAdd" stylesheets="@Styles.css" text="Registrar">
+                  <MFXButton fx:id="btnRegistrar" onAction="#onActionBtnRegistrar" styleClass="mfxBtnAdd" stylesheets="@Styles.css" text="Registrar">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic></MFXButton>
