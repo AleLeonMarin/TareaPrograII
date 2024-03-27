@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import cr.ac.una.tarea.Associated;
 import cr.ac.una.tarea.util.FlowController;
 import javafx.fxml.Initializable;
 import com.github.sarxos.webcam.Webcam;
@@ -20,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,11 +35,22 @@ public class CameraController extends Controller implements Initializable {
     private MFXButton TakePic;
     @FXML
     private MFXButton SeePhoto;
+    @FXML
+    private MFXButton BtnGuardar;
+    @FXML
+    private MFXButton BtnSalir;
     private Webcam webcam;
     private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
     private volatile boolean runPreview = true;
+
+    Associated asociado = new Associated();
     @Override
     public void initialize() {
+
+        BtnGuardar.setVisible(false);
+        BtnGuardar.setDisable(true);
+        SeePhoto.setVisible(false);
+        SeePhoto.setDisable(true);
 
     }
 
@@ -90,7 +103,7 @@ public class CameraController extends Controller implements Initializable {
     public void onActionTakePic(ActionEvent event) {
         try {
             BufferedImage image = webcam.getImage();
-            String filename = "New_photo.jpg";
+            String filename = asociado.getFolio();
             ImageIO.write(image, "JPG", new File(filename));
            // SeePhoto.setDisable(false);
 
@@ -108,7 +121,17 @@ public class CameraController extends Controller implements Initializable {
     @FXML
     public void onActionSeePic(ActionEvent event){
         closeCameraWindow();
-        FlowController.getInstance().goViewInWindow("ViewPhoto");
+        onActionTakePic(event);
+    }
+
+    @FXML
+    public void onActionBtnGuardar(ActionEvent event){
+
+    }
+
+    @FXML
+    public void onActionBtnSalir(ActionEvent event){
+        ((Stage) BtnSalir.getScene().getWindow()).close();
     }
 
 }
