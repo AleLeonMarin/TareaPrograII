@@ -80,7 +80,7 @@ public class CameraController extends Controller implements Initializable {
                         Platform.runLater(() -> previewImageView.setImage (javafxImage));
 
                         synchronized (this) {
-                            wait(30); // Wait for 30 milliseconds
+                            wait(10); // Wait for 30 milliseconds
                         }
                     }
                    // TakePic.setDisable(true);
@@ -95,25 +95,35 @@ public class CameraController extends Controller implements Initializable {
         new Thread(task).start();
     }
 
-    private void stopCameraPreview() {
-        runPreview = false;
-        webcam.close();
-    }
-   @FXML
-    public void onActionTakePic(ActionEvent event) {
+    public void TakePic() {
         try {
             BufferedImage image = webcam.getImage();
-            String filename = asociado.getFolio();
-            ImageIO.write(image, "JPG", new File(filename));
-           // SeePhoto.setDisable(false);
+            nameImage(image);
+            ImageIO.write(image, "JPG", new File("./"));
+            // SeePhoto.setDisable(false);
 
         } catch (Exception e) {
             logger.error("Error capturing image..", e);
         } finally {
             stopCameraPreview();
+            BtnGuardar.setDisable(false);
+            BtnGuardar.setVisible(true);
+            SeePhoto.setDisable(false);
+            SeePhoto.setVisible(true);
         }
+    }
 
+    private void stopCameraPreview() {
+        runPreview = false;
+        webcam.close();
+    }
 
+    public void nameImage(BufferedImage image) {
+        String filename = asociado.getFolio() + ".jpg";
+    }
+   @FXML
+    public void onActionTakePic(ActionEvent event) {
+        TakePic();
     }
     private void closeCameraWindow() {
        // FlowController.getInstance().salir();
@@ -121,7 +131,7 @@ public class CameraController extends Controller implements Initializable {
     @FXML
     public void onActionSeePic(ActionEvent event){
         closeCameraWindow();
-        onActionTakePic(event);
+        TakePic();
     }
 
     @FXML
@@ -133,6 +143,9 @@ public class CameraController extends Controller implements Initializable {
     public void onActionBtnSalir(ActionEvent event){
         ((Stage) BtnSalir.getScene().getWindow()).close();
     }
+
+
+
 
 }
 
