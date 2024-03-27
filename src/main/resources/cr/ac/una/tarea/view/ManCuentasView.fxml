@@ -17,7 +17,7 @@
                <children>
                   <MFXComboBox fx:id="cmbCuentas" onAction="#onActionCmbCuentas" />
                   <MFXTextField fx:id="txfNomCuentas" alignment="CENTER" prefHeight="50.0" prefWidth="281.0" promptText="Nombre de Cuenta" />
-                  <MFXTextField fx:id="txfId" alignment="CENTER" prefHeight="50.0" prefWidth="219.0" promptText="ID" />
+                  <MFXTextField fx:id="txfId" alignment="CENTER" prefHeight="50.0" prefWidth="219.0" promptText="Tipo de Cuenta" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
                         <MFXButton fx:id="btnSalir" onAction="#onActionBtnSalir" styleClass="mxfBtnEdit" stylesheets="@Styles.css" text="Editar">

@@ -97,6 +97,7 @@ public class CameraController extends Controller implements Initializable {
 
     public void TakePic() {
         try {
+            startCameraPreview();
             BufferedImage image = webcam.getImage();
             nameImage(image);
             ImageIO.write(image, "JPG", new File("./"));

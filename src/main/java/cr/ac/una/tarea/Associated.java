@@ -110,11 +110,9 @@ public class Associated {
         BufferedWriter writer = new BufferedWriter(new FileWriter("Asociados.txt",true));
         try {
 
-                    writer.write(asociado.getAssociate().toString());
-                    writer.close();
-
-
-
+            writer.write(asociado.getAssociate().toString());
+            writer.newLine();
+            writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();
