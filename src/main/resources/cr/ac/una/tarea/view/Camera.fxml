@@ -18,7 +18,7 @@
                   <ImageView fx:id="previewImageView" fitHeight="468.0" fitWidth="889.0" pickOnBounds="true" preserveRatio="true" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="480.0" spacing="10.0">
                      <children>
-                        <MFXButton fx:id="TakePic" onAction="#onActionTakePic" prefHeight="58.0" prefWidth="140.0" styleClass="mfxBtnTake" stylesheets="@Styles.css" text="Tomar Foto">
+                        <MFXButton fx:id="btnTakePhoto" onAction="#onActionBtnTakePhoto" prefHeight="58.0" prefWidth="140.0" styleClass="mfxBtnTake" stylesheets="@Styles.css" text="Tomar Foto">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -26,7 +26,7 @@
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton fx:id="SeePhoto" onAction="#onActionSeePic" prefHeight="58.0" prefWidth="140.0" styleClass="mfxBtnTake" stylesheets="@Styles.css" text="Ver Foto">
+                        <MFXButton fx:id="btnRetake" onAction="#onActionBtnRetake" prefHeight="58.0" prefWidth="140.0" styleClass="mfxBtnTake" stylesheets="@Styles.css" text="Volver a tomar foto" textAlignment="CENTER" wrapText="true">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>

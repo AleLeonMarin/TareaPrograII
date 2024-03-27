@@ -32,9 +32,9 @@ public class CameraController extends Controller implements Initializable {
     @FXML
     private ImageView previewImageView;
     @FXML
-    private MFXButton TakePic;
+    private MFXButton btnTakePhoto;
     @FXML
-    private MFXButton SeePhoto;
+    private MFXButton btnRetake;
     @FXML
     private MFXButton BtnGuardar;
     @FXML
@@ -49,8 +49,8 @@ public class CameraController extends Controller implements Initializable {
 
         BtnGuardar.setVisible(false);
         BtnGuardar.setDisable(true);
-        SeePhoto.setVisible(false);
-        SeePhoto.setDisable(true);
+        btnRetake.setVisible(false);
+        btnRetake.setDisable(true);
 
     }
 
@@ -95,53 +95,52 @@ public class CameraController extends Controller implements Initializable {
         new Thread(task).start();
     }
 
-    public void TakePic() {
-        try {
-            startCameraPreview();
-            BufferedImage image = webcam.getImage();
-            nameImage(image);
-            ImageIO.write(image, "JPG", new File("./"));
-            // SeePhoto.setDisable(false);
 
-        } catch (Exception e) {
-            logger.error("Error capturing image..", e);
-        } finally {
-            stopCameraPreview();
-            BtnGuardar.setDisable(false);
-            BtnGuardar.setVisible(true);
-            SeePhoto.setDisable(false);
-            SeePhoto.setVisible(true);
-            TakePic.setDisable(true);
-            TakePic.setVisible(false);
-        }
-    }
 
     private void stopCameraPreview() {
         runPreview = false;
         webcam.close();
     }
 
-    public void nameImage(BufferedImage image) {
-        String filename = asociado.getFolio() + ".jpg";
-    }
-   @FXML
-    public void onActionTakePic(ActionEvent event) {
-        TakePic();
-    }
-    private void closeCameraWindow() {
-       // FlowController.getInstance().salir();
-    }
-    @FXML
-    public void onActionSeePic(ActionEvent event){
-        try {
-            TakePic();
-        }catch (Exception e) {
-            logger.error("Error taking picture", e);
-        }finally {
-            stopCameraPreview();
-            TakePic.setDisable(true);
-            TakePic.setVisible(false);
 
+    @FXML
+    public void onActionBtnTakePhoto(ActionEvent event) {
+        try {
+            startCameraPreview();
+            BufferedImage image = webcam.getImage();
+            String fileName = asociado.getFolio() + ".jpg";
+            ImageIO.write(image, "JPG", new File(fileName));
+            // SeePhoto.setDisable(false);
+
+        } catch (Exception e) {
+            logger.error("Error capturing image..", e);
+        } finally {
+            //  startCameraPreview();
+            stopCameraPreview();
+            BtnGuardar.setDisable(false);
+            BtnGuardar.setVisible(true);
+            btnRetake.setDisable(false);
+            btnRetake.setVisible(true);
+            btnTakePhoto.setDisable(true);
+            btnTakePhoto.setVisible(false);
+        }
+    }
+
+    @FXML
+    public void onActionBtnRetake(ActionEvent event){
+        runPreview = true;
+        try {
+          startCameraPreview();
+            startCameraPreview();
+            BufferedImage image = webcam.getImage();
+            String fileName = asociado.getFolio() + ".jpg";
+            ImageIO.write(image, "JPG", new File(fileName));
+        } catch (Exception e) {
+            logger.error("Error restarting camera preview", e);
+        } finally {
+            btnTakePhoto.setDisable(false);
+            btnTakePhoto.setVisible(true);
+            stopCameraPreview();
         }
     }
 

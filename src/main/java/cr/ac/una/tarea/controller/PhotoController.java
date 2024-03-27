@@ -44,7 +44,6 @@ public class PhotoController extends Controller implements Initializable {
 
     public void onEventRepeatPic(javafx.event.ActionEvent event) {
         FlowController flowController = FlowController.getInstance();
-     //   flowController.salir();
         flowController.goViewInWindow("Camera");
     }
 
