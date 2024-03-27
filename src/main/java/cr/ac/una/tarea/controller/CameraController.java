@@ -110,6 +110,8 @@ public class CameraController extends Controller implements Initializable {
             BtnGuardar.setVisible(true);
             SeePhoto.setDisable(false);
             SeePhoto.setVisible(true);
+            TakePic.setDisable(true);
+            TakePic.setVisible(false);
         }
     }
 
@@ -130,8 +132,16 @@ public class CameraController extends Controller implements Initializable {
     }
     @FXML
     public void onActionSeePic(ActionEvent event){
-        closeCameraWindow();
-        TakePic();
+        try {
+            TakePic();
+        }catch (Exception e) {
+            logger.error("Error taking picture", e);
+        }finally {
+            stopCameraPreview();
+            TakePic.setDisable(true);
+            TakePic.setVisible(false);
+
+        }
     }
 
     @FXML
