@@ -66,6 +66,7 @@ public class  FuncionariosViewController extends Controller implements Initializ
     @Override
     public void initialize() {
 
+
     }
 
     @Override

@@ -42,14 +42,14 @@ public class PhotoController extends Controller implements Initializable {
         CheckImage.setImage(image);
     }
 
-    @FXML
-    public void handleSavePic(ActionEvent event) {
-        // Implement logic to save the image using imageFileToSave
+    public void onEventRepeatPic(javafx.event.ActionEvent event) {
+        FlowController flowController = FlowController.getInstance();
+     //   flowController.salir();
+        flowController.goViewInWindow("Camera");
     }
 
-    @FXML
-    public void handleRepeatPic(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("Camera");
+    public void onEventSavePic(javafx.event.ActionEvent event) {
+        FlowController flowController = FlowController.getInstance();
+    //    flowController.salir();
     }
-    
 }

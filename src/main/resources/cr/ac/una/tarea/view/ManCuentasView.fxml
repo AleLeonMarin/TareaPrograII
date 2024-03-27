@@ -3,12 +3,13 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ManCuentasViewController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ManCuentasViewController">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,10 +20,22 @@
                   <MFXTextField fx:id="txfId" alignment="CENTER" prefHeight="50.0" prefWidth="219.0" promptText="ID" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <MFXButton fx:id="btnAgregar" onAction="#onActionBtnAgregar" text="Agregar" />
-                        <MFXButton fx:id="btnEliminar" onAction="#onActionBtnEliminar" text="Eliminar" />
-                        <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" text="Guardar" />
-                        <MFXButton fx:id="btnSalir" onAction="#onActionBtnSalir" text="Salir" />
+                        <MFXButton fx:id="btnSalir" onAction="#onActionBtnSalir" styleClass="mxfBtnEdit" stylesheets="@Styles.css" text="Editar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
+                        <MFXButton fx:id="btnAgregar" onAction="#onActionBtnAgregar" styleClass="mfxBtnAdd" stylesheets="@Styles.css" text="Agregar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
+                        <MFXButton fx:id="btnEliminar" onAction="#onActionBtnEliminar" styleClass="mfxBtnDelete" stylesheets="@Styles.css" text="Eliminar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
+                        <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" styleClass="mfxBtnSave" stylesheets="@Styles.css" text="Guardar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></MFXButton>
                      </children>
                   </HBox>
                </children>

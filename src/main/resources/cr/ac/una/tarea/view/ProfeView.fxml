@@ -2,22 +2,41 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ProfeViewController">
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ProfeViewController">
    <left>
-      <VBox alignment="CENTER" prefHeight="337.0" prefWidth="152.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="337.0" prefWidth="152.0" spacing="30.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
-            <MFXButton fx:id="btnManCuentas" buttonType="RAISED" depthLevel="LEVEL5" lineSpacing="1.0" onAction="#onActionBtnManCuentas" prefHeight="60.0" prefWidth="152.0" text="Mantenimiento Cuentas" textAlignment="CENTER" wrapText="true" />
-            <MFXButton fx:id="btmManCoope" buttonType="RAISED" depthLevel="LEVEL5" lineSpacing="1.0" onAction="#onActionBtmManCoope" prefHeight="60.0" prefWidth="152.0" text="Mantenimiento Cooperativa" textAlignment="CENTER" wrapText="true" />
+            <MFXButton fx:id="btnManCuentas" buttonType="RAISED" depthLevel="LEVEL5" lineSpacing="1.0" maxWidth="1.7976931348623157E308" onAction="#onActionBtnManCuentas" prefHeight="60.0" prefWidth="152.0" styleClass="mfxButtonManCuentas" stylesheets="@Styles.css" text="Mantenimiento Cuentas" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </MFXButton>
+            <MFXButton fx:id="btmManCoope" buttonType="RAISED" depthLevel="LEVEL5" lineSpacing="1.0" maxWidth="1.7976931348623157E308" onAction="#onActionBtmManCoope" prefHeight="60.0" prefWidth="152.0" styleClass="mfxButtonManCoope" stylesheets="@Styles.css" text="Mantenimiento Cooperativa" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </MFXButton>
          </children>
          <BorderPane.margin>
-            <Insets top="30.0" />
+            <Insets />
          </BorderPane.margin>
       </VBox>
    </left>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
