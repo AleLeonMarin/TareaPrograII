@@ -59,7 +59,7 @@ public class CameraController extends Controller implements Initializable {
         try {
             webcam = Webcam.getDefault(); // Assign the default webcam to the variable
             webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
-            startCameraPreview();
+            //startCameraPreview();
            // SeePhoto.setDisable(true);
         } catch (Exception e){
             logger.error("Failed to open the camera", e);
