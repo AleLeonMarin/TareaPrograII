@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -38,24 +39,26 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
-
-
+    private String photoPath = "C:\\Users\\OUTLET\\Desktop\\Tarea\\TareaPrograII\\";
+    private String route = photoPath + "null.jpg";
 
     @Override
-    public void initialize() {
-
-    }
+    public void initialize() {}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try {
+            Image image = new Image("file:" + route);
+            imgVFoto.setImage(image);
+        } catch (Exception e) {
+            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE, "Error loading image", e);
+            // Display a user-friendly error message
+        }
     }
 
     @FXML
     void onActionBtnCamera(ActionEvent event) {
-
         FlowController.getInstance().goViewInWindow("Camera");
-
     }
 
     @FXML
