@@ -39,7 +39,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
-    private String photoPath = "C:\\Users\\OUTLET\\Desktop\\Tarea\\TareaPrograII\\";
+    private String photoPath = "./";
     private String route = photoPath + "null.jpg";
 
     @Override
@@ -73,9 +73,9 @@ public class RegistrarAsociadoController extends Controller implements Initializ
             } else if (txfApellido.getText() == null || txfApellido.getText().isEmpty()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe ingresar el apellido del asociado");
 
-            }  /*else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe tomarse la foto del asociado");*/
-            else {
+            } else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe tomarse la foto del asociado");
+            }else{
                 Associated asociado = new Associated(txfNombre.getText(), txfApellido.getText(), Integer.parseInt(txfEdad.getText()), "foto");
                 asociado.Associate.add(asociado.getName());
                 asociado.Associate.add(String.valueOf(asociado.getAge()));
