@@ -3,48 +3,34 @@ package cr.ac.una.tarea.controller;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Separator;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
+import cr.ac.una.tarea.Account;
+import cr.ac.una.tarea.Associated;
+
 public class AperturaCuentasViewController extends Controller implements Initializable{
+   
     @FXML
     private AnchorPane root;
 
     @FXML
-    private StackPane stackPane;
+    private TableView<?> tbViewAbiertas;
 
     @FXML
-    private HBox hbox;
-
-    @FXML
-    private VBox info;
-
-    @FXML
-    private VBox cuentaspre;
-
-    @FXML
-    private VBox cuentas;
-
-    @FXML
-
-    private Separator separator1;
-
-    @FXML
-
-    private Separator separator2;
-
-    @FXML
-    private MFXTextField txfNombre;
+    private TableView<?> tbViewCuentas;
 
     @FXML
     private MFXTextField txfFolio;
 
+    @FXML
+    private MFXTextField txfNombre;
+
+    Account account = new Account();
+    Associated associated = new Associated();
 
 
 
