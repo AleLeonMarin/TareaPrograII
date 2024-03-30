@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -38,24 +39,26 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
-
-
+    private String photoPath = "./";
+    private String route = photoPath + "null.jpg";
 
     @Override
-    public void initialize() {
-
-    }
+    public void initialize() {}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try {
+            Image image = new Image("file:" + route);
+            imgVFoto.setImage(image);
+        } catch (Exception e) {
+            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE, "Error loading image", e);
+            // Display a user-friendly error message
+        }
     }
 
     @FXML
     void onActionBtnCamera(ActionEvent event) {
-
         FlowController.getInstance().goViewInWindow("Camera");
-
     }
 
     @FXML
@@ -70,9 +73,9 @@ public class RegistrarAsociadoController extends Controller implements Initializ
             } else if (txfApellido.getText() == null || txfApellido.getText().isEmpty()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe ingresar el apellido del asociado");
 
-            }  /*else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe tomarse la foto del asociado");*/
-            else {
+            } else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe tomarse la foto del asociado");
+            }else{
                 Associated asociado = new Associated(txfNombre.getText(), txfApellido.getText(), Integer.parseInt(txfEdad.getText()), "foto");
                 asociado.Associate.add(asociado.getName());
                 asociado.Associate.add(String.valueOf(asociado.getAge()));

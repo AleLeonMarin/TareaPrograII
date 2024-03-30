@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import cr.ac.una.tarea.Associated;
 import javafx.fxml.Initializable;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -14,14 +12,13 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.util.concurrent.Flow;
-
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +55,7 @@ public class CameraController extends Controller implements Initializable {
             webcam = Webcam.getDefault(); // Assign the default webcam to the variable
             webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
             startCameraPreview();
-           // SeePhoto.setDisable(true);
+            // SeePhoto.setDisable(true);
         } catch (Exception e){
             logger.error("Failed to open the camera", e);
         }
@@ -80,7 +77,7 @@ public class CameraController extends Controller implements Initializable {
                             wait(10); // Wait for 30 milliseconds
                         }
                     }
-                   // TakePic.setDisable(true);
+                    // TakePic.setDisable(true);
                 } catch (Exception e) {
                     logger.error("Camera stopped", e);
                 } finally {
@@ -102,27 +99,24 @@ public class CameraController extends Controller implements Initializable {
         try {
             startCameraPreview();
             BufferedImage image = webcam.getImage();
+            System.out.print("Foto tomada");
 
-            // Check if folio is empty or null
+            /*
             String folio = asociado.getFolio();
-            if (folio == null || folio.isEmpty()) {
+            // Check if folio is empty or null
+            if (asociado.getFolio() == null || asociado.getFolio().isEmpty()) {
                 // Handle empty folio (provide default or prompt user)
                 logger.warn("Folio is empty, using default filename.");
                 folio = "default_image";
             }
-                System.out.println("Folio retrieved: " + folio);
-
-                String fileName = folio + ".jpg";
-
-                ImageIO.write(image, "JPG", new File(fileName));
-
-
-
-
+            System.out.println("Folio retrieved: " + folio);
+            String fileName = asociado.getFolio() + ".jpg";;
+            ImageIO.write(image, "JPG", new File(fileName));
+            */
+            savePhoto();
         } catch (Exception e) {
             logger.error("Error capturing image..", e);
         } finally {
-            //  startCameraPreview();
             stopCameraPreview();
             BtnGuardar.setDisable(false);
             BtnGuardar.setVisible(true);
@@ -151,21 +145,30 @@ public class CameraController extends Controller implements Initializable {
             // Handle the case where preview thread isn't running (optional)
             logger.warn("Camera preview not yet ready for capturing image.");
         }
-            btnTakePhoto.setDisable(false);
-            btnTakePhoto.setVisible(true);
+        btnTakePhoto.setDisable(false);
+        btnTakePhoto.setVisible(true);
     }
 
     @FXML
-    public void onActionBtnGuardar(ActionEvent event) throws IOException {
+    public void onActionBtnGuardar(ActionEvent event)  {
+
+        savePhoto();
+        ((Stage) BtnGuardar.getScene().getWindow()).close();
+
+
+    }
+
+    public void savePhoto(){
         try {
-            BufferedImage image = webcam.getImage();
-            String fileName = asociado.getFolio() + ".jpg";
-            ImageIO.write(image, "JPG", new File(fileName));
+            WritableImage snapshot = previewImageView.snapshot(null , null);
+            File fileName = new File(asociado.getFolio() + ".jpg");
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", fileName);
             logger.info("Image saved successfully: " + fileName); // Log success message
         } catch (IOException e) {
             logger.error("Error saving image: ", e);  // Log error message with exception
         } finally {
             stopCameraPreview();
+
         }
 
     }
@@ -174,6 +177,4 @@ public class CameraController extends Controller implements Initializable {
     public void onActionBtnSalir(ActionEvent event){
         ((Stage) BtnSalir.getScene().getWindow()).close();
     }
-
 }
-
