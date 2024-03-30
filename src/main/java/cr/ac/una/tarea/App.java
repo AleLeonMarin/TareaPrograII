@@ -2,6 +2,7 @@ package cr.ac.una.tarea;
 
 import cr.ac.una.tarea.util.FlowController;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -11,11 +12,20 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+    Cooperativa cooperativa = new Cooperativa();
+
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
-        stage.setTitle("Cooperativa UNA-KIDS");
-        FlowController.getInstance().goViewInWindow("LogInView");
+        if (cooperativa.getName() == null || cooperativa.getLogo() == null) {
+            FlowController.getInstance().goViewInWindow("LogInView");
+        }else{
+            FlowController.getInstance().goViewInWindow("LogInView");
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
+      
+       
 
 
     }
