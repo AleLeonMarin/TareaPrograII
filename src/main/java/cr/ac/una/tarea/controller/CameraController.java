@@ -41,6 +41,8 @@ public class CameraController extends Controller implements Initializable {
     private boolean runPreview = true;
     private volatile boolean isPreviewThreadRunning = false;
     Associated asociado = new Associated();
+    String directory =  "/Photos/";
+
     @Override
     public void initialize() {
         BtnGuardar.setVisible(false);
@@ -155,14 +157,14 @@ public class CameraController extends Controller implements Initializable {
         savePhoto();
         ((Stage) BtnGuardar.getScene().getWindow()).close();
 
-
+            
     }
 
     public void savePhoto(){
         try {
             WritableImage snapshot = previewImageView.snapshot(null , null);
-            File fileName = new File(asociado.getFolio() + ".jpg");
-            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", fileName);
+            File fileName = new File(directory + asociado.getFolio() + ".jpg");
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "jpg", fileName);
             logger.info("Image saved successfully: " + fileName); // Log success message
         } catch (IOException e) {
             logger.error("Error saving image: ", e);  // Log error message with exception
