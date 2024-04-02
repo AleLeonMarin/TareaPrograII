@@ -7,8 +7,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
-import cr.ac.una.tarea.Associated;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -39,7 +37,6 @@ public class CameraController extends Controller implements Initializable {
     private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
     private ScheduledExecutorService executor;
     Image defaultImage = new Image(getClass().getResourceAsStream("/cr/ac/una/tarea/resources/PreviewPhoto.jpeg"));
-    Associated asociados = new Associated();
 
     public void initialize() {
 
@@ -66,7 +63,7 @@ public class CameraController extends Controller implements Initializable {
     private void takePicture() {
         try {
             // crea el archivo y el tipo de formato
-            File file = new File(String.format(asociados.getFolio() + ".jpg", System.currentTimeMillis()));
+            File file = new File(String.format("./Photos/foto1" +".jpg", System.currentTimeMillis()));
             ImageIO.write(webcam.getImage(), "JPG", file);
             logger.info("Image saved successfully: " + file);
             // Funcion para mostrar la foto tomada

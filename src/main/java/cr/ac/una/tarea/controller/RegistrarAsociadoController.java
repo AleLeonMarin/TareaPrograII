@@ -1,6 +1,6 @@
 package cr.ac.una.tarea.controller;
 
-import cr.ac.una.tarea.Associated;
+import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.FlowController;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -37,8 +37,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
-    private String photoPath = "./";
-    private String route = photoPath + "null.jpg";
+    private String photoPath = "./Photos/foto1.jpg";
 
     @Override
     public void initialize() {}
@@ -46,7 +45,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Image image = new Image("file:" + route);
+            Image image = new Image(photoPath);
             imgVFoto.setImage(image);
         } catch (Exception e) {
             Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE, "Error loading image", e);
@@ -89,5 +88,17 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
 
     }
+
+    /* 
+    public void renameAssociatePhoto(Associated asociado){
+
+        File photoFile = new File(photoPath);
+
+        if(photoFile.exists()){
+            String file
+        }
+
+    }
+    */
 
 }

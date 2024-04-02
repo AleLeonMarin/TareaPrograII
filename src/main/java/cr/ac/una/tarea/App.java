@@ -1,5 +1,7 @@
 package cr.ac.una.tarea;
 
+import cr.ac.una.tarea.model.Associated;
+import cr.ac.una.tarea.model.Cooperativa;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.FlowController;
 import javafx.application.Application;
@@ -28,13 +30,6 @@ public class App extends Application {
             stage.setTitle(cooperativa.getName());
             stage.getIcons().add(new Image(cooperativa.getLogo()));
         }
-         ArrayList<Associated> asociado = new ArrayList<Associated>();
-
-        ObservableList<Associated> asociados = FXCollections.observableArrayList(asociado);
-
-
-
-        AppContext.getInstance().set("asociado",asociados);
 
 
     }

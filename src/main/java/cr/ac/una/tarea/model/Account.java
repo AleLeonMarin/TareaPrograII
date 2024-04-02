@@ -1,4 +1,4 @@
-package cr.ac.una.tarea;
+package cr.ac.una.tarea.model;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -10,24 +10,17 @@ public class Account {
     public ArrayList<String> cuentas = new ArrayList<String>();
 
     public String name;
-    public String type;
-    public float balance;
 
 
 
     public Account() {
     }
 
-    public Account(String name, String type){
+    public Account(String name){
         this.name = name;
-        this.type = type;
     }
 
-    public Account(String name, String type, float balance) {
-        this.name = name;
-        this.type = type;
-        this.balance = balance;
-    }
+
 
     public ArrayList<String> getCuentas() {
         return cuentas;
@@ -45,33 +38,16 @@ public class Account {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public float getBalance() {
-        return balance;
-    }
-
-    public void setBalance(float balance) {
-        this.balance = balance;
-    }
 
     public void addAccount(){
-        Account accounts = new Account(name, type);
+        Account accounts = new Account(name);
         accounts.cuentas.add(accounts.getName());
-        accounts.cuentas.add(accounts.getType());
 
     }
 
     public void deleteAccount(){
-        Account accounts = new Account(name, type);
+        Account accounts = new Account(name);
         accounts.cuentas.remove(accounts.getName());
-        accounts.cuentas.remove(accounts.getType());
     }
 
     public void addToFile(Account account) throws IOException {

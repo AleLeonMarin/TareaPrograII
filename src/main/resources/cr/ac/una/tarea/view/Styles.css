@@ -229,9 +229,9 @@
 .mfxBtnResume > ImageView {-fx-image: url('../resources/List.png')}
 .mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
 .mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
-.mfxBtnAdd > ImageView {-fx-image: url('../resources/Add.png')}
-.mfxBtnDelete > ImageView {-fx-image: url('../resources/Delete.png')}
-.mxfBtnEdit > ImageView {-fx-image: url('../resources/Edit.png')}
+.mfxBtnAdd > ImageView {-fx-image: url('../resources/add.png')}
+.mfxBtnDelete > ImageView {-fx-image: url('../resources/delete.png')}
+.mxfBtnEdit > ImageView {-fx-image: url('../resources/edit.png')}
 .mfxBtnEditLogo > ImageView {-fx-image: url('../resources/Logo.png')}
 
 /*                      Billetes y Monedas                          */
@@ -247,6 +247,7 @@
 .mfxRdbCincuenta > ImageView {-fx-image: url('../resources/MonedaCincuenta.png')}
 .mfxRdbCien > ImageView {-fx-image: url('../resources/MonedaCien.png')}
 .mfxRdbQuinientos > ImageView {-fx-image: url('../resources/MonedaQuinientos.png')}
+
 /******************************************/
 /*                                        */
 /*             Images confs               */

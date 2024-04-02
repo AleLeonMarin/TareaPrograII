@@ -1,6 +1,6 @@
 package cr.ac.una.tarea.controller;
 
-import cr.ac.una.tarea.Account;
+import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
@@ -34,8 +34,6 @@ public class ManCuentasViewController extends Controller implements Initializabl
     @FXML
     private AnchorPane root;
 
-    @FXML
-    private MFXTextField txfId;
 
     @FXML
     private MFXTextField txfNomCuentas;
@@ -54,13 +52,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
             if( txfNomCuentas.getText() == null ||txfNomCuentas.getText().isEmpty()){
 
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(), "Debe ingresar el nombre de la cuenta");
-            } else if (txfId.getText() == null || txfId.getText().isEmpty()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(), "Debe ingresar el tipo de la cuenta");
             }else{
 
-                Account account = new Account(txfNomCuentas.getText(), txfId.getText());
+                Account account = new Account(txfNomCuentas.getText());
                 account.cuentas.add(txfNomCuentas.getText());
-                account.cuentas.add(txfId.getText());
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(), "Cuenta agregada correctamente");
                 account.createFile(account);
             }

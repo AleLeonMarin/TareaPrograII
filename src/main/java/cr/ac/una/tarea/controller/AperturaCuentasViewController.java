@@ -6,11 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
-
-import cr.ac.una.tarea.Account;
-import cr.ac.una.tarea.Associated;
+import cr.ac.una.tarea.model.Account;
+//import cr.ac.una.tarea.model.Associated;
 
 public class AperturaCuentasViewController extends Controller implements Initializable{
    
@@ -30,7 +28,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
     private MFXTextField txfNombre;
 
     Account account = new Account();
-    Associated associated = new Associated();
+    //Associated associated = new Associated();
 
 
 
