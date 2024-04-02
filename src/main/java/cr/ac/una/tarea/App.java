@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -28,7 +28,7 @@ public class App extends Application {
             stage.setTitle(cooperativa.getName());
             stage.getIcons().add(new Image(cooperativa.getLogo()));
         }
-       List<Associated> asociado = new ArrayList<Associated>();
+         ArrayList<Associated> asociado = new ArrayList<Associated>();
 
         ObservableList<Associated> asociados = FXCollections.observableArrayList(asociado);
 
