@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -22,7 +24,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.imageio.ImageIO;
 public class CameraController extends Controller implements Initializable {
 
@@ -37,6 +38,7 @@ public class CameraController extends Controller implements Initializable {
     private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
     private ScheduledExecutorService executor;
     Image defaultImage = new Image(getClass().getResourceAsStream("/cr/ac/una/tarea/resources/PreviewPhoto.jpeg"));
+    Associated asociados = new Associated();
 
     public void initialize() {
 
@@ -58,12 +60,14 @@ public class CameraController extends Controller implements Initializable {
         webcam.close();
     }
 
+    // sarxos, gemini
+
     // Captura la imagen y le asigna el folio del asociado a la foto
     @FXML
     private void takePicture() {
         try {
             // crea el archivo y el tipo de formato
-            File file = new File(String.format("./Photos/foto1" +".jpg", System.currentTimeMillis()));
+            File file = new File(String.format("./Photos/foto1" + ".jpg", System.currentTimeMillis()));
             ImageIO.write(webcam.getImage(), "JPG", file);
             logger.info("Image saved successfully: " + file);
             // Funcion para mostrar la foto tomada
@@ -118,8 +122,10 @@ public class CameraController extends Controller implements Initializable {
         btnTakePhoto.setDisable(true);
         btnRetake.setDisable(true);
         stopCameraPreview();
-        new Mensaje().showModal(Alert.AlertType.ERROR, "Vista Camara", getStage(), "Foto guardada exitosamente");
+        new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Vista Camara", getStage(), "Foto guardada exitosamente");
         ((Stage) btnExitCam.getScene().getWindow()).close();
+
+
     }
 
     public void onActionBtnExitCam(ActionEvent event) {

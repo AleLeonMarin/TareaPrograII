@@ -8,13 +8,11 @@ import cr.ac.una.tarea.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.Flow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -40,32 +38,31 @@ public class LogInViewController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         wallpaper.fitHeightProperty().bind(root.heightProperty());
         wallpaper.fitWidthProperty().bind(root.widthProperty());
-    }    
+    }
 
     @Override
     public void initialize() {
-       
+
     }
 
     @FXML
     private void onActionBtnProfes(ActionEvent event) {
         FlowController.getInstance().goMain("ProfeView");
-        ((Stage)btnProfes.getScene().getWindow()).close();
+        ((Stage) btnProfes.getScene().getWindow()).close();
     }
 
     @FXML
     private void onActionBtnFuncionarios(ActionEvent event) {
         FlowController.getInstance().goMain("FuncionariosView");
-        ((Stage)btnFuncionarios.getScene().getWindow()).close();
+        ((Stage) btnFuncionarios.getScene().getWindow()).close();
     }
 
     @FXML
     private void onActionBtnAsociados(ActionEvent event) {
         FlowController.getInstance().goMain("AsociadosView");
-        ((Stage)btnAsociados.getScene().getWindow()).close();
+        ((Stage) btnAsociados.getScene().getWindow()).close();
     }
-    
+
 }

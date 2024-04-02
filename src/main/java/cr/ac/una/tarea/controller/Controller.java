@@ -6,7 +6,6 @@
 package cr.ac.una.tarea.controller;
 
 import javafx.scene.control.Control;
-import javafx.scene.control.TextInputControl;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -41,11 +40,12 @@ public abstract class Controller {
 
     public abstract void initialize();
 
-    public static void iconChanger(Stage stage, Image image){
+    public static void iconChanger(Stage stage, Image image) {
         stage.getIcons().clear();
         stage.getIcons().add(image);
     }
-    public static void nameChanger(Stage stage, String name){
+
+    public static void nameChanger(Stage stage, String name) {
         stage.setTitle(name);
     }
 }

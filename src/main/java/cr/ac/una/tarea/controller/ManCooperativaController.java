@@ -12,10 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import cr.ac.una.tarea.Cooperativa;
+import cr.ac.una.tarea.model.Cooperativa;
 import cr.ac.una.tarea.util.Mensaje;
 
 public class ManCooperativaController extends Controller implements Initializable {
@@ -25,7 +23,7 @@ public class ManCooperativaController extends Controller implements Initializabl
 
     @FXML
     private ImageView imgvLogo;
-    
+
     @FXML
     private MFXButton btnGuardar;
 
@@ -33,7 +31,6 @@ public class ManCooperativaController extends Controller implements Initializabl
     private MFXTextField txfNomCooperativa;
     String logoPath;
     Cooperativa cooperativa = new Cooperativa();
-
 
     @Override
     public void initialize() {
@@ -44,10 +41,12 @@ public class ManCooperativaController extends Controller implements Initializabl
     void onActionBtnGuardar(ActionEvent event) {
 
         try {
-            if (txfNomCooperativa.getText().isEmpty()||txfNomCooperativa.getText().isBlank()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR,"Registrar Cooperativa", getStage(),"El campo nombre de la cooperativa no puede estar vacio" );
-            }else if(imgvLogo.getImage().equals(null) ){
-                new Mensaje().showModal(Alert.AlertType.ERROR,"Registrar Cooperativa", getStage(),"El campo logo de la cooperativa no puede estar vacio" );
+            if (txfNomCooperativa.getText().isEmpty() || txfNomCooperativa.getText().isBlank()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Cooperativa", getStage(),
+                        "El campo nombre de la cooperativa no puede estar vacio");
+            } else if (imgvLogo.getImage().equals(null)) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Cooperativa", getStage(),
+                        "El campo logo de la cooperativa no puede estar vacio");
 
             } else {
 
@@ -56,7 +55,8 @@ public class ManCooperativaController extends Controller implements Initializabl
                 cooperativa.Cooperativa.add(cooperativa.getLogo());
                 Controller.iconChanger(getStage(), imgvLogo.getImage());
                 Controller.nameChanger(getStage(), txfNomCooperativa.getText());
-                new Mensaje().showModal(Alert.AlertType.INFORMATION,"Registrar Cooperativa", getStage(),"Cooperativa registrada con exito" );
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Cooperativa", getStage(),
+                        "Cooperativa registrada con exito");
             }
         } catch (Exception ex) {
             Logger.getLogger(ManCooperativaController.class.getName()).log(Level.SEVERE, "Error loading image", ex);
@@ -71,9 +71,8 @@ public class ManCooperativaController extends Controller implements Initializabl
         fileChooser.showOpenDialog(null);
         logoPath = fileChooser.getSelectedFile().getAbsolutePath();
         System.out.println(logoPath);
-        Image icon = new Image("File:"+logoPath);
+        Image icon = new Image("File:" + logoPath);
         imgvLogo.setImage(icon);
-
 
     }
 

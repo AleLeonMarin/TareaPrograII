@@ -36,8 +36,8 @@ public class AsociadosViewController extends Controller implements Initializable
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+
+    }
 
     @FXML
     private void onActionBtnRegistrar(ActionEvent event) {
@@ -66,7 +66,7 @@ public class AsociadosViewController extends Controller implements Initializable
 
     @Override
     public void initialize() {
-        
+
     }
-    
+
 }

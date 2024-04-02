@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -73,7 +72,8 @@ public class FlowController {
                         loaders.put(name, loader);
                     } catch (Exception ex) {
                         loader = null;
-                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Creando loader [" + name + "].", ex);
+                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE,
+                                "Creando loader [" + name + "].", ex);
                     }
                 }
             }
@@ -83,11 +83,13 @@ public class FlowController {
 
     public void goMain(String viewName) {
         try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/"+viewName+ ".fxml"), this.idioma)));
+            this.mainStage.setScene(
+                    new Scene(FXMLLoader.load(App.class.getResource("view/" + viewName + ".fxml"), this.idioma)));
             MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
             this.mainStage.show();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
+            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE,
+                    "Error inicializando la vista base.", ex);
         }
     }
 
@@ -134,7 +136,7 @@ public class FlowController {
         controller.setStage(stage);
         stage.getScene().setRoot(loader.getRoot());
         MFXThemeManager.addOn(stage.getScene(), Themes.DEFAULT, Themes.LEGACY);
-        
+
     }
 
     public void goViewInWindow(String viewName) {
@@ -142,7 +144,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        //stage.getIcons().add(new Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+        // stage.getIcons().add(new
+        // Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -161,7 +164,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        //stage.getIcons().add(new Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+        // stage.getIcons().add(new
+        // Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
@@ -182,15 +186,15 @@ public class FlowController {
     public Controller getController(String viewName) {
         return getLoader(viewName).getController();
     }
-    
-    public void limpiarLoader(String view){
+
+    public void limpiarLoader(String view) {
         this.loaders.remove(view);
     }
 
     public static void setIdioma(ResourceBundle idioma) {
         FlowController.idioma = idioma;
     }
-    
+
     public void initialize() {
         this.loaders.clear();
     }

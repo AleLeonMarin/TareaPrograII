@@ -32,12 +32,12 @@ public class ProfeViewController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+
+    }
 
     @Override
     public void initialize() {
-        
+
     }
 
     @FXML
@@ -50,7 +50,7 @@ public class ProfeViewController extends Controller implements Initializable {
     private void onActionBtmManCoope(ActionEvent event) {
 
         FlowController.getInstance().goView("ManCooperativa");
-        
+
     }
-    
+
 }

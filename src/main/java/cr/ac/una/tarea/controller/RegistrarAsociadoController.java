@@ -11,12 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RegistrarAsociadoController extends Controller implements Initializable{
+public class RegistrarAsociadoController extends Controller implements Initializable {
 
     @FXML
     private MFXButton btnFoto;
@@ -37,19 +39,51 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
-    private String photoPath = "./Photos/foto1.jpg";
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            Image image = new Image(photoPath);
+
+    }
+
+    @FXML
+    void onActionShowImage(MouseEvent event) {
+        LoadPhoto();
+    }
+
+    public void LoadPhoto() {
+        String photoPath = "./Photos/foto1.jpg";
+        File file_photo = new File(photoPath);
+
+        if (file_photo.exists()) {
+            Image image = new Image(file_photo.toURI().toString());
             imgVFoto.setImage(image);
-        } catch (Exception e) {
-            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE, "Error loading image", e);
-            // Display a user-friendly error message
+        } else {
+
+        }
+
+    }
+
+    public void RenamePhoto(Associated asociado) {
+        File file = new File("./Photos/foto1.jpg");
+
+        if (file.exists()) {
+            String filepath = file.getParent();
+            String newFileName = asociado.getFolio() + ".jpg";
+            File newFile = new File(filepath, newFileName);
+
+            if (file.renameTo(newFile)) {
+                // logger
+                LoadPhoto();
+            } else {
+                // logger
+            }
+        } else {
+            // logger
         }
     }
 
@@ -63,42 +97,38 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
         try {
             if (txfNombre.getText() == null || txfNombre.getText().isEmpty()) {
-
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe ingresar el nombre del asociado");
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
+                        "Debe ingresar el nombre del asociado");
             } else if (txfEdad.getText() == null || txfEdad.getText().isEmpty()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe ingresar la edad del asociado");
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
+                        "Debe ingresar la edad del asociado");
             } else if (txfApellido.getText() == null || txfApellido.getText().isEmpty()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe ingresar el apellido del asociado");
-
-            } /*else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Debe tomarse la foto del asociado");
-            }*/else{
-                Associated asociado = new Associated(txfNombre.getText(), txfApellido.getText(), Integer.parseInt(txfEdad.getText()), "foto");
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
+                        "Debe ingresar el apellido del asociado");
+            } else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
+                        "Debe tomarse la foto del asociado");
+            } else {
+                Associated asociado = new Associated(txfNombre.getText(), txfApellido.getText(),
+                        Integer.parseInt(txfEdad.getText()), "foto");
+                asociado.createFolio(asociado.getName(), asociado.getAge());
                 asociado.Associate.add(asociado.getName());
                 asociado.Associate.add(String.valueOf(asociado.getAge()));
-                asociado.Associate.add(asociado.createFolio(asociado.getName(), asociado.getAge()));
-                asociado.Associate.add(asociado.getPhoto());
-                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(), "Asociado registrado con éxito, su numero de folio es: " + asociado.getFolio());
+                asociado.Associate.add(asociado.getFolio());
+                asociado.Associate.add(asociado.getPhoto()); // ----
+                RenamePhoto(asociado);
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(),
+                        "Asociado registrado con éxito, su numero de folio es: " + asociado.getFolio());
+                /*
+                 * Hacer una variable que guarde en el txt el nombre real de el folio del
+                 * asociado
+                 */
                 asociado.createFile(asociado);
             }
-        }catch (Exception ex){
-            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE,"Error al Registrar Asociado",ex);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE,
+                    "Error al Registrar Asociado", ex);
         }
-
-
-
     }
-
-    /* 
-    public void renameAssociatePhoto(Associated asociado){
-
-        File photoFile = new File(photoPath);
-
-        if(photoFile.exists()){
-            String file
-        }
-
-    }
-    */
 
 }

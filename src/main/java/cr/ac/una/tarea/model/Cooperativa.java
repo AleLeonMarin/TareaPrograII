@@ -1,4 +1,4 @@
-package cr.ac.una.tarea;
+package cr.ac.una.tarea.model;
 
 import java.util.ArrayList;
 
