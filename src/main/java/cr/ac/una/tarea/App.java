@@ -1,10 +1,14 @@
 package cr.ac.una.tarea;
 
+import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.FlowController;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -24,8 +28,13 @@ public class App extends Application {
             stage.setTitle(cooperativa.getName());
             stage.getIcons().add(new Image(cooperativa.getLogo()));
         }
-      
-       
+       List<Associated> asociado = new ArrayList<Associated>();
+
+        ObservableList<Associated> asociados = FXCollections.observableArrayList(asociado);
+
+
+
+        AppContext.getInstance().set("asociado",asociados);
 
 
     }

@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,10 +26,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
     private MFXButton btnGuardar;
 
     @FXML
-    private MFXButton btnSalir;
+    private MFXButton btnEditar;
 
     @FXML
-    private MFXComboBox<?> cmbCuentas;
+    private MFXComboBox<Account> cmbCuentas;
 
     @FXML
     private AnchorPane root;
@@ -44,6 +43,9 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
     @Override
     public void initialize() {
+
+        cmbCuentas.setDisable(true);
+        cmbCuentas.setVisible(false);
 
     }
     @FXML
@@ -81,8 +83,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
     }
 
     @FXML
-    void onActionBtnSalir(ActionEvent event) {
-
+    void onActionBtnEditar(ActionEvent event) {
+        cmbCuentas.setDisable(false);
+        cmbCuentas.setVisible(true);
+       // cmbCuentas.getItems().sort();
     }
 
     @FXML

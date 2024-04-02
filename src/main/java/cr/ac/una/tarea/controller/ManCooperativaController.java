@@ -54,6 +54,8 @@ public class ManCooperativaController extends Controller implements Initializabl
                 Cooperativa cooperativa = new Cooperativa(txfNomCooperativa.getText(), imgvLogo.getImage().getUrl());
                 cooperativa.Cooperativa.add(cooperativa.getName());
                 cooperativa.Cooperativa.add(cooperativa.getLogo());
+                Controller.iconChanger(getStage(), imgvLogo.getImage());
+                Controller.nameChanger(getStage(), txfNomCooperativa.getText());
                 new Mensaje().showModal(Alert.AlertType.INFORMATION,"Registrar Cooperativa", getStage(),"Cooperativa registrada con exito" );
             }
         } catch (Exception ex) {

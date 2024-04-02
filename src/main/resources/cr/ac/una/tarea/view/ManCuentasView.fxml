@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ManCuentasViewController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.ManCuentasViewController">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +20,7 @@
                   <MFXTextField fx:id="txfId" alignment="CENTER" prefHeight="50.0" prefWidth="219.0" promptText="Tipo de Cuenta" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <MFXButton fx:id="btnSalir" onAction="#onActionBtnSalir" styleClass="mxfBtnEdit" stylesheets="@Styles.css" text="Editar">
+                        <MFXButton fx:id="btnEditar" onAction="#onActionBtnEditar" styleClass="mxfBtnEdit" stylesheets="@Styles.css" text="Editar">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic></MFXButton>

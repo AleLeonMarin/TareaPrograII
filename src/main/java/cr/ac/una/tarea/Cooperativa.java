@@ -47,7 +47,6 @@ public class Cooperativa {
 
         cooperativa.Cooperativa.add(cooperativa.getName());
         cooperativa.Cooperativa.add(cooperativa.getLogo());
-        
     }
 
 

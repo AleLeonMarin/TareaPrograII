@@ -21,10 +21,14 @@
 /*                                        */
 /******************************************/
 
-.mfxButtonManAso{
+.mfxButtonManAso {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment:center;
+    -fx-background-color: #E1AFD1;
+}
+
+.mfxButtonManAso:armed, .mfxButtonManAso:focused {
     -fx-background-color: #E1AFD1;
 }
 
