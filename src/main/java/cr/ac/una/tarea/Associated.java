@@ -16,8 +16,8 @@ public class Associated {
     public ArrayList<String> Associate = new ArrayList<String>();
 
     public Associated() {
-    }
 
+    }
 
     public Associated(String name, String lastName, int age, String photo) {
         this.name = name;

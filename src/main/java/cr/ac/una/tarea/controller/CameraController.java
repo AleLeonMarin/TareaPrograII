@@ -1,24 +1,26 @@
 package cr.ac.una.tarea.controller;
 
-import cr.ac.una.tarea.Associated;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import cr.ac.una.tarea.Associated;
+import cr.ac.una.tarea.util.Mensaje;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,155 +28,105 @@ import org.slf4j.LoggerFactory;
 import javax.imageio.ImageIO;
 public class CameraController extends Controller implements Initializable {
 
+    public Button btnTakePhoto;
+    public MFXButton btnRetake;
+    public ImageView PhotoTaken;
+    public MFXButton btnSavePic;
+    public MFXButton btnExitCam;
     @FXML
     private ImageView previewImageView;
-    @FXML
-    private MFXButton btnTakePhoto;
-    @FXML
-    private MFXButton btnRetake;
-    @FXML
-    private MFXButton BtnGuardar;
-    @FXML
-    private MFXButton BtnSalir;
     private Webcam webcam;
     private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
-    private boolean runPreview = true;
-    private volatile boolean isPreviewThreadRunning = false;
-    Associated asociado = new Associated();
-    @Override
+    private ScheduledExecutorService executor;
+    Image defaultImage = new Image(getClass().getResourceAsStream("/cr/ac/una/tarea/resources/PreviewPhoto.jpeg"));
+    Associated asociados = new Associated();
+
     public void initialize() {
-        BtnGuardar.setVisible(false);
-        BtnGuardar.setDisable(true);
-        btnRetake.setVisible(false);
-        btnRetake.setDisable(true);
+
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        try {
-            webcam = Webcam.getDefault(); // Assign the default webcam to the variable
-            webcam.setViewSize(new Dimension(WebcamResolution.VGA.getWidth(), WebcamResolution.VGA.getHeight()));
-            startCameraPreview();
-            // SeePhoto.setDisable(true);
-        } catch (Exception e){
-            logger.error("Failed to open the camera", e);
-        }
-    }
-
+    // Se encarga de iniciar la vista previa de la camara mediante
+    // tareas de un hilo de manera programada
     private void startCameraPreview() {
-        Task<Void> task;
-        task = new Task<>() {
-            @Override
-            protected Void call() {
-                try {
-                    webcam.open();
-                    while(runPreview){
-                        BufferedImage image = webcam.getImage();
-                        Image javafxImage = SwingFXUtils.toFXImage(image, null);
-                        Platform.runLater(() -> previewImageView.setImage (javafxImage));
-
-                        synchronized (this) {
-                            wait(10); // Wait for 30 milliseconds
-                        }
-                    }
-                    // TakePic.setDisable(true);
-                } catch (Exception e) {
-                    logger.error("Camera stopped", e);
-                } finally {
-                    stopCameraPreview();
-                    isPreviewThreadRunning = false;
-                }
-                return null;
-            }
-        };
-        new Thread(task).start();
-        isPreviewThreadRunning = true;
+        executor = Executors.newSingleThreadScheduledExecutor();
+        executor.scheduleAtFixedRate(() -> {
+            Image image = SwingFXUtils.toFXImage(webcam.getImage(), null);
+            previewImageView.setImage(image); // Muestra la camara en el imageView 'PreviewImageView'
+        }, 0, 33, TimeUnit.MILLISECONDS); // 30 FPS
     }
+
+    // Cierra y apaga la camara del sistema
     private void stopCameraPreview() {
-        runPreview = false;
+        executor.shutdown();
         webcam.close();
     }
+
+    // Captura la imagen y le asigna el folio del asociado a la foto
     @FXML
-    public void onActionBtnTakePhoto(ActionEvent event) {
+    private void takePicture() {
         try {
-            startCameraPreview();
-            BufferedImage image = webcam.getImage();
-            System.out.print("Foto tomada");
-
-            /*
-            String folio = asociado.getFolio();
-            // Check if folio is empty or null
-            if (asociado.getFolio() == null || asociado.getFolio().isEmpty()) {
-                // Handle empty folio (provide default or prompt user)
-                logger.warn("Folio is empty, using default filename.");
-                folio = "default_image";
-            }
-            System.out.println("Folio retrieved: " + folio);
-            String fileName = asociado.getFolio() + ".jpg";;
-            ImageIO.write(image, "JPG", new File(fileName));
-            */
-            savePhoto();
-        } catch (Exception e) {
-            logger.error("Error capturing image..", e);
-        } finally {
-            stopCameraPreview();
-            BtnGuardar.setDisable(false);
-            BtnGuardar.setVisible(true);
-            btnRetake.setDisable(false);
-            btnRetake.setVisible(true);
-            btnTakePhoto.setDisable(true);
-            btnTakePhoto.setVisible(false);
-        }
-    }
-    @FXML
-    public void onActionBtnRetake(ActionEvent event){
-        runPreview = true;
-        startCameraPreview(); // Restart the preview loop (may not create a new thread)
-
-        // Check if the camera preview thread is likely running
-        if (isPreviewThreadRunning) {
-            try {
-                BufferedImage image = webcam.getImage();
-                String fileName = asociado.getFolio() + ".jpg";
-                ImageIO.write(image, "JPG", new File(fileName));
-                logger.info("Image retaken and saved: " + fileName);
-            } catch (Exception e) {
-                logger.error("Error retaking image", e);
-            }
-        } else {
-            // Handle the case where preview thread isn't running (optional)
-            logger.warn("Camera preview not yet ready for capturing image.");
-        }
-        btnTakePhoto.setDisable(false);
-        btnTakePhoto.setVisible(true);
-    }
-
-    @FXML
-    public void onActionBtnGuardar(ActionEvent event)  {
-
-        savePhoto();
-        ((Stage) BtnGuardar.getScene().getWindow()).close();
-
-
-    }
-
-    public void savePhoto(){
-        try {
-            WritableImage snapshot = previewImageView.snapshot(null , null);
-            File fileName = new File(asociado.getFolio() + ".jpg");
-            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", fileName);
-            logger.info("Image saved successfully: " + fileName); // Log success message
+            // crea el archivo y el tipo de formato
+            File file = new File(String.format(asociados.getFolio() + ".jpg", System.currentTimeMillis()));
+            ImageIO.write(webcam.getImage(), "JPG", file);
+            logger.info("Image saved successfully: " + file);
+            // Funcion para mostrar la foto tomada
+            displayCapturedImage(file);
         } catch (IOException e) {
-            logger.error("Error saving image: ", e);  // Log error message with exception
-        } finally {
-            stopCameraPreview();
-
+            logger.error("Error saving image: ", e);
         }
-
+        btnRetake.setDisable(false);
+        btnSavePic.setDisable(false);
+        btnTakePhoto.setDisable(true);
     }
 
-    @FXML
-    public void onActionBtnSalir(ActionEvent event){
-        ((Stage) BtnSalir.getScene().getWindow()).close();
+    // Se encarga de mostrar la imagen capturada en el ImageView llamado PhotoTaken
+    private void displayCapturedImage(File file) {
+        try {
+            Image image = new Image(file.toURI().toString());
+            PhotoTaken.setImage(image);
+        } catch (Exception e) {
+            logger.error("Error displaying captured image: ", e);
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+       try{
+           btnRetake.setDisable(true);
+           btnSavePic.setDisable(true);
+
+           //  Investiga la existencia de alguna camara en el sistema
+           webcam = Webcam.getDefault();
+           // Establece la resolucion de la vista previa de la camara en VGA
+           webcam.setViewSize(WebcamResolution.VGA.getSize());
+
+           webcam.open();
+           startCameraPreview();
+       } catch (Exception ex){
+           logger.error("Camera not found: ", ex);
+       }
+    }
+
+    // Funcion para volver a capturar la imagen
+    public void onActionBtnRet(ActionEvent event) {
+        PhotoTaken.setImage(null);
+        btnRetake.setDisable(true);
+        btnSavePic.setDisable(true);
+        btnTakePhoto.setDisable(false);
+        PhotoTaken.setImage(defaultImage);
+    }
+
+    // Guarda la foto y cierra la ventana de camera
+    public void onActionBtnSavePic(ActionEvent event) {
+        btnTakePhoto.setDisable(true);
+        btnRetake.setDisable(true);
+        stopCameraPreview();
+        new Mensaje().showModal(Alert.AlertType.ERROR, "Vista Camara", getStage(), "Foto guardada exitosamente");
+        ((Stage) btnExitCam.getScene().getWindow()).close();
+    }
+
+    public void onActionBtnExitCam(ActionEvent event) {
+        stopCameraPreview();
+        ((Stage) btnExitCam.getScene().getWindow()).close();
     }
 }
