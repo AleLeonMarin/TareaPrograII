@@ -3,11 +3,13 @@
 *.jar
 *.class
 *.txt
+*.jpg
 
 #Directorios
 
 target/
 .idea/
+.vscode/
 
 #Otros
 

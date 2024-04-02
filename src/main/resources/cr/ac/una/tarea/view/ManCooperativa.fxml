@@ -26,7 +26,7 @@
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic></MFXButton>
-                        <MFXButton styleClass="mfxBtnSave" stylesheets="@Styles.css" text="Guardar">
+                        <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" styleClass="mfxBtnSave" stylesheets="@Styles.css" text="Guardar">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>

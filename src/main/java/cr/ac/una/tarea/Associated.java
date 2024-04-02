@@ -84,22 +84,22 @@ public class Associated {
     }
 
     public String createFolio(String name, int age) {
-
+        
         final int max = 20;
         final int min = 10;
         int range = max - min + 1;
         int random = (int) (Math.random() * range) + min;
 
-        String Folio = name.substring(0, 1) + lastName.substring(0, 1) + age + random;
+        Folio = name.substring(0, 1) + lastName.substring(0, 1) + age + random;
 
-        return Folio;
+       return Folio;
     }
 
     public void addAssociated() {
         Associated asociado = new Associated(name, lastName, age, Photo);
         asociado.Associate.add(asociado.getName());
         asociado.Associate.add(String.valueOf(asociado.getAge()));
-        asociado.Associate.add(asociado.createFolio(asociado.getName(), asociado.getAge()));
+        asociado.Associate.add(asociado.getFolio());
         asociado.Associate.add(asociado.getPhoto());
     }
 
