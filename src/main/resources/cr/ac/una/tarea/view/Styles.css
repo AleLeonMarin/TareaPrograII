@@ -250,7 +250,14 @@
 
 /******************************************/
 /*                                        */
-/*             Images confs               */
+/*          CarnetView confs              */
 /*                                        */
 /******************************************/
+
+.backgroundCarnet{
+    -fx-background-image:url('../resources/LogIn.jpg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
 

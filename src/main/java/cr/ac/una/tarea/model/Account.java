@@ -18,8 +18,8 @@ public class Account {
 
     public Account(String name){
         this.name = name;
+    
     }
-
 
 
     public ArrayList<String> getCuentas() {
@@ -43,11 +43,13 @@ public class Account {
         Account accounts = new Account(name);
         accounts.cuentas.add(accounts.getName());
 
+
     }
 
     public void deleteAccount(){
         Account accounts = new Account(name);
         accounts.cuentas.remove(accounts.getName());
+    
     }
 
     public void addToFile(Account account) throws IOException {
@@ -69,4 +71,5 @@ public class Account {
     public void createFile(Account account) throws IOException {
         account.addToFile(account);
     }
+
 }
