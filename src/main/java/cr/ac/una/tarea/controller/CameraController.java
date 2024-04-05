@@ -39,7 +39,7 @@ public class CameraController extends Controller implements Initializable {
     Image defaultImage = new Image(getClass().getResourceAsStream("/cr/ac/una/tarea/resources/PreviewPhoto.jpeg"));
 
     public void initialize() {
-
+        // --
     }
 
     // Se encarga de iniciar la vista previa de la camara mediante
@@ -113,22 +113,28 @@ public class CameraController extends Controller implements Initializable {
         btnTakePhoto.setDisable(false);
         btnExitCam.setDisable(false);
         PhotoTaken.setImage(defaultImage);
+
         // Borrar foto tomada
         File file = new File(String.format("./Photos/foto1" + ".jpg", System.currentTimeMillis()));
         file.delete();
+
     }
 
     // Guarda la foto y cierra la ventana de camera
     public void onActionBtnSavePic(ActionEvent event) {
-        btnTakePhoto.setDisable(true);
         btnRetake.setDisable(true);
-        stopCameraPreview();
+        PhotoTaken.setImage(defaultImage);
+        btnTakePhoto.setDisable(false);
+
         new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Vista Camara", getStage(), "Foto guardada exitosamente");
         ((Stage) btnExitCam.getScene().getWindow()).close();
+
     }
 
     public void onActionBtnExitCam(ActionEvent event) {
         stopCameraPreview();
+        btnTakePhoto.setDisable(false);
+        btnSavePic.setDisable(false);
         ((Stage) btnExitCam.getScene().getWindow()).close();
     }
 }
