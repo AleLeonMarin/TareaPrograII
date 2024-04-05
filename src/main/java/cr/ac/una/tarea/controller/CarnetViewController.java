@@ -7,9 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class CarnetViewController extends Controller implements Initializable{
 
+    @FXML
+    private AnchorPane root;
+    
     @FXML
     private ImageView imgVFoto;
 
