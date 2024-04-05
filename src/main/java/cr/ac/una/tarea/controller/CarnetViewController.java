@@ -1,14 +1,18 @@
 package cr.ac.una.tarea.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import cr.ac.una.tarea.model.Associated;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
-public class CarnetViewController extends Controller implements Initializable{
+public class CarnetViewController extends Controller implements Initializable {
+
+    ArrayList<Associated> asociados = new ArrayList<>();
 
     @FXML
     private ImageView imgVFoto;
@@ -27,14 +31,12 @@ public class CarnetViewController extends Controller implements Initializable{
 
     @Override
     public void initialize() {
-        // TODO Auto-generated method stub
-        
+        // Empty
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
-        
+        // Empyt
     }
 
 }
