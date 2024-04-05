@@ -1,30 +1,18 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tarea.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import cr.ac.una.tarea.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-/**
- * FXML Controller class
- *
- * @author OUTLET
- */
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+
 public class ImpresCarnetController extends Controller implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @FXML
     private Button btnGenerar;
 
@@ -36,19 +24,17 @@ public class ImpresCarnetController extends Controller implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Document doc = new Document();
     }
 
     @FXML
     void onActionBtnGenerar(ActionEvent event) {
-
-        FlowController.getInstance().goViewInWindow("CarnetView");
-
+        // TODO
     }
 
     @Override
     public void initialize() {
-
+        //
     }
 
 }

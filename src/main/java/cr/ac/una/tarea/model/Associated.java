@@ -1,9 +1,13 @@
 package cr.ac.una.tarea.model;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Associated {
 
@@ -24,7 +28,6 @@ public class Associated {
         this.lastName = lastName;
         this.age = age;
         Photo = photo;
-
     }
 
     public ArrayList<String> getAssociate() {
@@ -84,7 +87,7 @@ public class Associated {
     }
 
     public String createFolio(String name, int age) {
-        
+
         final int max = 20;
         final int min = 10;
         int range = max - min + 1;
@@ -92,7 +95,7 @@ public class Associated {
 
         Folio = name.substring(0, 1) + lastName.substring(0, 1) + age + random;
 
-       return Folio;
+        return Folio;
     }
 
     public void addAssociated() {
@@ -107,7 +110,7 @@ public class Associated {
 
         asociado.addAssociated();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Asociados.txt",true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Asociados.txt", true));
         try {
 
             writer.write(asociado.getAssociate().toString());
@@ -120,16 +123,30 @@ public class Associated {
     }
 
     public void createFile(Associated asociado) throws IOException {
-       asociado.addToFile(asociado);
+        asociado.addToFile(asociado);
     }
 
+    public void ReadFiletxt() {
+        ArrayList<String> dataList = new ArrayList<>();
 
+        try {
+            File file = new File("./Asociados.txt");
+            Scanner myReader = new Scanner(file);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                dataList.add(data); // Add each line to the ArrayList
+            }
+
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            Logger.getLogger("Error saving image: ");
+        }
+
+        // Access the data in the ArrayList:
+        for (String line : dataList) {
+            System.out.println(line);
+        }
+    }
 
 }
-
-
-
-
-
-
-

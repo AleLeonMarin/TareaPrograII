@@ -73,7 +73,6 @@ public class ManCooperativaController extends Controller implements Initializabl
         System.out.println(logoPath);
         Image icon = new Image("File:" + logoPath);
         imgvLogo.setImage(icon);
-
     }
 
     @Override
