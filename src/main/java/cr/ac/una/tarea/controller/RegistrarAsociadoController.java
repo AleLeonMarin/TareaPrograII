@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
+
 import static java.util.logging.Level.*;
 
 public class RegistrarAsociadoController extends Controller implements Initializable {
@@ -39,6 +42,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
+
     @Override
     public void initialize() {
 
@@ -61,7 +65,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
         if (file_photo.exists()) {
             Image image = new Image(file_photo.toURI().toString());
             imgVFoto.setImage(image);
-        } else{
+        } else {
 
         }
     }
@@ -112,8 +116,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
                         txfNombre.getText(),
                         txfApellido.getText(),
                         Integer.parseInt(txfEdad.getText()),
-                        "foto"
-                );
+                        "foto");
                 asociado.createFolio(asociado.getName(), asociado.getAge());
                 asociado.Associate.add(asociado.getName());
                 asociado.Associate.add(String.valueOf(asociado.getAge()));
@@ -122,6 +125,12 @@ public class RegistrarAsociadoController extends Controller implements Initializ
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(),
                         "Asociado registrado con éxito, su numero de folio es: " + asociado.getFolio());
                 asociado.createFile(asociado);
+
+                txfNombre.clear();
+                txfEdad.clear();
+                txfApellido.clear();
+                imgVFoto.setImage(null);
+
             }
         } catch (Exception ex) {
             Logger.getLogger(RegistrarAsociadoController.class.getName()).log(SEVERE,

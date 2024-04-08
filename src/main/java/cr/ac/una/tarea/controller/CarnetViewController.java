@@ -1,23 +1,26 @@
 package cr.ac.una.tarea.controller;
 
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javax.imageio.ImageIO;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Desktop;
+
 import cr.ac.una.tarea.model.Associated;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
@@ -26,10 +29,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-public class CarnetViewController extends Controller implements Initializable{
+public class CarnetViewController extends Controller implements Initializable {
 
+    Associated asociado = new Associated();
     @FXML
     private MFXButton btnGuardarPDF;
 
@@ -54,19 +57,27 @@ public class CarnetViewController extends Controller implements Initializable{
     @FXML
     private VBox vboxCarnet;
 
-    Associated asociaddo = new Associated();
-
     @FXML
     void onActionSavePdf(ActionEvent event) {
+        // --
+    }
+
+    public void createPDF() {
+
         try {
             Document documento = new Document(PageSize.A4);
-            PdfWriter.getInstance(documento, new FileOutputStream("factura" + asociaddo.getName() + asociaddo.getFolio() + ".pdf"));
+            PdfWriter.getInstance(documento,
+                    new FileOutputStream("Carnet" + asociado.getName() + asociado.getFolio() + ".pdf"));
             documento.open();
 
+            documento.add(new Paragraph("This is a simple PDF created"));
+
+            File output = new File("Carnet" + asociado.getName() + asociado.getFolio() +
+                    ".png");
             WritableImage image = vboxCarnet.snapshot(new SnapshotParameters(), null);
-            File output = new File("factura" + asociaddo.getName() + asociaddo.getFolio() + ".png");
 
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);
+
             float pageWidth = documento.getPageSize().getWidth();
             float pageHeight = documento.getPageSize().getHeight();
             BufferedImage bufferedImage = ImageIO.read(output);
@@ -83,29 +94,22 @@ public class CarnetViewController extends Controller implements Initializable{
 
             Desktop desktop = Desktop.getDesktop();
 
-            File file = new File("factura" + asociaddo.getName() + asociaddo.getFolio() + ".pdf");
+            File file = new File("Carnet" + asociado.getName() + asociado.getFolio() + ".pdf");
             desktop.open(file);
 
-        } catch (FileNotFoundException | DocumentException e) {
+        } catch (DocumentException | IOException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            ((Stage) btnGuardarPDF.getScene().getWindow()).close();
         }
-    }   
-
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
-        
     }
 
-    @Override   
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // --
+    }
+
+    @Override
     public void initialize() {
-        // TODO Auto-generated method stub
-        
+        // --
     }
 
 }
