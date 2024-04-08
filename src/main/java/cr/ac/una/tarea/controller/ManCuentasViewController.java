@@ -1,6 +1,8 @@
 package cr.ac.una.tarea.controller;
 
 import cr.ac.una.tarea.model.Account;
+import cr.ac.una.tarea.model.AccountType;
+import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
@@ -29,7 +31,7 @@ public class ManCuentasViewController extends Controller implements Initializabl
     private MFXButton btnEditar;
 
     @FXML
-    private MFXComboBox<Account> cmbCuentas;
+    private MFXComboBox<String> cmbCuentas;
 
     @FXML
     private AnchorPane root;
@@ -45,6 +47,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
         cmbCuentas.setDisable(true);
         cmbCuentas.setVisible(false);
 
+        AppContext.getInstance().get("Tipo de Cuenta");
+
+
+
     }
     @FXML
     void onActionBtnAgregar(ActionEvent event)  {
@@ -54,10 +60,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(), "Debe ingresar el nombre de la cuenta");
             }else{
 
-                Account account = new Account(txfNomCuentas.getText());
-                account.cuentas.add(txfNomCuentas.getText());
+                AccountType accounttype = new AccountType(txfNomCuentas.getText());
+                accounttype.cuentas.add(txfNomCuentas.getText());
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(), "Cuenta agregada correctamente");
-                account.createFile(account);
+                accounttype.createFile(accounttype);
             }
 
         } catch(Exception ex){
@@ -69,6 +75,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
     @FXML
     void onActionBtnEliminar(ActionEvent event) {
+        cmbCuentas.setDisable(false);
+        cmbCuentas.setVisible(true);
+
+        AccountType accountType = new AccountType(); 
 
     }
 
