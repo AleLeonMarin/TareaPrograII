@@ -1,9 +1,14 @@
 package cr.ac.una.tarea.model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import cr.ac.una.tarea.util.AppContext;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class AccountType {
 
@@ -71,5 +76,25 @@ public class AccountType {
     public void createFile(AccountType account) throws IOException {
         account.addToFile(account);
     }
+
+    public static ArrayList<String> readFileToList(String filePath, ArrayList<String> cuentas) throws IOException {
+
+        BufferedReader reader = null;
+        
+        try {
+          reader = new BufferedReader(new FileReader("./Cuentas.txt"));
+          String line;
+          while ((line = reader.readLine()) != null) {
+            cuentas.add(line);
+          }
+        } finally {
+          if (reader != null) {
+            reader.close();
+          }
+        }
+        
+        return cuentas;
+      }
+      
 
 }

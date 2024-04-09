@@ -31,7 +31,7 @@ public class FuncionariosViewController extends Controller implements Initializa
 
     @FXML
     void onActionBtnAperCuentas(ActionEvent event) {
-        FlowController.getInstance().goView("ConsultaCuenta");
+        FlowController.getInstance().goView("AperturaCuentasView");
 
     }
 

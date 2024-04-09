@@ -126,8 +126,7 @@ public class Associated {
         asociado.addToFile(asociado);
     }
 
-    public void ReadFiletxt() {
-        ArrayList<String> dataList = new ArrayList<>();
+    public void ReadFiletxt(ArrayList<String> Associate) {
 
         try {
             File file = new File("./Asociados.txt");
@@ -135,7 +134,7 @@ public class Associated {
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                dataList.add(data); // Add each line to the ArrayList
+                Associate.add(data); // Add each line to the ArrayList
             }
 
             myReader.close();
@@ -144,7 +143,7 @@ public class Associated {
         }
 
         // Access the data in the ArrayList:
-        for (String line : dataList) {
+        for (String line : Associate) {
             System.out.println(line);
         }
     }

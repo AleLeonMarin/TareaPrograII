@@ -152,7 +152,7 @@ public class RetirDeposController extends Controller implements Initializable {
 
     @FXML
     void onActionDepositar(ActionEvent event) {
-        new Mensaje().showModal(Alert.AlertType.ERROR, "Depositos", getStage(),
+        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Depositos", getStage(),
                 "El dinero depositado es de " + SumarTodo());
     }
 
