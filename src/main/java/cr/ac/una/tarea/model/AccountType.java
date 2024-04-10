@@ -6,9 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import cr.ac.una.tarea.util.AppContext;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 
 public class AccountType {
 

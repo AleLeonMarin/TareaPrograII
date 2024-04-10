@@ -38,7 +38,7 @@ public class App extends Application {
             stage.getIcons().add(new Image(cooperativa.getLogo()));
         }
 
-        AppContext.getInstance().set("cooperativa", cooperativa);
+        AppContext.getInstance().set("cooperativa", cooperativas);
         AppContext.getInstance().set("Asociados", associate);
         AppContext.getInstance().set("Cuentas", accounts);
         AppContext.getInstance().set("TiposCuentas", accountType);

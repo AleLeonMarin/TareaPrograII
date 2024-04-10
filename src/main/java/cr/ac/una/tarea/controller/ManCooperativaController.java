@@ -8,6 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -67,9 +70,9 @@ public class ManCooperativaController extends Controller implements Initializabl
     @FXML
     void onActionBtnLogo(ActionEvent event) {
 
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.showOpenDialog(null);
-        logoPath = fileChooser.getSelectedFile().getAbsolutePath();
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(null);
+        logoPath = selectedFile.getAbsolutePath();
         System.out.println(logoPath);
         Image icon = new Image("File:" + logoPath);
         imgvLogo.setImage(icon);

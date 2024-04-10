@@ -1,6 +1,5 @@
 package cr.ac.una.tarea.controller;
 
-import cr.ac.una.tarea.App;
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.FlowController;
@@ -16,7 +15,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 public class EditarAsociadoController extends Controller implements Initializable{
@@ -63,8 +61,8 @@ public class EditarAsociadoController extends Controller implements Initializabl
             AppContext.getInstance().get(("Asociados"));
             for (Associated associate : asociados) {
                 txfFolio.setText(associate.getFolio().toString());
-                txfNombre.setText(associate.getName());
-                txfFechNacimeinto.setText(String.valueOf(associate.getAge()));
+                txfNombre.setText(associate.getName().toString());
+                txfFechNacimeinto.setText(String.valueOf(associate.getAge()).toString());
                 //imgFoto.setImage(associate.getPhoto();
             }
         }

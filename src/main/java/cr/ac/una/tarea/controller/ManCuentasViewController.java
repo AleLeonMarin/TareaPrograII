@@ -1,6 +1,5 @@
 package cr.ac.una.tarea.controller;
 
-import cr.ac.una.tarea.App;
 import cr.ac.una.tarea.model.AccountType;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
@@ -14,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
