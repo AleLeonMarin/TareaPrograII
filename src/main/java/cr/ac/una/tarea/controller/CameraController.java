@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -53,7 +55,7 @@ public class CameraController extends Controller implements Initializable {
     }
 
     // Cierra y apaga la camara del sistema
-    private void stopCameraPreview() {
+    void stopCameraPreview() {
         executor.shutdown();
         webcam.close();
     }
@@ -128,7 +130,6 @@ public class CameraController extends Controller implements Initializable {
 
         new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Vista Camara", getStage(), "Foto guardada exitosamente");
         ((Stage) btnExitCam.getScene().getWindow()).close();
-
     }
 
     public void onActionBtnExitCam(ActionEvent event) {

@@ -21,11 +21,6 @@ public class ImpresCarnetController extends Controller implements Initializable 
     @FXML
     private MFXTextField txtNombre;
 
-    @FXML
-    void onActionBtnGenerar(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("CarnetView");
-    }
-
     @Override
     public void initialize() {
         // --
@@ -35,5 +30,11 @@ public class ImpresCarnetController extends Controller implements Initializable 
     public void initialize(URL location, ResourceBundle resources) {
         // --
     }
+
+    @FXML
+    void onActionBtnGenerar(ActionEvent event) {
+            FlowController.getInstance().goViewInWindow("CarnetView");
+    }
+
 
 }
