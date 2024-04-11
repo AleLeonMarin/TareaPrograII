@@ -8,7 +8,6 @@ import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.FlowController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;

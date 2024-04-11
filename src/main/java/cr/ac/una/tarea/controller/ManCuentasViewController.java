@@ -1,9 +1,5 @@
 package cr.ac.una.tarea.controller;
 
-<<<<<<< HEAD
-import cr.ac.una.tarea.model.Account;
-=======
->>>>>>> e9a4fff963529bd0846fb38480d08a8141f5f28a
 import cr.ac.una.tarea.model.AccountType;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
@@ -37,11 +33,8 @@ public class ManCuentasViewController extends Controller implements Initializabl
     
     @FXML
     private MFXComboBox<String> cmbCuentas;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> e9a4fff963529bd0846fb38480d08a8141f5f28a
+
     @FXML
     private AnchorPane root;
     
@@ -56,16 +49,6 @@ public class ManCuentasViewController extends Controller implements Initializabl
     
     @Override
     public void initialize() {
-<<<<<<< HEAD
-
-        cmbCuentas.setDisable(true);
-        cmbCuentas.setVisible(false);
-
-        AppContext.getInstance().get("Tipo de Cuenta");
-
-
-
-=======
         List<String> account = (List<String>) AppContext.getInstance().get("TiposCuentas");
         
         if (account != null) {
@@ -76,7 +59,6 @@ public class ManCuentasViewController extends Controller implements Initializabl
             //cmbCuentas.setItems(accountTypes);
         }
         
->>>>>>> e9a4fff963529bd0846fb38480d08a8141f5f28a
     }
     @FXML
     void onActionBtnAgregar(ActionEvent event)  {
@@ -86,13 +68,12 @@ public class ManCuentasViewController extends Controller implements Initializabl
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(), "Debe ingresar el nombre de la cuenta");
             }else{
 
-<<<<<<< HEAD
                 AccountType accounttype = new AccountType(txfNomCuentas.getText());
                 accounttype.cuentas.add(txfNomCuentas.getText());
-=======
+
                 AccountType account = new AccountType(txfNomCuentas.getText());
                 account.cuentas.add(txfNomCuentas.getText());
->>>>>>> e9a4fff963529bd0846fb38480d08a8141f5f28a
+
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(), "Cuenta agregada correctamente");
                 accounttype.createFile(accounttype);
             }
