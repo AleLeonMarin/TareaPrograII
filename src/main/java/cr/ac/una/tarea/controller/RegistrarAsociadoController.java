@@ -16,8 +16,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
-
-import static java.util.logging.Level.*;
+import java.util.logging.Level;
 
 public class RegistrarAsociadoController extends Controller implements Initializable {
 
@@ -78,7 +77,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
             File newFile = new File(filepath, newFileName);
 
             if (file.renameTo(newFile)) {
-                asociado.Associate.add(String.valueOf(newFile));
+               asociado.setPhoto(String.valueOf(newFile));
                 LoadPhoto();
             } else {
                 System.out.println("Failed to rename");
@@ -110,20 +109,12 @@ public class RegistrarAsociadoController extends Controller implements Initializ
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
                         "Debe tomarse la foto del asociado");
             } else {
-                Associated asociado = new Associated(
-                        txfNombre.getText(),
-                        txfApellido.getText(),
-                        Integer.parseInt(txfEdad.getText()),
-                        "foto");
-                asociado.createFolio(asociado.getName(), asociado.getAge());
-                asociado.Associate.add(asociado.getName());
-                asociado.Associate.add(String.valueOf(asociado.getAge()));
-                asociado.Associate.add(asociado.getFolio());
+                Associated asociado = new Associated(txfNombre.getText(),txfApellido.getText(),txfEdad.getText(), "Photo");
+                asociado.createFolio();
+                asociado.setAssociated(asociado);
                 RenamePhoto(asociado);
-                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(),
-                        "Asociado registrado con éxito, su numero de folio es: " + asociado.getFolio());
                 asociado.createFile(asociado);
-
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(),"Asociado registrado con éxito, su numero de folio es: " + asociado.getFolio());
                 txfNombre.clear();
                 txfEdad.clear();
                 txfApellido.clear();
@@ -131,8 +122,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
             }
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(SEVERE,
-                    "Error al Registrar Asociado", ex);
+            Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE,"Error al Registrar Asociado", ex);
         }
     }
 

@@ -33,8 +33,11 @@ public class ManCuentasViewController extends Controller implements Initializabl
     
     @FXML
     private MFXComboBox<String> cmbCuentas;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 90cdc3b6f85f75990a16c610559e1d1ee7a1e45b
     @FXML
     private AnchorPane root;
     
@@ -49,6 +52,15 @@ public class ManCuentasViewController extends Controller implements Initializabl
     
     @Override
     public void initialize() {
+<<<<<<< HEAD
+=======
+
+        cmbCuentas.setDisable(true);
+        cmbCuentas.setVisible(false);
+
+        AppContext.getInstance().get("Tipo de Cuenta");
+
+>>>>>>> 90cdc3b6f85f75990a16c610559e1d1ee7a1e45b
         List<String> account = (List<String>) AppContext.getInstance().get("TiposCuentas");
         
         if (account != null) {
@@ -59,6 +71,10 @@ public class ManCuentasViewController extends Controller implements Initializabl
             //cmbCuentas.setItems(accountTypes);
         }
         
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90cdc3b6f85f75990a16c610559e1d1ee7a1e45b
     }
     @FXML
     void onActionBtnAgregar(ActionEvent event)  {
@@ -70,10 +86,15 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
                 AccountType accounttype = new AccountType(txfNomCuentas.getText());
                 accounttype.cuentas.add(txfNomCuentas.getText());
+<<<<<<< HEAD
 
                 AccountType account = new AccountType(txfNomCuentas.getText());
                 account.cuentas.add(txfNomCuentas.getText());
 
+=======
+                AccountType account = new AccountType(txfNomCuentas.getText());
+                account.cuentas.add(txfNomCuentas.getText());
+>>>>>>> 90cdc3b6f85f75990a16c610559e1d1ee7a1e45b
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(), "Cuenta agregada correctamente");
                 accounttype.createFile(accounttype);
             }
