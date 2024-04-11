@@ -19,7 +19,7 @@
             </VBox>
             <TableView fx:id="tbViewCuentas" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="199.0" text="Cuentas Disponibles" />
+                <TableColumn fx:id="tbDisponibles" prefWidth="199.0" text="Cuentas Disponibles" />
               </columns>
             </TableView>
             <TableView fx:id="tbViewAbiertas" prefHeight="200.0" prefWidth="200.0">
