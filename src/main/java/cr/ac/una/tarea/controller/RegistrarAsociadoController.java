@@ -39,6 +39,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
     private MFXTextField txfApellido;
 
     Associated asociado = new Associated();
+    private CameraController camera;
 
     @Override
     public void initialize() {
@@ -119,6 +120,8 @@ public class RegistrarAsociadoController extends Controller implements Initializ
                 txfEdad.clear();
                 txfApellido.clear();
                 imgVFoto.setImage(null);
+
+                //                camera = (())
 
             }
         } catch (Exception ex) {
