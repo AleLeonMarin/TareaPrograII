@@ -3,7 +3,6 @@ package cr.ac.una.tarea.model;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import javafx.beans.property.SimpleStringProperty;
 
 public class Cooperativa {

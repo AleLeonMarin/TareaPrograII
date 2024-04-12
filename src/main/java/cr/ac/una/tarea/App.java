@@ -11,8 +11,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.io.IOException;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * JavaFX App
@@ -20,34 +24,25 @@ import java.io.IOException;
 public class App extends Application {
 
     Cooperativa cooperativa = new Cooperativa();
-    Associated asociado = new Associated();
-   
-    
-    
+    ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
+    ObservableList<Account> accounts = FXCollections.observableArrayList();
+    ObservableList<AccountType> accountType = FXCollections.observableArrayList();
+    ObservableList<Associated> associate = FXCollections.observableArrayList();
+
     @Override
     public void start(Stage stage) throws IOException {
-
-        ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
-        ObservableList<Account> accounts = FXCollections.observableArrayList();
-        ObservableList<AccountType> accountType = FXCollections.observableArrayList();
-        ObservableList<Associated> associate = FXCollections.observableArrayList();
 
         AppContext.getInstance().set("cooperativa", cooperativas);
         AppContext.getInstance().set("Asociados", associate);
         AppContext.getInstance().set("Cuentas", accounts);
         AppContext.getInstance().set("TiposCuentas", accountType);
 
-
         FlowController.getInstance().InitializeFlow(stage, null);
-        if (cooperativa.getName() == null || cooperativa.getLogo() == null) {
-            FlowController.getInstance().goViewInWindow("LogInView");
-        } else {
-            FlowController.getInstance().goViewInWindow("LogInView");
+        FlowController.getInstance().goViewInWindow("LogInView");
+        for (Cooperativa cooperativa : cooperativas) {
             stage.setTitle(cooperativa.getName());
             stage.getIcons().add(new Image(cooperativa.getLogo()));
-        } 
-
-        
+        }
 
     }
 
@@ -55,4 +50,25 @@ public class App extends Application {
 
         launch();
     }
+
+    public void readCoope() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.replaceAll("file:", "").split(",");
+                String name = parts[0];
+                String logo = parts[2];
+                Cooperativa cooperativa = new Cooperativa(name, logo);
+                cooperativas.add(cooperativa);
+            }
+            br.close();
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+
+        }
+    }
+
 }

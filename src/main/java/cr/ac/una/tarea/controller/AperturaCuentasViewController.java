@@ -70,7 +70,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
             
         } catch (IOException ex) {
             
-            Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+            Logger.getLogger(AperturaCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
             
         }
     }

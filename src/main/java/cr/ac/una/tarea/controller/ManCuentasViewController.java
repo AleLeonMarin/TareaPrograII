@@ -6,13 +6,21 @@ import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ManCuentasViewController extends Controller implements Initializable {
 
@@ -30,13 +38,14 @@ public class ManCuentasViewController extends Controller implements Initializabl
     private AnchorPane root;
     @FXML
     private MFXTextField txfNomCuentas;
-
+    
+    private ObservableList<AccountType> accountType;
+    
     @Override
     public void initialize() {
-
-        cmbCuentas.setDisable(true);
-        cmbCuentas.setVisible(false);
-
+        accountType =((ObservableList<AccountType>) AppContext.getInstance().get("TiposCuentas"));
+        readAccount();
+        loadInfo(cmbCuentas, accountType);
     }
 
     @FXML
@@ -79,10 +88,37 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
     @FXML
     void onActionCmbCuentas(ActionEvent event) {
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void readAccount() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("AccountType.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String name = parts[0];
+                AccountType account = new AccountType(name);
+                accountType.add(account);
+            }
+            br.close();
+            
+        } catch (IOException ex) {
+            
+            Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+            
+        }
+    }
+
+    public static void loadInfo( MFXComboBox <String> cmbCuentas, ObservableList<AccountType> accountType) {
+        cmbCuentas.getItems().clear();
+        for (AccountType accountType1 : accountType) {
+            cmbCuentas.getItems().add(accountType1.getName());
+        }
     }
 }

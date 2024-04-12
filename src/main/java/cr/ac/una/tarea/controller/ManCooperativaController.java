@@ -72,27 +72,30 @@ public class ManCooperativaController extends Controller implements Initializabl
     void onActionBtnLogo(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Escoga el logo de la cooperativa");
-        File selectedFile = fileChooser.showOpenDialog(null);
-        logoPath = selectedFile.getAbsolutePath();
-        System.out.println(logoPath);
-        Image icon = new Image("File:" + logoPath);
-        imgvLogo.setImage(icon);
+    fileChooser.setTitle("Escoga el logo de la cooperativa");
+    File selectedFile = fileChooser.showOpenDialog(null);
 
+    // Construct the relative path within the project
+    String relativePath = "./CoopeLogos/" + selectedFile.getName();
+
+    try {
         String project = System.getProperty("user.dir");
         String path = project + "./CoopeLogos/";
 
-        try{
+        // Move the image file
+        Path source = Paths.get(selectedFile.getPath());
+        Path destiny = Paths.get(path, selectedFile.getName());
+        Files.move(source, destiny);
+        System.out.println("File moved successfully");
 
-            Path source = Paths.get(selectedFile.getPath());
-            Path destiny = Paths.get(path , selectedFile.getName());
-            Files.move(source, destiny);
-            System.out.println("File moved successfully");
-            
+        // Use the absolute path (including project directory) to set the image
+        String absolutePath = "file:" +  relativePath;
+        Image icon = new Image(absolutePath);
+        imgvLogo.setImage(icon);
 
-        }catch (Exception ex){
-            Logger.getLogger(ManCooperativaController.class.getName()).log(Level.SEVERE, "Error moving image", ex);
-        }
+    } catch (Exception ex) {
+        Logger.getLogger(ManCooperativaController.class.getName()).log(Level.SEVERE, "Error moving image", ex);
+    }
     }
 
     @Override
