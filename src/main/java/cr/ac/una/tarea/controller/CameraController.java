@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -16,9 +15,7 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -28,20 +25,46 @@ import javax.imageio.ImageIO;
 
 public class CameraController extends Controller implements Initializable {
 
-    public Button btnTakePhoto;
+    @FXML
+    public MFXButton btnTakePhoto;
+    @FXML
     public MFXButton btnRetake;
+    @FXML
     public ImageView PhotoTaken;
+    @FXML
     public MFXButton btnSavePic;
+    @FXML
     public MFXButton btnExitCam;
     @FXML
     private ImageView previewImageView;
+
     private Webcam webcam;
-    private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
     private ScheduledExecutorService executor;
-    Image defaultImage = new Image(getClass().getResourceAsStream("/cr/ac/una/tarea/resources/PreviewPhoto.jpeg"));
+    private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
+    Image defaultImage = new Image(getClass().getResourceAsStream("../resources/LogIn.jpg"));
 
     public void initialize() {
-        // --
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnRetake.setDisable(true);
+        btnSavePic.setDisable(true);
+        try {
+            // Obtiene la instancia de la clase camara y busca la camara predeterminada del sistema
+            webcam = Webcam.getDefault();
+            // Representa una resolucion de 640x480 pix y devolve la resolucion seleccionada
+            webcam.setViewSize(WebcamResolution.VGA.getSize());
+            webcam.open();
+            startCameraPreview();
+            // webcam.setFlashMode(FlashMode.ON);
+        } catch (Exception ex) {
+            logger.error("Camera not found ", ex);
+            btnTakePhoto.setDisable(true);
+            btnSavePic.setDisable(true);
+            btnRetake.setDisable(true);
+        }
     }
 
     // Se encarga de iniciar la vista previa de la camara mediante
@@ -51,7 +74,7 @@ public class CameraController extends Controller implements Initializable {
         executor.scheduleAtFixedRate(() -> {
             Image image = SwingFXUtils.toFXImage(webcam.getImage(), null);
             previewImageView.setImage(image); // Muestra la camara en el imageView 'PreviewImageView'
-        }, 0, 33, TimeUnit.MILLISECONDS); // 30 FPS
+        }, 1, 33, TimeUnit.MILLISECONDS); // 30 FPS
     }
 
     // Cierra y apaga la camara del sistema
@@ -60,28 +83,10 @@ public class CameraController extends Controller implements Initializable {
         webcam.close();
     }
 
-    // Captura la imagen y le asigna el folio del asociado a la foto
-    @FXML
-    private void takePicture() {
-        try {
-            // crea el archivo y el tipo de formato
-            File file = new File(String.format("./Photos/foto1" + ".jpg", System.currentTimeMillis()));
-            ImageIO.write(webcam.getImage(), "JPG", file);
-            logger.info("Image saved successfully: " + file);
-            // Funcion para mostrar la foto tomada
-            displayCapturedImage(file);
-        } catch (IOException e) {
-            logger.error("Error saving image: ", e);
-        }
-        btnRetake.setDisable(false);
-        btnSavePic.setDisable(false);
-        btnTakePhoto.setDisable(true);
-        btnExitCam.setDisable(true);
-    }
-
-    // Se encarga de mostrar la imagen capturada en el ImageView llamado PhotoTaken
     private void displayCapturedImage(File file) {
         try {
+            /* Convierte el archivo file en cadena URI (Identificador de Recurso Uniforme) que representa la ubicación
+            del archivo, y posterior el toString() lo convierte a una cadena de texto */
             Image image = new Image(file.toURI().toString());
             PhotoTaken.setImage(image);
         } catch (Exception e) {
@@ -89,26 +94,38 @@ public class CameraController extends Controller implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    // Captura la imagen y le asigna el folio del asociado a la foto
+    @FXML
+    private void onActionCapturePhoto() {
+
         try {
-            btnRetake.setDisable(true);
-            btnSavePic.setDisable(true);
+            String fotos = "./Photos";
+            File folder = new File(fotos);
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
 
-            // Investiga la existencia de alguna camara en el sistema
-            webcam = Webcam.getDefault();
-            // Establece la resolucion de la vista previa de la camara en VGA
-            webcam.setViewSize(WebcamResolution.VGA.getSize());
+            String fileName = "foto1.jpg";
 
-            webcam.open();
-            startCameraPreview();
-        } catch (Exception ex) {
-            logger.error("Camera not found: ", ex);
+            File file = new File(folder , fileName);
+            // crea el archivo y el tipo de formato
+            ImageIO.write(webcam.getImage(), "JPG", file);
+            logger.info("Image saved successfully: {}", file);
+            // Funcion para mostrar la foto tomada
+            displayCapturedImage(file);
+        } catch (IOException e) {
+            logger.error("Error saving image: ", e);
         }
+
+        btnRetake.setDisable(false);
+        btnSavePic.setDisable(false);
+        btnTakePhoto.setDisable(true);
+        btnExitCam.setDisable(true);
     }
 
     // Funcion para volver a capturar la imagen
-    public void onActionBtnRet(ActionEvent event) {
+    @FXML
+    public void onActionRetakePhoto(ActionEvent event) {
         PhotoTaken.setImage(null);
         btnRetake.setDisable(true);
         btnSavePic.setDisable(true);
@@ -119,23 +136,26 @@ public class CameraController extends Controller implements Initializable {
         // Borrar foto tomada
         File file = new File(String.format("./Photos/foto1" + ".jpg", System.currentTimeMillis()));
         file.delete();
-
     }
 
     // Guarda la foto y cierra la ventana de camera
-    public void onActionBtnSavePic(ActionEvent event) {
+    @FXML
+    public void onActionSavePhoto(ActionEvent event) {
+        new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Vista Camara", getStage(), "Foto guardada exitosamente");
         btnRetake.setDisable(true);
         PhotoTaken.setImage(defaultImage);
         btnTakePhoto.setDisable(false);
-
-        new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Vista Camara", getStage(), "Foto guardada exitosamente");
+        btnSavePic.setDisable(true);
+        stopCameraPreview();
         ((Stage) btnExitCam.getScene().getWindow()).close();
     }
 
-    public void onActionBtnExitCam(ActionEvent event) {
-        stopCameraPreview();
+    @FXML
+    public void onActionExitCamera(ActionEvent event) {
         btnTakePhoto.setDisable(false);
         btnSavePic.setDisable(false);
+        stopCameraPreview();
         ((Stage) btnExitCam.getScene().getWindow()).close();
     }
+
 }

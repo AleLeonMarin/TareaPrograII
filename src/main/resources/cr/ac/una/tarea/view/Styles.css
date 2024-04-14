@@ -28,8 +28,6 @@
     -fx-background-color: #E1AFD1;
 }
 
-
-
 .mfxBtnImpreCarnet , .mfxBtnImpreCarnet:armed, .mfxBtnImpreCarnet:focused{
     -fx-pref-width: 150;
     -fx-pref-height: 60;
@@ -42,6 +40,13 @@
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #A5DD9B;
+}
+
+.mfxBtnRetir , .mfxBtnDepos:armed, .mfxBtnDepos:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8DDFCB;
 }
 
 .mfxBtnAccount , .mfxBtnAccount:armed, .mfxBtnAccount:focused{
@@ -89,29 +94,6 @@
     -fx-background-color: #9E9FA5;
 
 }
-
-
-
-/******************************************/
-/*                                        */
-/*            Camera view conf            */
-/*                                        */
-/******************************************/
-
-.mfxBtnRetake , .mfxBtnRetake:armed, .mfxBtnRetake:focused{
-    -fx-pref-width: 150;
-    -fx-pref-height: 60;
-    -fx-text-alignment: center;
-    -fx-background-color: #9E9FA5;
-}
-
-.mfxBtnTake , .mfxBtnTake:armed, .mfxBtnTake:focused{
-    -fx-pref-width: 150;
-    -fx-pref-height: 60;
-    -fx-text-alignment: center;
-    -fx-background-color: #9E9FA5;
-}
-
 
 /******************************************/
 /*                                        */
@@ -254,6 +236,60 @@
 
 .backgroundCarnet{
     -fx-background-image:url('../resources/LogIn.jpg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+/******************************************/
+/*                                        */
+/*              Camera style              */
+/*                                        */
+/******************************************/
+
+/*hacer mejor los botones*/
+.backgroundRoot{
+    -fx-background-image:url('../resources/CamBackground.jpeg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+.mfxButtonTakePhoto{
+    -fx-background-color: #59CE8F;
+    -fx-pref-width: 140;
+    -fx-pref-height: 55;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonRetakePhoto{
+    -fx-background-color: #7EAA92;
+    -fx-pref-width: 140;
+    -fx-pref-height: 55;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonSavePhoto{
+    -fx-background-color: #50C4ED;
+   -fx-pref-width: 140;
+    -fx-pref-height: 55;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonExitCam{
+    -fx-background-color: #FE0000;
+   -fx-pref-width: 140;
+    -fx-pref-height: 55;
+    -fx-text-alignment: center;
+}
+
+/******************************************/
+/*                                        */
+/*         Depositos Retiros style        */
+/*                                        */
+/******************************************/
+
+.BackgroundDep{
+    -fx-background-image:url('../resources/FondoDepositos.jpg');
     -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;

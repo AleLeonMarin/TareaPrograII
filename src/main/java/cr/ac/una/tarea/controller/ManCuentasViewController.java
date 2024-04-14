@@ -38,12 +38,12 @@ public class ManCuentasViewController extends Controller implements Initializabl
     private AnchorPane root;
     @FXML
     private MFXTextField txfNomCuentas;
-    
+
     private ObservableList<AccountType> accountType;
-    
+
     @Override
     public void initialize() {
-        accountType =((ObservableList<AccountType>) AppContext.getInstance().get("TiposCuentas"));
+        accountType = ((ObservableList<AccountType>) AppContext.getInstance().get("TiposCuentas"));
         readAccount();
         loadInfo(cmbCuentas, accountType);
     }
@@ -98,7 +98,7 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
     public void readAccount() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("AccountType.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("../resources/AccountType.txt"));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -107,15 +107,16 @@ public class ManCuentasViewController extends Controller implements Initializabl
                 accountType.add(account);
             }
             br.close();
-            
+
         } catch (IOException ex) {
-            
+
             Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
-            
+
         }
     }
 
-    public static void loadInfo( MFXComboBox <String> cmbCuentas, ObservableList<AccountType> accountType) {
+    public void loadInfo(MFXComboBox<String> cmbCuentas, ObservableList<AccountType> accountType) {
+
         cmbCuentas.getItems().clear();
         for (AccountType accountType1 : accountType) {
             cmbCuentas.getItems().add(accountType1.getName());

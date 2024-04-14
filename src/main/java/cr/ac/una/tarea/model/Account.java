@@ -15,7 +15,13 @@ public class Account{
         this.accountType = new SimpleStringProperty();
 
     }
+    
+    public Account(String accountType){
+        
+        this(); 
+        this.accountType.set(accountType.toString());
 
+    }
     public Account(String id, String balance, String accountType){
         
         this(); 
@@ -24,6 +30,16 @@ public class Account{
         this.accountType.set(accountType);
 
     }
+
+    public Account(String id, String balance, AccountType accountType){
+        
+        this(); 
+        this.id.set(id);
+        this.balance.set(balance);
+        this.accountType.set(accountType.toString());
+
+    }
+
 
     public Account(Account account){
             

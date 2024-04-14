@@ -11,7 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,10 +23,12 @@ import java.util.logging.Logger;
 public class App extends Application {
 
     Cooperativa cooperativa = new Cooperativa();
+
     ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
     ObservableList<Account> accounts = FXCollections.observableArrayList();
     ObservableList<AccountType> accountType = FXCollections.observableArrayList();
     ObservableList<Associated> associate = FXCollections.observableArrayList();
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,10 +40,10 @@ public class App extends Application {
 
         FlowController.getInstance().InitializeFlow(stage, null);
         FlowController.getInstance().goViewInWindow("LogInView");
-        for (Cooperativa cooperativa : cooperativas) {
-            stage.setTitle(cooperativa.getName());
-            stage.getIcons().add(new Image(cooperativa.getLogo()));
-        }
+        //for (Cooperativa cooperativa : cooperativas) {
+            //stage.setTitle(cooperativa.getName());
+           // stage.getIcons().add(new Image(cooperativa.getLogo()));
+       // }
 
     }
 
