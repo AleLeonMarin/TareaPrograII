@@ -33,17 +33,19 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        readCoope();
+
         AppContext.getInstance().set("cooperativa", cooperativas);
         AppContext.getInstance().set("Asociados", associate);
         AppContext.getInstance().set("Cuentas", accounts);
         AppContext.getInstance().set("TiposCuentas", accountType);
 
         FlowController.getInstance().InitializeFlow(stage, null);
+        for (Cooperativa cooperativa : cooperativas) {
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
         FlowController.getInstance().goViewInWindow("LogInView");
-        //for (Cooperativa cooperativa : cooperativas) {
-            //stage.setTitle(cooperativa.getName());
-           // stage.getIcons().add(new Image(cooperativa.getLogo()));
-       // }
 
     }
 
@@ -57,9 +59,9 @@ public class App extends Application {
             BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt"));
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.replaceAll("file:", "").split(",");
+                String[] parts = line.split(",");
                 String name = parts[0];
-                String logo = parts[2];
+                String logo = parts[1];
                 Cooperativa cooperativa = new Cooperativa(name, logo);
                 cooperativas.add(cooperativa);
             }

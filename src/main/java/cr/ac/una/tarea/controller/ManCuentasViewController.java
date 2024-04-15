@@ -62,6 +62,7 @@ public class ManCuentasViewController extends Controller implements Initializabl
                 accounttype.createFile(accounttype);
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(),
                         "Cuenta agregada correctamente");
+                        loadInfo(cmbCuentas, accountType);
 
             }
 
@@ -98,7 +99,7 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
     public void readAccount() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("../resources/AccountType.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("AccountType.txt"));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");

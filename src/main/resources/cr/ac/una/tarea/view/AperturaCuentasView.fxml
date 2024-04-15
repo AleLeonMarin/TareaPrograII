@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXListView?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,6 +16,11 @@
                <children>
                   <MFXTextField fx:id="txfFolio" floatingText="Número de Folio" prefHeight="49.0" prefWidth="175.0" />
                   <MFXTextField fx:id="txfNombre" floatingText="Nombre" prefWidth="175.0" />
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefWidth="150.0" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
                </children>
             </VBox>
             <VBox maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">

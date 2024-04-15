@@ -6,6 +6,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -28,11 +29,20 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </MFXTextField>
-                  <MFXButton fx:id="btnGenerar" onAction="#onActionBtnGenerar" styleClass="mfxBtnImpreCarnet" stylesheets="@Styles.css" text="Generar">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </MFXButton>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefWidth="150.0" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </MFXButton>
+                        <MFXButton fx:id="btnGenerar" onAction="#onActionBtnGenerar" styleClass="mfxBtnImpreCarnet" stylesheets="@Styles.css" text="Generar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </MFXButton>
+                     </children>
+                  </HBox>
                </children>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />

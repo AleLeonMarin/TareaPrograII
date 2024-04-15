@@ -1,20 +1,17 @@
 package cr.ac.una.tarea.controller;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +21,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.model.AccountType;
+import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.AppContext;
+import cr.ac.una.tarea.util.Mensaje;
+import javafx.scene.control.Alert;
 
 
 public class AperturaCuentasViewController extends Controller implements Initializable {
@@ -36,6 +36,9 @@ public class AperturaCuentasViewController extends Controller implements Initial
     private MFXListView<AccountType> listVDisponibles;
 
     @FXML
+    private MFXButton btnBuscar;
+
+    @FXML
     private MFXTextField txfFolio;
 
     @FXML
@@ -45,6 +48,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     private ObservableList<AccountType> accountType;
     private ObservableList<Account> accounts;
+    private ObservableList<Associated> asociate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,9 +57,36 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     @Override
     public void initialize() {
+        asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accountType = ((ObservableList<AccountType>) AppContext.getInstance().get("TiposCuentas"));
+        accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         readAccount();
         loadInfo();
+    }
+
+    @FXML
+    void onActionBtnBuscar(ActionEvent event) {
+
+        if(txfFolio.getText().isEmpty()){
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio");
+        }
+
+            try{
+            
+            String folio = txfFolio.getText();
+
+            for(Associated associated : asociate){
+                if(associated.getFolio().equals(folio)){
+                    txfNombre.setText(associated.getName().toString());
+                }
+            }
+            
+        }catch(Exception e){
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Error al buscar el folio");
+        
+        
+    }
+
     }
 
     @FXML
@@ -114,7 +145,33 @@ public class AperturaCuentasViewController extends Controller implements Initial
             Logger.getLogger(AperturaCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
             
         }
+
     }
+
+    public void readAsociado() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Asociados.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String name = parts[0];
+                String lastName = parts[1];
+                String folio = parts[2];
+                String age = parts[3];
+                String photo = parts[4];
+
+                Associated asociado = new Associated(name, lastName, folio, age, photo);
+                asociate.add(asociado);
+            }
+            br.close();
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+
+        }
+    }
+
     private void loadInfo(){
 
         listVDisponibles.setItems(accountType);

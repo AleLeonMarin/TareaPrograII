@@ -37,7 +37,7 @@ public class FuncionariosViewController extends Controller implements Initializa
 
     @FXML
     void onActionBtnCarnet(ActionEvent event) {
-        FlowController.getInstance().goView("ImpresCarnet");
+        FlowController.getInstance().goView("CarnetView");
 
     }
 

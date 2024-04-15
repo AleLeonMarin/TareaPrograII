@@ -50,7 +50,7 @@ public class Cooperativa {
     }
 
     public String toString() {
-        return name.get() + " " + logo.get();
+        return name.get() + "," + logo.get();
     }
 
     public void createFile(Cooperativa cooperativa) {

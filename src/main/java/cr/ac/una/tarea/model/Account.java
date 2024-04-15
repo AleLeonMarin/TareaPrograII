@@ -79,6 +79,10 @@ public class Account{
         this.accountType.set(accountType);
     }
 
+    public String toStringName(){
+        return accountType.get();
+    }
+
     public String toString(){
         return id.get() + " " + balance.get() + " " + accountType.get();
     }

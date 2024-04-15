@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
@@ -26,30 +27,28 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Nombre" />
-                              <Label fx:id="lblNombre" text="Label" />
-                           </children>
-                        </VBox>
+                        <MFXTextField fx:id="txfFolio" floatingText="Numero de folio" prefHeight="49.0" prefWidth="133.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Folio" />
-                              <Label fx:id="lblFolio" text="Label" />
-                           </children>
-                        </VBox>
+                        <MFXTextField fx:id="txfNombre" floatingText="Nombre del Asociado" prefHeight="49.0" prefWidth="132.0" />
                      </children>
                   </HBox>
                   <ImageView fx:id="imgVLogo" fitHeight="146.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                <children>
-                  <MFXButton fx:id="btnGuardarPDF" onAction="#onActionSavePdf" text="GENERAR" />
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefHeight="42.0" prefWidth="150.0" styleClass="mfxBtnSearch" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnGuardarPDF" onAction="#onActionSavePdf" styleClass="mfxBtnImpreCarnet" text="Generar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></MFXButton>
                </children>
             </HBox>
          </children>
