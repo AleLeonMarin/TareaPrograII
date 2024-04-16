@@ -37,12 +37,12 @@ public class AccountType {
 
     @Override
     public String toString() {
-        return name.get();
+        return name.get() ;
     }
 
     public void createFile(AccountType accountType) {
         try {
-            FileWriter file = new FileWriter("AccountType.txt" , true);
+            FileWriter file = new FileWriter("AccountType.txt", true);
             BufferedWriter writer = new BufferedWriter(file);
             writer.write(accountType.toString() + "\n");
             writer.close();

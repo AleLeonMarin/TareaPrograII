@@ -34,26 +34,20 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         readCoope();
+        for (Cooperativa cooperativa : cooperativas) {
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
 
         AppContext.getInstance().set("cooperativa", cooperativas);
         AppContext.getInstance().set("Asociados", associate);
         AppContext.getInstance().set("Cuentas", accounts);
         AppContext.getInstance().set("TiposCuentas", accountType);
-
+        
         FlowController.getInstance().InitializeFlow(stage, null);
-        for (Cooperativa cooperativa : cooperativas) {
-            stage.setTitle(cooperativa.getName());
-            stage.getIcons().add(new Image(cooperativa.getLogo()));
-        }
         FlowController.getInstance().goViewInWindow("LogInView");
 
     }
-
-    public static void main(String[] args) {
-
-        launch();
-    }
-
     public void readCoope() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt"));
@@ -73,5 +67,11 @@ public class App extends Application {
 
         }
     }
+
+    public static void main(String[] args) {
+
+        launch();
+    }
+
 
 }

@@ -6,121 +6,243 @@ import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.layout.AnchorPane;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 
 public class ManCuentasViewController extends Controller implements Initializable {
 
+    String filePath = "./AccountType.txt";
+
     @FXML
     private MFXButton btnAgregar;
+
     @FXML
     private MFXButton btnEliminar;
-    @FXML
-    private MFXButton btnGuardar;
+
     @FXML
     private MFXButton btnEditar;
+
     @FXML
     private MFXComboBox<String> cmbCuentas;
-    @FXML
-    private AnchorPane root;
+
     @FXML
     private MFXTextField txfNomCuentas;
 
-    private ObservableList<AccountType> accountType;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        LoadTXTFile();
+    }
 
     @Override
     public void initialize() {
-        accountType = ((ObservableList<AccountType>) AppContext.getInstance().get("TiposCuentas"));
-        readAccount();
-        loadInfo(cmbCuentas, accountType);
     }
 
     @FXML
     void onActionBtnAgregar(ActionEvent event) {
         try {
             if (txfNomCuentas.getText() == null || txfNomCuentas.getText().isEmpty()) {
-
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(),
-                        "Debe ingresar el nombre de la cuenta");
+                        "Ingrese un nombre para la cuenta!");
             } else {
+                String newTypeName = txfNomCuentas.getText();
+                cmbCuentas.getItems().add(newTypeName);
 
-                AccountType accounttype = new AccountType(txfNomCuentas.getText());
-                accounttype.setAccountType(accounttype);
-                accounttype.createFile(accounttype);
+                // Crear un nuevo objeto tipo de cuenta con nuevo nombre
+                AccountType accountType = new AccountType(newTypeName);
+
+                // Método -> Anexar la nueva cuenta al MXFComboBox & .txt
+                AppendData(accountType);
+
+                txfNomCuentas.clear();
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(),
-                        "Cuenta agregada correctamente");
-                        loadInfo(cmbCuentas, accountType);
-
+                        "Cuenta agregada exitosamente!");
             }
-
         } catch (Exception ex) {
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(), "Error al agregar la cuenta");
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(),
+                    "Error al agregar cuenta nueva!" + ex.getMessage());
         }
-
     }
 
     @FXML
     void onActionBtnEliminar(ActionEvent event) {
+        // Declarar la variable selectedTypeName correctamente
+        String selectedTypeName = cmbCuentas.getSelectionModel().getSelectedItem().toString();
 
-    }
+        // Imprimir el valor de selectedTypeName
 
-    @FXML
-    void onActionBtnGuardar(ActionEvent event) {
+        // Asignar el texto a txfNomCuentas
+        txfNomCuentas.setText(selectedTypeName);
 
+        String name = cmbCuentas.getSelectedItem();
+
+        if (selectedTypeName != null) {
+            // Borrar item del MFXComboBox
+            cmbCuentas.getItems().remove(selectedTypeName);
+
+            // Método → Elimina el tipo de cuenta del txt
+            deleteItem(name);
+
+            // Limpiar parte gráfica | Mensaje
+            cmbCuentas.clear();
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Cuenta", getStage(),
+                    "Cuenta eliminada exitosamente!");
+        } else {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Cuenta", getStage(),
+                    "Seleccione una cuenta para eliminar!");
+        }
     }
 
     @FXML
     void onActionBtnEditar(ActionEvent event) {
+        String selectedTypeName = cmbCuentas.getSelectionModel().getSelectedItem();
+        String id = cmbCuentas.getSelectedItem();
 
+        if (selectedTypeName != null) {
+            if (txfNomCuentas.getText() == null || txfNomCuentas.getText().isEmpty()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Editar Cuenta", getStage(),
+                        "Ingrese un nuevo nombre para la cuenta!");
+                return;
+            }
+            String newTypeName = txfNomCuentas.getText();
+
+            
+            // Actualizar los items del MFXComboBox
+            int SelectedIndex = cmbCuentas.getSelectionModel().getSelectedIndex();
+            cmbCuentas.getItems().remove(SelectedIndex);
+            cmbCuentas.getItems().add(SelectedIndex, newTypeName);
+            // ---- cmbCuentas.getItems().add(newTypeName);
+            txfNomCuentas.setText(newTypeName);
+
+            // Método editar MFXComboBox & .txt
+            editItem(id, newTypeName);
+
+            // Limpiar parte gráfica | Mensaje
+            cmbCuentas.clear();
+            cmbCuentas.setText(newTypeName);
+            txfNomCuentas.clear();
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Editar Cuenta", getStage(),
+                    "Cuenta editada exitosamente!");
+        } else {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Editar Cuenta", getStage(),
+                    "Seleccione una cuenta para editar!");
+        }
     }
+
+    // <-------------------------------------------------------------------------->
+
+    public void LoadTXTFile() {
+        File file = new File(filePath);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            ObservableList<String> lines = FXCollections.observableArrayList();
+            String line;
+            while ((line = br.readLine()) != null) {
+                lines.add(line + '\n');
+            }
+            cmbCuentas.setItems(lines);
+        } catch (IOException ex) {
+            System.out.println("Error reading file: " + ex.getMessage());
+        }
+    }
+
+    public void AppendData(AccountType accountType) {
+        try (FileWriter fileWriter = new FileWriter(filePath, true);
+                BufferedWriter writer = new BufferedWriter(fileWriter)) {
+            writer.write(accountType.toString() + '\n');
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteItem(String id) {
+        File account = new File(filePath);
+        StringBuffer temp = new StringBuffer();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(account));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] partes = line.split(",");
+
+                // If the line does not contain the ID to delete, add it to the temporary content
+                if (partes.length >= 1 && !partes[0].equals(id)) {
+                    temp.append(line).append("\r\n");
+                } else {
+                    System.out.println("ID found and deleted: " + id);
+                }
+            }
+            br.close(); // Close the BufferedReader
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            FileWriter writer = new FileWriter(account);
+            writer.write(temp.toString());
+            writer.close(); // Close the FileWriter
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void editItem(String id, String newLine) {
+        File account = new File(filePath);
+        StringBuffer temp = new StringBuffer();
+    
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(account));
+            String line;
+    
+            while ((line = br.readLine())!= null) {
+                String[] partes = line.split(",");
+    
+                // Si la línea contiene el ID a editar, reemplazarla con la nueva línea
+                if (partes.length >= 1 && partes[0].equals(id)) {
+                    temp.append(newLine).append("\r\n");
+                    System.out.println("ID encontrado y editado: " + id);
+                }else{
+                    temp.append(line).append("\r\n");
+                }
+            }
+            br.close(); // Cierra el BufferedReader
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    
+        try {
+            FileWriter writer = new FileWriter(account);
+            writer.write(temp.toString());
+            writer.close(); // Cierra el FileWriter
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    
+        System.out.println("Archivo actualizado exitosamente");
+    }
+
+    
 
     @FXML
     void onActionCmbCuentas(ActionEvent event) {
 
+        String selectedTypeName = cmbCuentas.getSelectionModel().getSelectedItem().toString();
+
+        // Imprimir el valor de selectedTypeName
+        System.out.print(selectedTypeName);
+
+        // Asignar el texto a txfNomCuentas
+        txfNomCuentas.setText(selectedTypeName);
+
+
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-    public void readAccount() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("AccountType.txt"));
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String name = parts[0];
-                AccountType account = new AccountType(name);
-                accountType.add(account);
-            }
-            br.close();
-
-        } catch (IOException ex) {
-
-            Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
-
-        }
-    }
-
-    public void loadInfo(MFXComboBox<String> cmbCuentas, ObservableList<AccountType> accountType) {
-
-        cmbCuentas.getItems().clear();
-        for (AccountType accountType1 : accountType) {
-            cmbCuentas.getItems().add(accountType1.getName());
-        }
-    }
 }
