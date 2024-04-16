@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.AppContext;
+import cr.ac.una.tarea.util.FlowController;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
@@ -72,10 +73,13 @@ public class ConsultaCuentaController extends Controller implements Initializabl
     @FXML
     void onActionBtnDetallado(ActionEvent event) {
 
+        FlowController.getInstance().goViewInWindow("EstadoDetalloView");
+
     }
 
     @FXML
     void onActionBtnResumido(ActionEvent event) {
+        FlowController.getInstance().goViewInWindow("EstadoResumidoView");
 
     }
 

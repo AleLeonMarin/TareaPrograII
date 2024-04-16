@@ -30,7 +30,7 @@ import javafx.scene.control.Alert;
 public class AperturaCuentasViewController extends Controller implements Initializable {
 
     @FXML
-    private MFXListView<Account> listVAbiertas;
+    private MFXListView<AccountType> listVAbiertas;
 
     @FXML
     private MFXListView<AccountType> listVDisponibles;
@@ -91,7 +91,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     @FXML
     void onDragDetectedAbiertas(MouseEvent event) {
-        onDragDetectedListas(event, listVDisponibles);
+        onDragDetectedListas(event, listVAbiertas);
     }
 
     @FXML
@@ -102,7 +102,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
     @FXML
     void onDragDroppedAbiertas(DragEvent event) {
 
-        onDragDroppedListas(event, listVDisponibles);
+        onDragDroppedListas(event, listVAbiertas);
 
     }
 
@@ -116,7 +116,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
     @FXML
     void onDragOverAbiertas(DragEvent event) {
 
-        onDragOverListas(event , listVDisponibles);
+        onDragOverListas(event , listVAbiertas);
 
     }
 
@@ -203,13 +203,8 @@ public class AperturaCuentasViewController extends Controller implements Initial
         String item = event.getDragboard().getString();
         lista.getItems().add(new AccountType(item));
 
-        MFXListView<AccountType> listaOrigen = (MFXListView<AccountType>) event.getGestureSource();
-        System.out.print("Se quito" + item + "de la lista" + listaOrigen.getId() + "\n");
-        MFXListView<Account> destino = (MFXListView<Account>) event.getSource();
-        System.out.print("Se agrego" + item + "a la lista" + destino.getId() + "\n");
-        destino.getItems().add(new Account(item));
-        listaOrigen.getItems().remove(new AccountType(item));
-
+        MFXListView<?> listaOrigen = (MFXListView<?>) event.getGestureSource();
+        listaOrigen.getItems().remove(item);
         event.setDropCompleted(true);
         event.consume();
         

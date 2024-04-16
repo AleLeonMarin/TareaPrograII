@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.EstadoDetalladoViewController">
+   <children>
+      <TableView fx:id="tbVMovimientos" layoutX="15.0" layoutY="137.0" prefHeight="253.0" prefWidth="571.0" />
+      <Label layoutX="43.0" layoutY="31.0" text="Nombre" />
+      <Label fx:id="lblNombre" layoutX="105.0" layoutY="31.0" text="Label" />
+      <Label layoutX="52.0" layoutY="74.0" text="Folio" />
+      <Label fx:id="lblFolio" layoutX="105.0" layoutY="74.0" text="Label" />
+      <ImageView fx:id="imgVFoto" fitHeight="106.0" fitWidth="119.0" layoutX="452.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

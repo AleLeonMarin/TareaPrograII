@@ -21,7 +21,7 @@
 /*                                        */
 /******************************************/
 
-.mfxButtonManAso , mfxButtonManAso:armed, .mfxButtonManAso:focused {
+.mfxButtonManAso , .mfxButtonManAso:armed, .mfxButtonManAso:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment:center;
@@ -42,7 +42,7 @@
     -fx-background-color: #A5DD9B;
 }
 
-.mfxBtnRetir , .mfxBtnDepos:armed, .mfxBtnDepos:focused{
+.mfxBtnRetir , .mfxBtnRetir:armed, .mfxBtnRetir:focused{
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
@@ -287,10 +287,3 @@
 /*         Depositos Retiros style        */
 /*                                        */
 /******************************************/
-
-.BackgroundDep{
-    -fx-background-image:url('../resources/FondoDepositos.jpg');
-    -fx-background-size: stretch;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
-}
