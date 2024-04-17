@@ -15,6 +15,9 @@ import javafx.scene.control.Alert;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 
 public class ManCuentasViewController extends Controller implements Initializable {
@@ -38,11 +41,12 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LoadTXTFile();
+        
     }
 
     @Override
     public void initialize() {
+        LoadTXTFile();
     }
 
     @FXML
@@ -86,18 +90,21 @@ public class ManCuentasViewController extends Controller implements Initializabl
         if (selectedTypeName != null) {
             // Borrar item del MFXComboBox
             cmbCuentas.getItems().remove(selectedTypeName);
+            cmbCuentas.clear();
+            txfNomCuentas.clear();
+            cmbCuentas.getSelectionModel().clearSelection();
 
             // Método → Elimina el tipo de cuenta del txt
             deleteItem(name);
 
             // Limpiar parte gráfica | Mensaje
-            cmbCuentas.clear();
             new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Cuenta", getStage(),
                     "Cuenta eliminada exitosamente!");
         } else {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Cuenta", getStage(),
                     "Seleccione una cuenta para eliminar!");
         }
+
     }
 
     @FXML
@@ -118,15 +125,16 @@ public class ManCuentasViewController extends Controller implements Initializabl
             int SelectedIndex = cmbCuentas.getSelectionModel().getSelectedIndex();
             cmbCuentas.getItems().remove(SelectedIndex);
             cmbCuentas.getItems().add(SelectedIndex, newTypeName);
+            cmbCuentas.getSelectionModel().clearSelection();
             // ---- cmbCuentas.getItems().add(newTypeName);
             txfNomCuentas.setText(newTypeName);
+            cmbCuentas.clear();
 
             // Método editar MFXComboBox & .txt
             editItem(id, newTypeName);
 
             // Limpiar parte gráfica | Mensaje
             cmbCuentas.clear();
-            cmbCuentas.setText(newTypeName);
             txfNomCuentas.clear();
             new Mensaje().showModal(Alert.AlertType.INFORMATION, "Editar Cuenta", getStage(),
                     "Cuenta editada exitosamente!");
@@ -139,18 +147,27 @@ public class ManCuentasViewController extends Controller implements Initializabl
     // <-------------------------------------------------------------------------->
 
     public void LoadTXTFile() {
-        File file = new File(filePath);
+        try{
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            ObservableList<String> lines = FXCollections.observableArrayList();
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
-            while ((line = br.readLine()) != null) {
-                lines.add(line + '\n');
+            ObservableList<String> accounts = FXCollections.observableArrayList();
+            while ((line = br.readLine()) != null){
+                String[] partes = line.split(",");
+                String name = partes[0];
+                accounts.add(name);
             }
-            cmbCuentas.setItems(lines);
-        } catch (IOException ex) {
-            System.out.println("Error reading file: " + ex.getMessage());
+
+            cmbCuentas.setItems(accounts);
+            br.close();
+
+        }catch (IOException ex){
+
+            Logger.getLogger(ManCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo" , ex);
+
         }
+
+        
     }
 
     public void AppendData(AccountType accountType) {

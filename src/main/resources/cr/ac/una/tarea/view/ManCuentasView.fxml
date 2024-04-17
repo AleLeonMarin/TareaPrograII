@@ -18,8 +18,8 @@
                <children>
                   <HBox alignment="TOP_CENTER" prefHeight="252.0" prefWidth="600.0" spacing="40.0">
                      <children>
-                        <MFXTextField fx:id="txfNomCuentas" alignment="CENTER" prefHeight="50.0" prefWidth="225.0" promptText="Nombre de Cuenta" />
-                        <MFXComboBox fx:id="cmbCuentas" onAction="#onActionCmbCuentas" prefHeight="50.0" prefWidth="225.0" />
+                        <MFXTextField fx:id="txfNomCuentas" alignment="CENTER" floatingText="Nombre de la cuenta" prefHeight="50.0" prefWidth="225.0" />
+                        <MFXComboBox fx:id="cmbCuentas" floatMode="BORDER" floatingText="Tipo de cuenta" onAction="#onActionCmbCuentas" prefHeight="50.0" prefWidth="225.0" />
                      </children>
                      <padding>
                         <Insets top="50.0" />
