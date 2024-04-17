@@ -90,7 +90,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
     @FXML
     void onActionBtnCamera(ActionEvent event) {
-        FlowController.getInstance().goViewInWindow("Camera");
+        FlowController.getInstance().goViewInWindowModal("Camera", getStage(), true);
 
     }
 

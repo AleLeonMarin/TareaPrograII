@@ -45,10 +45,6 @@ public class CameraController extends Controller implements Initializable {
 
     public void initialize() {
 
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         btnRetake.setDisable(true);
         btnSavePic.setDisable(true);
         try {
@@ -75,6 +71,12 @@ public class CameraController extends Controller implements Initializable {
             Image image = SwingFXUtils.toFXImage(webcam.getImage(), null);
             previewImageView.setImage(image); // Muestra la camara en el imageView 'PreviewImageView'
         }, 1, 33, TimeUnit.MILLISECONDS); // 30 FPS
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        
     }
 
     // Cierra y apaga la camara del sistema
