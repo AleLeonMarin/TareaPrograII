@@ -65,7 +65,7 @@ public class CarnetViewController extends Controller implements Initializable {
     private AnchorPane root;
 
     @FXML
-    private VBox vboxCarnet;
+    private AnchorPane carnet;
 
     Associated associado = new Associated();
     Cooperativa cooperativa = new Cooperativa();
@@ -123,7 +123,7 @@ public class CarnetViewController extends Controller implements Initializable {
                     "Carnet " + this.associado.getName() + " " + this.associado.getFolio() + ".pdf"));
             documento.open();
 
-            WritableImage image = vboxCarnet.snapshot(new SnapshotParameters(), null);
+            WritableImage image = carnet.snapshot(new SnapshotParameters(), null);
             File output = new File("Carnet " + this.associado.getName() + " " + this.associado.getFolio() + " .png");
 
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);

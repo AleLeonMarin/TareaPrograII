@@ -4,12 +4,13 @@
 /*                                        */
 /******************************************/
 
-.background{
-    -fx-background-image:url('../resources/outterSpace.jpg');
+.background {
+    -fx-background-image: url('../resources/outterSpace.jpg');
     -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
+
 /*
 .overground{
     -fx-background-color: rgba(255,255,255,0.1);
@@ -21,42 +22,54 @@
 /*                                        */
 /******************************************/
 
-.mfxButtonManAso , .mfxButtonManAso:armed, .mfxButtonManAso:focused {
+.mfxButtonManAso,
+.mfxButtonManAso:armed,
+.mfxButtonManAso:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
-    -fx-text-alignment:center;
+    -fx-text-alignment: center;
     -fx-background-color: #E1AFD1;
 }
 
-.mfxBtnImpreCarnet , .mfxBtnImpreCarnet:armed, .mfxBtnImpreCarnet:focused{
+.mfxBtnImpreCarnet,
+.mfxBtnImpreCarnet:armed,
+.mfxBtnImpreCarnet:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #8DDFCB;
 }
 
-.mfxBtnDepos , .mfxBtnDepos:armed, .mfxBtnDepos:focused{
+.mfxBtnDepos,
+.mfxBtnDepos:armed,
+.mfxBtnDepos:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #A5DD9B;
 }
 
-.mfxBtnRetir , .mfxBtnRetir:armed, .mfxBtnRetir:focused{
+.mfxBtnRetir,
+.mfxBtnRetir:armed,
+.mfxBtnRetir:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #8DDFCB;
 }
 
-.mfxBtnAccount , .mfxBtnAccount:armed, .mfxBtnAccount:focused{
+.mfxBtnAccount,
+.mfxBtnAccount:armed,
+.mfxBtnAccount:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #F1EB90;
 }
 
-.mfxBtnSalir , .mfxBtnSalir:armed, .mfxBtnSalir:focused{
+.mfxBtnSalir,
+.mfxBtnSalir:armed,
+.mfxBtnSalir:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
@@ -69,7 +82,9 @@
 /*                                        */
 /******************************************/
 
-.mfxBtnSearch , .mfxBtnSearch:armed, .mfxBtnSearch:focused{
+.mfxBtnSearch,
+.mfxBtnSearch:armed,
+.mfxBtnSearch:focused {
 
     fx-pref-width: 150;
     -fx-pref-height: 60;
@@ -77,7 +92,9 @@
     -fx-background-color: #EFB495;
 }
 
-.mfxBtnSave , .mfxBtnSave:armed, .mfxBtnSave:focused{
+.mfxBtnSave,
+.mfxBtnSave:armed,
+.mfxBtnSave:focused {
 
     -fx-pref-width: 150;
     -fx-pref-height: 60;
@@ -86,7 +103,9 @@
 
 }
 
-.mfxBtnCamera , .mfxBtnCamera:armed, .mfxBtnCamera:focused{
+.mfxBtnCamera,
+.mfxBtnCamera:armed,
+.mfxBtnCamera:focused {
 
     -fx-pref-width: 150;
     -fx-pref-height: 60;
@@ -101,7 +120,9 @@
 /*                                        */
 /******************************************/
 
-.mfxBtnDetail , .mfxBtnDetail, .mfxBtnDetail:focused{
+.mfxBtnDetail,
+.mfxBtnDetail,
+.mfxBtnDetail:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
@@ -109,7 +130,9 @@
 
 }
 
-.mfxBtnResume , .mfxBtnResume:armed, .mfxBtnResume:focused{
+.mfxBtnResume,
+.mfxBtnResume:armed,
+.mfxBtnResume:focused {
 
     -fx-pref-width: 150;
     -fx-pref-height: 60;
@@ -118,7 +141,7 @@
 
 }
 
-.separator{
+.separator {
     -fx-border-color: #222831;
     -fx-background-color: #222831;
     -fx-background-size: stretch;
@@ -132,7 +155,9 @@
 /*                                        */
 /******************************************/
 
-.mfxButtonManCuentas , .mfxButtonManCuentas:armed, .mfxButtonManCuentas:focused{
+.mfxButtonManCuentas,
+.mfxButtonManCuentas:armed,
+.mfxButtonManCuentas:focused {
 
     -fx-background-color: #50C4ED;
     -fx-pref-height: 60;
@@ -140,7 +165,9 @@
     -fx-text-alignment: center;
 }
 
-.mfxButtonManCoope , .mfxButtonManCoope:armed, .mfxButtonManCoope:focused{
+.mfxButtonManCoope,
+.mfxButtonManCoope:armed,
+.mfxButtonManCoope:focused {
 
     -fx-background-color: #836FFF;
     -fx-pref-width: 150px;
@@ -154,14 +181,18 @@
 /*                                        */
 /******************************************/
 
-.mfxBtnAdd , .mfxBtnAdd:armed, .mfxBtnAdd:focused{
+.mfxBtnAdd,
+.mfxBtnAdd:armed,
+.mfxBtnAdd:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #7C9D96;
 }
 
-.mxfBtnEdit ,.mxfBtnEdit:armed, .mxfBtnEdit:focused {
+.mxfBtnEdit,
+.mxfBtnEdit:armed,
+.mxfBtnEdit:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
@@ -169,7 +200,9 @@
 
 }
 
-.mfxBtnDelete ,.mfxBtnDelete:armed, .mfxBtnDelete:focused{
+.mfxBtnDelete,
+.mfxBtnDelete:armed,
+.mfxBtnDelete:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
@@ -182,7 +215,9 @@
 /*                                        */
 /******************************************/
 
-.mfxBtnEditLogo , .mfxBtnEditLogo:armed, .mfxBtnEditLogo:focused{
+.mfxBtnEditLogo,
+.mfxBtnEditLogo:armed,
+.mfxBtnEditLogo:focused {
     -fx-pref-width: 180;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
@@ -195,38 +230,123 @@
 /*            Btn Images confs            */
 /*                                        */
 /******************************************/
-.mfxButtonManAso > ImageView{-fx-image: url('../resources/Hammer.png');}
-.mfxBtnImpreCarnet > ImageView {-fx-image: url('../resources/card.png')}
-.mfxBtnAccount > ImageView {-fx-image: url('../resources/Accounts.png')}
-.mfxBtnDepos > ImageView {-fx-image: url('../resources/Money.png')}
-.mfxBtnSalir > ImageView {-fx-image: url('../resources/Salir.png')}
-.mfxBtnSearch > ImageView {-fx-image: url('../resources/Search.png')}
-.mfxBtnSave > ImageView {-fx-image: url('../resources/Save.png')}
-.mfxBtnCamera > ImageView {-fx-image: url('../resources/Camera.png')}
-.mfxBtnRetake > ImageView {-fx-image: url('../resources/Camera.png')}
-.mfxBtnTake > ImageView {-fx-image: url('../resources/Camera.png')}
-.mfxBtnDetail > ImageView {-fx-image: url('../resources/List.png')}
-.mfxBtnResume > ImageView {-fx-image: url('../resources/List.png')}
-.mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
-.mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
-.mfxBtnAdd > ImageView {-fx-image: url('../resources/add.png')}
-.mfxBtnDelete > ImageView {-fx-image: url('../resources/delete.png')}
-.mxfBtnEdit > ImageView {-fx-image: url('../resources/edit.png')}
-.mfxBtnEditLogo > ImageView {-fx-image: url('../resources/Logo.png')}
+.mfxButtonManAso>ImageView {
+    -fx-image: url('../resources/Hammer.png');
+}
+
+.mfxBtnImpreCarnet>ImageView {
+    -fx-image: url('../resources/card.png')
+}
+
+.mfxBtnAccount>ImageView {
+    -fx-image: url('../resources/Accounts.png')
+}
+
+.mfxBtnDepos>ImageView {
+    -fx-image: url('../resources/Money.png')
+}
+
+.mfxBtnSalir>ImageView {
+    -fx-image: url('../resources/Salir.png')
+}
+
+.mfxBtnSearch>ImageView {
+    -fx-image: url('../resources/Search.png')
+}
+
+.mfxBtnSave>ImageView {
+    -fx-image: url('../resources/Save.png')
+}
+
+.mfxBtnCamera>ImageView {
+    -fx-image: url('../resources/Camera.png')
+}
+
+.mfxBtnRetake>ImageView {
+    -fx-image: url('../resources/Camera.png')
+}
+
+.mfxBtnTake>ImageView {
+    -fx-image: url('../resources/Camera.png')
+}
+
+.mfxBtnDetail>ImageView {
+    -fx-image: url('../resources/List.png')
+}
+
+.mfxBtnResume>ImageView {
+    -fx-image: url('../resources/List.png')
+}
+
+.mfxButtonManCuentas>ImageView {
+    -fx-image: url('../resources/Hammer.png');
+}
+
+.mfxButtonManCoope>ImageView {
+    -fx-image: url('../resources/Hammer.png');
+}
+
+.mfxBtnAdd>ImageView {
+    -fx-image: url('../resources/add.png')
+}
+
+.mfxBtnDelete>ImageView {
+    -fx-image: url('../resources/delete.png')
+}
+
+.mxfBtnEdit>ImageView {
+    -fx-image: url('../resources/edit.png')
+}
+
+.mfxBtnEditLogo>ImageView {
+    -fx-image: url('../resources/Logo.png')
+}
 
 /*                      Billetes y Monedas                          */
 
-.mfxRdbMil > ImageView {-fx-image: url('../resources/UnRojo.jpg')}
-.mfxRdbDosMil > ImageView {-fx-image: url('../resources/DosMil.jpg')}
-.mfxRdbCincoMil > ImageView {-fx-image: url('../resources/CincoMil.jpg')}
-.mfxRdbDiezMil > ImageView {-fx-image: url('../resources/10Mil.jpeg')}
-.mfxRdbVeinteMil > ImageView {-fx-image: url('../resources/20Mil.jpg')}
-.mfxRdbCinco > ImageView {-fx-image: url('../resources/MonedaCinco.png')}
-.mfxRdbDiez > ImageView {-fx-image: url('../resources/Moneda10.png')}
-.mfxRdbVeinte-Cinco > ImageView {-fx-image: url('../resources/MonedaVeinticinco.jpg')}
-.mfxRdbCincuenta > ImageView {-fx-image: url('../resources/MonedaCincuenta.png')}
-.mfxRdbCien > ImageView {-fx-image: url('../resources/MonedaCien.png')}
-.mfxRdbQuinientos > ImageView {-fx-image: url('../resources/MonedaQuinientos.png')}
+.mfxRdbMil>ImageView {
+    -fx-image: url('../resources/UnRojo.jpg')
+}
+
+.mfxRdbDosMil>ImageView {
+    -fx-image: url('../resources/DosMil.jpg')
+}
+
+.mfxRdbCincoMil>ImageView {
+    -fx-image: url('../resources/CincoMil.jpg')
+}
+
+.mfxRdbDiezMil>ImageView {
+    -fx-image: url('../resources/10Mil.jpeg')
+}
+
+.mfxRdbVeinteMil>ImageView {
+    -fx-image: url('../resources/20Mil.jpg')
+}
+
+.mfxRdbCinco>ImageView {
+    -fx-image: url('../resources/MonedaCinco.png')
+}
+
+.mfxRdbDiez>ImageView {
+    -fx-image: url('../resources/Moneda10.png')
+}
+
+.mfxRdbVeinte-Cinco>ImageView {
+    -fx-image: url('../resources/MonedaVeinticinco.jpg')
+}
+
+.mfxRdbCincuenta>ImageView {
+    -fx-image: url('../resources/MonedaCincuenta.png')
+}
+
+.mfxRdbCien>ImageView {
+    -fx-image: url('../resources/MonedaCien.png')
+}
+
+.mfxRdbQuinientos>ImageView {
+    -fx-image: url('../resources/MonedaQuinientos.png')
+}
 
 /******************************************/
 /*                                        */
@@ -234,11 +354,9 @@
 /*                                        */
 /******************************************/
 
-.backgroundCarnet{
-    -fx-background-image:url('../resources/LogIn.jpg');
-    -fx-background-size: stretch;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
+.ImageViewCarnet {
+    -fx-image: url("../resources/Carnet.png")
+    
 }
 
 /******************************************/
@@ -248,36 +366,37 @@
 /******************************************/
 
 /*hacer mejor los botones*/
-.backgroundRoot{
-    -fx-background-image:url('../resources/CamBackground.jpeg');
+.backgroundRoot {
+    -fx-background-image: url('../resources/CamBackground.jpeg');
     -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-.mfxButtonTakePhoto{
+
+.mfxButtonTakePhoto {
     -fx-background-color: #59CE8F;
     -fx-pref-width: 140;
     -fx-pref-height: 55;
     -fx-text-alignment: center;
 }
 
-.mfxButtonRetakePhoto{
+.mfxButtonRetakePhoto {
     -fx-background-color: #7EAA92;
     -fx-pref-width: 140;
     -fx-pref-height: 55;
     -fx-text-alignment: center;
 }
 
-.mfxButtonSavePhoto{
+.mfxButtonSavePhoto {
     -fx-background-color: #50C4ED;
-   -fx-pref-width: 140;
+    -fx-pref-width: 140;
     -fx-pref-height: 55;
     -fx-text-alignment: center;
 }
 
-.mfxButtonExitCam{
+.mfxButtonExitCam {
     -fx-background-color: #FE0000;
-   -fx-pref-width: 140;
+    -fx-pref-width: 140;
     -fx-pref-height: 55;
     -fx-text-alignment: center;
 }

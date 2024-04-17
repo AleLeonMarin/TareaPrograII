@@ -25,6 +25,8 @@ public class ProfeViewController extends Controller implements Initializable {
     @FXML
     private MFXButton btmManCoope;
     @FXML
+    private MFXButton btnSalir;
+    @FXML
     private BorderPane root;
 
     /**
@@ -52,5 +54,8 @@ public class ProfeViewController extends Controller implements Initializable {
         FlowController.getInstance().goView("ManCooperativa");
 
     }
+    @FXML
+    private void onActionBtnSalir(ActionEvent event) {
+        FlowController.getInstance().salir();    }
 
 }
