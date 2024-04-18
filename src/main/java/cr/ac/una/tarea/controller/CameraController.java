@@ -41,7 +41,6 @@ public class CameraController extends Controller implements Initializable {
     private Webcam webcam;
     private ScheduledExecutorService executor;
     private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
-    Image defaultImage = new Image(getClass().getResourceAsStream("../resources/LogIn.jpg"));
 
     public void initialize() {
 
@@ -133,7 +132,7 @@ public class CameraController extends Controller implements Initializable {
         btnSavePic.setDisable(true);
         btnTakePhoto.setDisable(false);
         btnExitCam.setDisable(false);
-        PhotoTaken.setImage(defaultImage);
+        
 
         // Borrar foto tomada
         File file = new File(String.format("./Photos/foto1" + ".jpg", System.currentTimeMillis()));
@@ -145,7 +144,6 @@ public class CameraController extends Controller implements Initializable {
     public void onActionSavePhoto(ActionEvent event) {
         new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Vista Camara", getStage(), "Foto guardada exitosamente");
         btnRetake.setDisable(true);
-        PhotoTaken.setImage(defaultImage);
         btnTakePhoto.setDisable(false);
         btnSavePic.setDisable(true);
         stopCameraPreview();

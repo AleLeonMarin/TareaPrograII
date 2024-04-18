@@ -26,7 +26,6 @@ import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -95,14 +94,14 @@ public class CarnetViewController extends Controller implements Initializable {
 
             for (Associated associate : asociate) {
                 if (associate.getFolio().equals(folio)) {
-                    txfNombre.setText(associate.getName().toString());
+                    txfNombre.setText(associate.getName().toString() + " " +associate.getLastName().toString());
                     String photo = associate.getFolio() + ".jpg";
                     String path = "./Photos/" + photo;
                     File file = new File(path);
 
                     if (file.exists()) {
                         javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
-                        imgVLogo.setImage(image);
+                        imgVFoto.setImage(image);
                     }
                     System.out.println("Asociado encontrado");
                 }
@@ -190,7 +189,7 @@ public class CarnetViewController extends Controller implements Initializable {
                 javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
                 if (image != null) {
                     System.out.println("Image created successfully");
-                    imgVFoto.setImage(image);
+                    imgVLogo.setImage(image);
                 } else {
                     System.out.println("Failed to create image object");
                 }

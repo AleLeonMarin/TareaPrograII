@@ -354,9 +354,22 @@
 /*                                        */
 /******************************************/
 
-.ImageViewCarnet {
-    -fx-image: url("../resources/Carnet.png")
+.BackgroundCarnet {
+    -fx-background-image: url("../resources/Carnet.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
     
+}
+
+.mfx-text-field-carnet{
+    -fx-border-radius: 35;
+    -fx-background-radius: 20;
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-pref-height: 25;
+    -fx-pref-width: 206;
+    -fx-border-width: 2;
 }
 
 /******************************************/

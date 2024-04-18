@@ -1,5 +1,6 @@
 package cr.ac.una.tarea;
 
+import cr.ac.una.tarea.controller.AsociadosViewController;
 import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.model.AccountType;
 import cr.ac.una.tarea.model.Associated;
@@ -47,6 +48,12 @@ public class App extends Application {
         FlowController.getInstance().InitializeFlow(stage, null);
         FlowController.getInstance().goViewInWindow("LogInView");
 
+        String directAccess = directAccess(getParameters().getRaw().toArray(new String[0]));
+
+        if ("Asociados".equals(directAccess)){
+            AsociadosViewController.main(new String[0]{A});
+        }
+
     }
     public void readCoope() {
         try {
@@ -68,6 +75,9 @@ public class App extends Application {
         }
     }
 
+    private String directAccess(String[] args ) {
+        return (args.length > 0 ) ? args[0] : "";
+    }
     public static void main(String[] args) {
 
         launch();
