@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class App extends Application {
 
     Cooperativa cooperativa = new Cooperativa();
-
+    private static String accessParameter = "";
     ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
     ObservableList<Account> accounts = FXCollections.observableArrayList();
     ObservableList<AccountType> accountType = FXCollections.observableArrayList();
@@ -46,13 +46,8 @@ public class App extends Application {
         AppContext.getInstance().set("TiposCuentas", accountType);
         
         FlowController.getInstance().InitializeFlow(stage, null);
-        FlowController.getInstance().goViewInWindow("LogInView");
-
-        String directAccess = directAccess(getParameters().getRaw().toArray(new String[0]));
-
-        if ("Asociados".equals(directAccess)){
-            AsociadosViewController.main(new String[0]{A});
-        }
+        //FlowController.getInstance().goViewInWindow("LogInView");
+        goViewByAccess(accessParameter);
 
     }
     public void readCoope() {
@@ -75,10 +70,22 @@ public class App extends Application {
         }
     }
 
-    private String directAccess(String[] args ) {
-        return (args.length > 0 ) ? args[0] : "";
+    private void goViewByAccess(String access){
+        if (access.equals("A")){
+            FlowController.getInstance().goMain("AsociadosView");
+        }
+        if (access.equals("F")){
+            FlowController.getInstance().goMain("FuncionariosView");
+        }
+        if(access.equals("P")){
+            FlowController.getInstance().goMain("ProfeView");
+        }
     }
+    
     public static void main(String[] args) {
+        if (args.length>0){
+            accessParameter = args[0];
+        }
 
         launch();
     }

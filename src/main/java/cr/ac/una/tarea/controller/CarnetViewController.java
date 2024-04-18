@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javafx.scene.image.ImageView;
+
+import com.itextpdf.awt.geom.Rectangle;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -85,20 +87,20 @@ public class CarnetViewController extends Controller implements Initializable {
     @FXML
     void onActionBtnBuscar(ActionEvent event) {
 
-        if (txfFolio.getText().isEmpty()) {
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio");
-        }
-
-        try {
+        if (txfFolio.getText().isEmpty() && txfNombre.getText().isEmpty()) {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio o un nombre");
+        } else {
             String folio = txfFolio.getText();
-
+            String name = txfNombre.getText();
+        
             for (Associated associate : asociate) {
-                if (associate.getFolio().equals(folio)) {
-                    txfNombre.setText(associate.getName().toString() + " " +associate.getLastName().toString());
+                if (associate.getFolio().equals(folio) || associate.getName().toString().contains(name)) {
+                    txfNombre.setText(associate.getName().toString() + " " + associate.getLastName().toString());
+                    txfFolio.setText(associate.getFolio().toString());
                     String photo = associate.getFolio() + ".jpg";
                     String path = "./Photos/" + photo;
                     File file = new File(path);
-
+        
                     if (file.exists()) {
                         javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
                         imgVFoto.setImage(image);
@@ -106,9 +108,6 @@ public class CarnetViewController extends Controller implements Initializable {
                     System.out.println("Asociado encontrado");
                 }
             }
-        } catch (Exception e) {
-            Logger.getLogger(CarnetViewController.class.getName()).log(Level.SEVERE, "Error al buscar asociado", e);
-
         }
 
     }
@@ -117,13 +116,16 @@ public class CarnetViewController extends Controller implements Initializable {
     void onActionSavePdf(ActionEvent event) {
 
         try {
-            Document documento = new Document(PageSize.A4);
+
+            Document documento = new Document(PageSize.A5);
+
             PdfWriter.getInstance(documento, new FileOutputStream(
-                    "Carnet " + this.associado.getName() + " " + this.associado.getFolio() + ".pdf"));
+                    "Carnet " + txfNombre.getText() + " " + txfFolio.getText() + ".pdf"));
+
             documento.open();
 
             WritableImage image = carnet.snapshot(new SnapshotParameters(), null);
-            File output = new File("Carnet " + this.associado.getName() + " " + this.associado.getFolio() + " .png");
+            File output = new File("Carnet " + txfNombre.getText() + " " + txfFolio.getText() + " .png");
 
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);
             float pageWidth = documento.getPageSize().getWidth();
@@ -132,6 +134,7 @@ public class CarnetViewController extends Controller implements Initializable {
             float imageWidth = bufferedImage.getWidth();
             float imageHeight = bufferedImage.getHeight();
             float scale = Math.min(pageWidth / imageWidth, pageHeight / imageHeight);
+            
 
             Image imagen = Image.getInstance(output.getPath());
             imagen.scaleToFit(imageWidth * scale, imageHeight * scale);
@@ -142,13 +145,17 @@ public class CarnetViewController extends Controller implements Initializable {
 
             Desktop desktop = Desktop.getDesktop();
 
-            File file = new File("Carnet " + this.associado.getName() + " " + this.associado.getFolio() + ".pdf");
+            File file = new File("Carnet " + txfNombre.getText() + " " + txfFolio.getText() + ".pdf");
             desktop.open(file);
 
         } catch (FileNotFoundException | DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally{
+            txfFolio.clear();
+            txfNombre.clear();
+            imgVFoto.setImage(null);
         }
 
     }
