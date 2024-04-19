@@ -5,7 +5,7 @@
 /******************************************/
 
 .background{
-    -fx-background-image:url('../resources/outterSpace.jpg');
+    -fx-background-image:url('../resources/OuterSpace.jpg');
     -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
@@ -40,6 +40,13 @@
     -fx-pref-height: 60;
     -fx-text-alignment: center;
     -fx-background-color: #A5DD9B;
+}
+
+.mfxBtnRetiro , .mfxBtnRetiro:armed, .mfxBtnRetiro:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8B93FF;
 }
 
 .mfxBtnRetir , .mfxBtnRetir:armed, .mfxBtnRetir:focused{
@@ -213,20 +220,21 @@
 .mfxBtnDelete > ImageView {-fx-image: url('../resources/delete.png')}
 .mxfBtnEdit > ImageView {-fx-image: url('../resources/edit.png')}
 .mfxBtnEditLogo > ImageView {-fx-image: url('../resources/Logo.png')}
+.mfxBtnRetiro > ImageView {-fx-image: url('../resources/Retiro.png')}
 
 /*                      Billetes y Monedas                          */
 
-.mfxRdbMil > ImageView {-fx-image: url('../resources/UnRojo.jpg')}
-.mfxRdbDosMil > ImageView {-fx-image: url('../resources/DosMil.jpg')}
-.mfxRdbCincoMil > ImageView {-fx-image: url('../resources/CincoMil.jpg')}
-.mfxRdbDiezMil > ImageView {-fx-image: url('../resources/10Mil.jpeg')}
-.mfxRdbVeinteMil > ImageView {-fx-image: url('../resources/20Mil.jpg')}
-.mfxRdbCinco > ImageView {-fx-image: url('../resources/MonedaCinco.png')}
-.mfxRdbDiez > ImageView {-fx-image: url('../resources/Moneda10.png')}
-.mfxRdbVeinte-Cinco > ImageView {-fx-image: url('../resources/MonedaVeinticinco.jpg')}
-.mfxRdbCincuenta > ImageView {-fx-image: url('../resources/MonedaCincuenta.png')}
-.mfxRdbCien > ImageView {-fx-image: url('../resources/MonedaCien.png')}
-.mfxRdbQuinientos > ImageView {-fx-image: url('../resources/MonedaQuinientos.png')}
+.ImageViewMil {-fx-image: url('../resources/UnRojo.jpg')}
+.ImageViewDosMil {-fx-image: url('../resources/DosMil.jpg')}
+.ImageViewCincoMil {-fx-image: url('../resources/CincoMil.jpg')}
+.ImageViewDiezMil {-fx-image: url('../resources/10Mil.jpeg')}
+.ImageViewVeinteMil {-fx-image: url('../resources/20Mil.jpg')}
+.ImageViewCinco {-fx-image: url('../resources/MonedaCinco.png')}
+.ImageViewDiez {-fx-image: url('../resources/Moneda10.png')}
+.ImageViewVeintiCinco {-fx-image: url('../resources/MonedaVeinticinco.jpg')}
+.ImageViewCincuenta {-fx-image: url('../resources/MonedaCincuenta.png')}
+.ImageViewCien {-fx-image: url('../resources/MonedaCien.png')}
+.ImageViewQuinientos {-fx-image: url('../resources/MonedaQuinientos.png')}
 
 /******************************************/
 /*                                        */

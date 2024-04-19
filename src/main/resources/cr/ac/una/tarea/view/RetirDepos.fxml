@@ -6,7 +6,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -40,51 +39,31 @@
                      <children>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../resources/20Mil.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewVeinteMil" />
                               <Spinner fx:id="SpinnerVeintemil" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../resources/10Mil.jpeg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewDiezMil" />
                               <Spinner fx:id="SpinnerDiezmil" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" pickOnBounds="false" prefHeight="80.0" prefWidth="298.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../resources/CincoMil.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewCincoMil" />
                               <Spinner fx:id="SpinnerCincoMil" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../resources/DosMil.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewDosMil" />
                               <Spinner fx:id="SpinnerDosMil" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../resources/UnRojo.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewMil" />
                               <Spinner fx:id="SpinnerMil" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
@@ -94,11 +73,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/MonedaQuinientos.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewQuinientos" />
                               <Spinner fx:id="SpinnerQuinientos" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                            <VBox.margin>
@@ -107,11 +82,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/MonedaCien.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="83.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewCien" />
                               <Spinner fx:id="SpinnerCien" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                            <VBox.margin>
@@ -120,41 +91,25 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/MonedaCincuenta.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewCincuenta" />
                               <Spinner fx:id="SpinnerCincuenta" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/MonedaVeinticinco.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewVeintiCinco" />
                               <Spinner fx:id="SpinnerVeintiCinco" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/Moneda10.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewDiez" />
                               <Spinner fx:id="SpinnerDiez" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="318.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/MonedaCinco.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewCinco" />
                               <Spinner fx:id="SpinnerCinco" prefHeight="42.0" prefWidth="150.0" />
                            </children>
                            <VBox.margin>
@@ -163,11 +118,6 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Separator layoutX="110.0" layoutY="10.0" orientation="VERTICAL" prefHeight="670.0" prefWidth="0.0" stylesheets="@Styles.css">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Separator>
                   <VBox alignment="CENTER" prefHeight="670.0" prefWidth="238.0" spacing="60.0">
                      <children>
                         <MFXButton fx:id="btnDepositar" maxWidth="1.7976931348623157E308" onAction="#onActionDepositar" prefHeight="80.0" prefWidth="210.0" styleClass="mfxBtnDepos" stylesheets="@Styles.css" text="Depositar">
@@ -175,7 +125,7 @@
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton fx:id="btnRetirar" maxWidth="1.7976931348623157E308" onAction="#onActionRetirar" prefHeight="80.0" prefWidth="210.0" styleClass="mfxBtnRetir" stylesheets="@Styles.css" text="Retirar">
+                        <MFXButton fx:id="btnRetirar" maxWidth="1.7976931348623157E308" onAction="#onActionRetirar" prefHeight="80.0" prefWidth="210.0" styleClass="mfxBtnRetiro" stylesheets="@Styles.css" text="Retirar">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>

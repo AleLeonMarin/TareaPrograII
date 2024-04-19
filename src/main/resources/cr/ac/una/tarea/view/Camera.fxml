@@ -15,11 +15,7 @@
             <HBox alignment="CENTER" prefHeight="450.0" prefWidth="902.0" spacing="50.0">
                <children>
                   <ImageView fx:id="previewImageView" fitHeight="350.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="PhotoTaken" fitHeight="350.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/PreviewPhoto.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="PhotoTaken" fitHeight="350.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
@@ -35,11 +31,7 @@
                   </MFXButton>
                   <MFXButton fx:id="btnRetake" onAction="#onActionRetakePhoto" prefHeight="55.0" prefWidth="150.0" styleClass="mfxButtonRetakePhoto" stylesheets="@Styles.css" text="Volver a tomar">
                      <graphic>
-                        <ImageView fitHeight="55.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/repeat.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </MFXButton>
                   <MFXButton fx:id="btnSavePic" onAction="#onActionSavePhoto" prefHeight="55.0" prefWidth="140.0" styleClass="mfxButtonSavePhoto" stylesheets="@Styles.css" text="Guardar">

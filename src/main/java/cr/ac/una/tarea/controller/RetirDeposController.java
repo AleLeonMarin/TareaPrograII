@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import io.github.palexdev.materialfx.controls.models.spinner.IntegerSpinnerModel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -141,6 +142,7 @@ public class RetirDeposController extends Controller implements Initializable {
         public void initialize(URL location, ResourceBundle resources) {
                 // Limites de escogencia + Set valor inicial del spinner -> min, max,
                 // initialValue
+
                 SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10,
                                 0);
                 SpinnerCinco.setValueFactory(valueFactory2);

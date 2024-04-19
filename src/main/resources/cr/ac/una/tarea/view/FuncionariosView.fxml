@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="BorderPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.FuncionariosViewController">
    <left>
-      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="315.0" prefWidth="150.0" spacing="40.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="315.0" prefWidth="150.0" spacing="50.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
             <MFXButton fx:id="btnManAso" buttonType="RAISED" depthLevel="LEVEL5" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#onActionBtnManAso" prefHeight="44.0" prefWidth="120.0" styleClass="mfxButtonManAso" stylesheets="@Styles.css" text="Mantenimiento Asociados" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                <graphic>
@@ -30,6 +31,9 @@
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></MFXButton>
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </padding>
       </VBox>
    </left>
    <center>

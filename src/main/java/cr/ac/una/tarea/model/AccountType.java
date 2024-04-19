@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class AccountType {
 
@@ -38,6 +39,19 @@ public class AccountType {
     @Override
     public String toString() {
         return name.get() ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AccountType that = (AccountType) o;
+        return Objects.equals(name.get(), that.name.get());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
     public void createFile(AccountType accountType) {

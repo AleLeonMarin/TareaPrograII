@@ -204,7 +204,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
         lista.getItems().add(new AccountType(item));
 
         MFXListView<?> listaOrigen = (MFXListView<?>) event.getGestureSource();
-        listaOrigen.getItems().remove(item);
+        listaOrigen.getItems().remove(new AccountType(item));
         event.setDropCompleted(true);
         event.consume();
         
