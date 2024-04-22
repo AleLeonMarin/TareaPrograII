@@ -17,7 +17,7 @@ public class Account{
     }
     
     public Account(String accountType){
-        
+
         this(); 
         this.accountType.set(accountType.toString());
 
@@ -67,9 +67,7 @@ public class Account{
         return balance.get();
     }
 
-    public void setBalance(String balance){
-        this.balance.set(balance);
-    }
+    public void setBalance(String balance){ this.balance.set(balance); }
 
     public String getAccountType(){
         return accountType.get();
@@ -87,5 +85,4 @@ public class Account{
         return id.get() + " " + balance.get() + " " + accountType.get();
     }
 
-    
 }

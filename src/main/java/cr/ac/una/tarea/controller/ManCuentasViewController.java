@@ -1,7 +1,6 @@
 package cr.ac.una.tarea.controller;
 
 import cr.ac.una.tarea.model.AccountType;
-import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
@@ -57,6 +56,14 @@ public class ManCuentasViewController extends Controller implements Initializabl
                         "Ingrese un nombre para la cuenta!");
             } else {
                 String newTypeName = txfNomCuentas.getText();
+
+                // Check for existing account type
+                if (cmbCuentas.getItems().contains(newTypeName)) {
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Agregar Cuenta", getStage(),
+                            "¡La cuenta [" + newTypeName + "] ya existe!");
+                    return;  // Exit if duplicate is found
+                }
+
                 cmbCuentas.getItems().add(newTypeName);
 
                 // Crear un nuevo objeto tipo de cuenta con nuevo nombre
@@ -80,8 +87,6 @@ public class ManCuentasViewController extends Controller implements Initializabl
         // Declarar la variable selectedTypeName correctamente
         String selectedTypeName = cmbCuentas.getSelectionModel().getSelectedItem().toString();
 
-        // Imprimir el valor de selectedTypeName
-
         // Asignar el texto a txfNomCuentas
         txfNomCuentas.setText(selectedTypeName);
 
@@ -100,11 +105,7 @@ public class ManCuentasViewController extends Controller implements Initializabl
             // Limpiar parte gráfica | Mensaje
             new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Cuenta", getStage(),
                     "Cuenta eliminada exitosamente!");
-        } else {
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Cuenta", getStage(),
-                    "Seleccione una cuenta para eliminar!");
         }
-
     }
 
     @FXML
@@ -120,7 +121,6 @@ public class ManCuentasViewController extends Controller implements Initializabl
             }
             String newTypeName = txfNomCuentas.getText();
 
-            
             // Actualizar los items del MFXComboBox
             int SelectedIndex = cmbCuentas.getSelectionModel().getSelectedIndex();
             cmbCuentas.getItems().remove(SelectedIndex);
@@ -144,11 +144,8 @@ public class ManCuentasViewController extends Controller implements Initializabl
         }
     }
 
-    // <-------------------------------------------------------------------------->
-
     public void LoadTXTFile() {
-        try{
-
+        try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
             ObservableList<String> accounts = FXCollections.observableArrayList();
@@ -161,13 +158,9 @@ public class ManCuentasViewController extends Controller implements Initializabl
             cmbCuentas.setItems(accounts);
             br.close();
 
-        }catch (IOException ex){
-
+        } catch (IOException ex){
             Logger.getLogger(ManCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo" , ex);
-
         }
-
-        
     }
 
     public void AppendData(AccountType accountType) {
@@ -190,14 +183,13 @@ public class ManCuentasViewController extends Controller implements Initializabl
             while ((line = br.readLine()) != null) {
                 String[] partes = line.split(",");
 
-                // If the line does not contain the ID to delete, add it to the temporary content
                 if (partes.length >= 1 && !partes[0].equals(id)) {
                     temp.append(line).append("\r\n");
                 } else {
                     System.out.println("ID found and deleted: " + id);
                 }
             }
-            br.close(); // Close the BufferedReader
+            br.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -205,7 +197,7 @@ public class ManCuentasViewController extends Controller implements Initializabl
         try {
             FileWriter writer = new FileWriter(account);
             writer.write(temp.toString());
-            writer.close(); // Close the FileWriter
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -246,11 +238,8 @@ public class ManCuentasViewController extends Controller implements Initializabl
         System.out.println("Archivo actualizado exitosamente");
     }
 
-    
-
     @FXML
     void onActionCmbCuentas(ActionEvent event) {
-
         String selectedTypeName = cmbCuentas.getSelectionModel().getSelectedItem().toString();
 
         // Imprimir el valor de selectedTypeName
@@ -258,8 +247,6 @@ public class ManCuentasViewController extends Controller implements Initializabl
 
         // Asignar el texto a txfNomCuentas
         txfNomCuentas.setText(selectedTypeName);
-
-
     }
 
 }

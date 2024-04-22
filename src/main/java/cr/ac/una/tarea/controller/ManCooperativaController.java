@@ -33,66 +33,64 @@ public class ManCooperativaController extends Controller implements Initializabl
 
     @FXML
     private MFXTextField txfNomCooperativa;
+
     String logoPath;
     Cooperativa cooperativa = new Cooperativa();
 
     @Override
-    public void initialize() {
+    public void initialize() {}
 
-    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 
     @FXML
     void onActionBtnGuardar(ActionEvent event) {
-
         try {
             if (txfNomCooperativa.getText().isEmpty() || txfNomCooperativa.getText().isBlank()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Cooperativa", getStage(),
-                        "El campo nombre de la cooperativa no puede estar vacio");
-            } else if (imgvLogo.getImage().equals(null)) {
+                        "El campo nombre de la cooperativa no puede estar vacío");
+            } else if (imgvLogo.getImage() == null) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Cooperativa", getStage(),
-                        "El campo logo de la cooperativa no puede estar vacio");
-
+                        "El campo logo de la cooperativa no puede estar vacío");
             } else {
-
                 Cooperativa cooperativa = new Cooperativa(txfNomCooperativa.getText(), imgvLogo.getImage().getUrl());
                 cooperativa.setCooperativa(cooperativa);
                 cooperativa.createFile(cooperativa);
                 Controller.iconChanger(getStage(), imgvLogo.getImage());
                 Controller.nameChanger(getStage(), txfNomCooperativa.getText());
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Cooperativa", getStage(),
-                        "Cooperativa registrada con exito");
+                        "Cooperativa registrada con éxito");
             }
         } catch (Exception ex) {
             Logger.getLogger(ManCooperativaController.class.getName()).log(Level.SEVERE, "Error loading image", ex);
         }
-
     }
 
     @FXML
     void onActionBtnLogo(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Escoga el logo de la cooperativa");
+        fileChooser.setTitle("Escoja el logo de la cooperativa");
         File selectedFile = fileChooser.showOpenDialog(null);
         
-        // Construct the relative path within the project
+        // Construye la ruta relativa dentro del proyecto
         String relativePath = "./CoopeLogos/" + selectedFile.getName();
         
         try {
            String path = "./CoopeLogos";
             File folder = new File(path);
             if (!folder.exists()) {
-                // Create the file
+                // Crea un archivo
                 folder.mkdir();
             }
         
-            // Move the image file
+            // Mueve el archivo imagen
             Path source = Paths.get(selectedFile.getPath());
             Path destiny = Paths.get(path, selectedFile.getName());
             Files.move(source, destiny);
             System.out.println("File moved successfully");
-        
-            // Use the absolute path (including project directory) to set the image
+
+            // Usa la ruta absoluta (Incluido el directorio del proyecto) para un 'set' a la imagen
             String absolutePath = "file:" +  relativePath;
             Image icon = new Image(absolutePath);
             imgvLogo.setImage(icon);
@@ -102,8 +100,4 @@ public class ManCooperativaController extends Controller implements Initializabl
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }

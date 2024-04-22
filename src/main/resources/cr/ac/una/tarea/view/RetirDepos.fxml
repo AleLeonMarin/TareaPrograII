@@ -20,9 +20,8 @@
                <children>
                   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="670.0" prefWidth="0.0" spacing="150.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXComboBox fx:id="cmbCuentas" floatMode="ABOVE" onAction="#onActionSelectCuenta" prefHeight="53.0" prefWidth="200.0" promptText="Seleccione la Cuenta" />
+                        <MFXComboBox fx:id="cmbCuentas" floatMode="ABOVE" prefHeight="53.0" prefWidth="200.0" promptText="Seleccione la Cuenta" />
                         <MFXTextField fx:id="txfFolio" floatingText="Folio de asociado" prefHeight="49.0" prefWidth="201.0" />
-                        <MFXTextField fx:id="txfNomAsociado" floatingText="Nombre del asociado" prefHeight="49.0" prefWidth="200.0" />
                         <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefHeight="60.0" prefWidth="150.0" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />

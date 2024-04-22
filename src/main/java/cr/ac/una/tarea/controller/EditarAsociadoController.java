@@ -1,9 +1,7 @@
 package cr.ac.una.tarea.controller;
 
-import com.github.sarxos.webcam.Webcam;
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.AppContext;
-import cr.ac.una.tarea.util.FlowController;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -28,7 +26,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
-import java.util.concurrent.Flow;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -117,14 +114,14 @@ public class EditarAsociadoController extends Controller implements Initializabl
 
         // Iterar la lista de los asociados
         for (int i = 0; i < asociate.size(); i++) {
-            Associated associate = asociate.get(i);
-            if (associate.getFolio().equals(folio)) {
+                Associated associate = asociate.get(i);
+                if (associate.getFolio().equals(folio)) {
 
-                associate.setName(txfNombre.getText());
-                associate.setAge(txfEdad.getText());
-                Act = true;
-                break;
-            }
+                    associate.setName(txfNombre.getText());
+                    associate.setAge(txfEdad.getText());
+                    Act = true;
+                    break;
+                }
         }
 
         if (Act) {
