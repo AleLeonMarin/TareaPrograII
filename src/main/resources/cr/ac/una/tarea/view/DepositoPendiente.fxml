@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1389.0" styleClass="background" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.DepositoPendienteController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1389.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.DepositoPendienteController">
    <children>
       <StackPane minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,8 +19,11 @@
                <children>
                   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="670.0" prefWidth="0.0" spacing="150.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXComboBox fx:id="cmbCuentas" floatMode="ABOVE" prefHeight="53.0" prefWidth="200.0" promptText="Seleccione la Cuenta" />
-                        <MFXTextField fx:id="txfFolio" floatingText="Folio de asociado" prefHeight="49.0" prefWidth="201.0" />
+                        <TableView fx:id="tbvPendientes" prefHeight="538.0" prefWidth="265.0">
+                           <VBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </VBox.margin>
+                        </TableView>
                      </children>
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" stylesheets="@Styles.css">

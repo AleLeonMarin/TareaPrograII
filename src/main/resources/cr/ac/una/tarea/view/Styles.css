@@ -201,7 +201,7 @@
 .mfxBtnEditLogo > ImageView {-fx-image: url('../resources/Logo.png')}
 .mfxBtnRetiro > ImageView {-fx-image: url('../resources/Retiro.png')}
 .mfxBtnLimpiar > ImageView { -fx-image: url('../resources/escoba.png')}
-
+ 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Imágenes insertas en las denominaciones (billetes & monedas)
 */
@@ -248,28 +248,28 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-.mfxButtonTakePhoto{
+.mfxButtonTakePhoto , .mfxButtonTakePhoto:armed, .mfxButtonTakePhoto:focused{
     -fx-background-color: #59CE8F;
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
 }
 
-.mfxButtonRetakePhoto{
+.mfxButtonRetakePhoto , .mfxButtonRetakePhoto:armed, .mfxButtonRetakePhoto:focused{
     -fx-background-color: #7EAA92;
     -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
 }
 
-.mfxButtonSavePhoto{
+.mfxButtonSavePhoto , .mfxButtonSavePhoto:armed, .mfxButtonSavePhoto:focused{
     -fx-background-color: #50C4ED;
    -fx-pref-width: 150;
     -fx-pref-height: 60;
     -fx-text-alignment: center;
 }
 
-.mfxButtonExitCam{
+.mfxButtonExitCam , .mfxButtonExitCam:armed, .mfxButtonExitCam:focused{
     -fx-background-color: #FE0000;
    -fx-pref-width: 150;
     -fx-pref-height: 60;

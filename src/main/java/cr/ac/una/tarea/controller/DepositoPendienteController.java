@@ -2,14 +2,12 @@ package cr.ac.una.tarea.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXComboBox;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableView;
 
 public class DepositoPendienteController extends Controller implements Initializable {
 
@@ -50,10 +48,7 @@ public class DepositoPendienteController extends Controller implements Initializ
     private MFXButton btnDepositar;
 
     @FXML
-    private MFXComboBox<?> cmbCuentas;
-
-    @FXML
-    private MFXTextField txfFolio;
+    private TableView<String> tbvPendientes;
 
     @FXML
     void onActionDepositar(ActionEvent event) {
@@ -61,15 +56,13 @@ public class DepositoPendienteController extends Controller implements Initializ
     }
 
     @Override
-    public void initialize() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
-        
+    }
+    
+    @Override
+    public void initialize() {
+        // TODO Auto-generated method stub
     }
 
 }

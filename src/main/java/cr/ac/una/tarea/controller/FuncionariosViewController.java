@@ -58,7 +58,7 @@ public class FuncionariosViewController extends Controller implements Initializa
 
     @FXML
     void onActionBtnPendientes(ActionEvent event) {
-        FlowController.getInstance().goView("VerPendientesView");
+        FlowController.getInstance().goView("DepositoPendiente");
 
     }
 
