@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 public class RetirDeposController extends Controller implements Initializable {
 
-    String filePath = "Cuentas_Drag-and-Drop.txt";
+    String filePath = "CuentasAsociados.txt";
 
     @FXML
     private MFXTextField txfFolio;
@@ -188,38 +188,38 @@ public class RetirDeposController extends Controller implements Initializable {
         }
         // Métodos de Retiro - - - - - - -
 
-            // Obtener el folio y el tipo de cuenta seleccionados
-            String folio = txfFolio.getText();
-            String selectedAccountType = cmbCuentas.getSelectionModel().getSelectedItem();
+        // Obtener el folio y el tipo de cuenta seleccionados
+        String folio = txfFolio.getText();
+        String selectedAccountType = cmbCuentas.getSelectionModel().getSelectedItem();
 
-            // Obtener el saldo actual para el tipo de cuenta seleccionado
-            String currentBalanceStr = getBalanceFromAccountType(folio, selectedAccountType);
-            if (currentBalanceStr != null) {
-                    int currentBalance = Integer.parseInt(currentBalanceStr);
+        // Obtener el saldo actual para el tipo de cuenta seleccionado
+        String currentBalanceStr = getBalanceFromAccountType(folio, selectedAccountType);
+        if (currentBalanceStr != null) {
+            int currentBalance = Integer.parseInt(currentBalanceStr);
 
-                    // Calcular el monto a retirar
-                    int withdrawalAmount = SumMoney();
+            // Calcular el monto a retirar
+            int withdrawalAmount = SumMoney();
 
-                    // Verificar si el monto a retirar es menor o igual al saldo actual
-                    if (withdrawalAmount <= currentBalance) {
-                            // Realizar la resta del monto a retirar del saldo actual
-                            int newBalance = currentBalance - withdrawalAmount;
+            // Verificar si el monto a retirar es menor o igual al saldo actual
+            if (withdrawalAmount <= currentBalance) {
+                // Realizar la resta del monto a retirar del saldo actual
+                int newBalance = currentBalance - withdrawalAmount;
 
-                            // Actualizar el saldo en el archivo
-                            updateBalanceForAccountTypeInFile(folio, selectedAccountType, String.valueOf(newBalance));
+                // Actualizar el saldo en el archivo
+                updateBalanceForAccountTypeInFile(folio, selectedAccountType, String.valueOf(newBalance));
 
-                            // Mostrar un mensaje informativo con el saldo retirado
-                            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Retirar", getStage(),
-                                    "El dinero retirado fue de " + withdrawalAmount);
-                    } else {
-                            // Mostrar un mensaje de error si el monto a retirar es mayor que el saldo actual
-                            new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(),
-                                    "El saldo disponible es insuficiente para realizar este retiro");
-                    }
+                // Mostrar un mensaje informativo con el saldo retirado
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Retirar", getStage(),
+                        "El dinero retirado fue de " + withdrawalAmount);
             } else {
-                    new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(),
-                            "No se pudo encontrar el saldo actual para el tipo de cuenta " + selectedAccountType);
+                // Mostrar un mensaje de error si el monto a retirar es mayor que el saldo actual
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(),
+                        "El saldo disponible es insuficiente para realizar este retiro");
             }
+        } else {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(),
+                    "No se pudo encontrar el saldo actual para el tipo de cuenta " + selectedAccountType);
+        }
 
         //  - - - - - - - - - - - - - - - -
         cmbCuentas.clear();

@@ -12,12 +12,8 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,6 +111,13 @@ public class AperturaCuentasViewController extends Controller implements Initial
                     "Debe ingresar un folio");
             return;
         }
+
+        if (listVAbiertas.getItems().isEmpty()) {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Lista vacía", getStage(),
+                    "La lista de cuentas abiertas está vacía.");
+            return;
+        }
+
         String _Folio = txfFolio.getText();
         List<AccountType> removedAccounts = new ArrayList<>(listVAbiertas.getItems());
         listVAbiertas.getItems().clear();
@@ -122,8 +125,8 @@ public class AperturaCuentasViewController extends Controller implements Initial
         // Método externo
         AddToTxt();
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Tipos de cuentas", getStage(),
-                "Se registro cuenta nueva/as al asociado | Carnet " + _Folio);
-
+                "Aperturas de cuenta al asociado " + _Folio + " fue exitoso");
+        accounts.clear();
     }
 
     @FXML
@@ -153,13 +156,17 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     public void AddToTxt() {
         try {
-           
-            BufferedWriter writer = new BufferedWriter(new FileWriter("CuentasAsociados.txt", true));
-            for (Account account : accounts) {
-                writer.append(account.toString());
-                writer.newLine();
+            File file = new File("CuentasAsociados.txt");
+            FileWriter writer = new FileWriter(file, true); // Append mode
+
+            // Append data for each new account
+            for (Account acc : accounts) {
+                writer.write(acc.getId() + ",");
+                writer.write(acc.getBalance() + ",");
+                writer.write(acc.getAccountType() + "\n");
             }
-            writer.close();
+
+            writer.close(); // Close the writer
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -167,6 +174,8 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     public void readAccount(){
         try {
+            // Usar para no duplicar los items en la lista de cuentas disponibles para abrir
+            accountType.clear();
             BufferedReader br = new BufferedReader(new FileReader("AccountType.txt"));
             String line;
             while ((line = br.readLine()) != null) {
@@ -185,6 +194,8 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     public void readAsociado() {
         try {
+            // Usar para no duplicar los items en la lista de cuentas disponibles para abrir
+            asociate.clear();
             BufferedReader br = new BufferedReader(new FileReader("Asociados.txt"));
             String line;
             while ((line = br.readLine()) != null) {
@@ -231,18 +242,46 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     private void onDragDroppedListas( DragEvent event , MFXListView<AccountType> lista ){
         String item = event.getDragboard().getString();
-        lista.getItems().add(new AccountType(item));
+        AccountType selectedAccountType = new AccountType(item);
+
+        // Check if the account already exists in the file
+        String folio = txfFolio.getText();
+        boolean accountExists = false;
+        try (BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String fileFolio = parts[0];
+                String accountName = parts[2];
+
+                if (folio.equals(fileFolio) && item.equals(accountName)) {
+                    accountExists = true;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (accountExists) {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Cuenta Duplicada", getStage(),
+                    "La cuenta ya ha sido agregada.");
+            return;
+        }
+
+        listVAbiertas.getItems().add(selectedAccountType); // Add to listVAbiertas
 
         MFXListView<?> listaOrigen = (MFXListView<?>) event.getGestureSource();
-        listaOrigen.getItems().remove(new AccountType(item));
+        listaOrigen.getItems().remove(selectedAccountType);
         event.setDropCompleted(true);
         event.consume();
 
         // Agregar cuenta a la ObservableList
-        String fol = txfFolio.getText();
-        Account account = new Account(fol, String.valueOf(0), item);
+        Account account = new Account(folio, String.valueOf(0), item);
         accounts.add(account);
 
+        // Deselect the dragged item after it's saved
+        listaOrigen.getSelectionModel().clearSelection();
     }
 
     private void onDragOverListas(DragEvent event , MFXListView<AccountType> lista){
@@ -251,6 +290,5 @@ public class AperturaCuentasViewController extends Controller implements Initial
         }
         event.consume();
     }
-
 
 }
