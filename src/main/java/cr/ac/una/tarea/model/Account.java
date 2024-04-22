@@ -82,7 +82,7 @@ public class Account{
     }
 
     public String toString(){
-        return id.get() + " " + balance.get() + " " + accountType.get();
+        return id.get() + "," + balance.get() + "," + accountType.get();
     }
 
 }

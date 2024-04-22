@@ -2,7 +2,7 @@
     Estilo para el fondo de pantalla
 */
 .background{
-    -fx-background-image:url('../resources/OuterSpace.jpg');
+    -fx-background-image:url('../resources/outterSpace.jpg');
     -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
@@ -14,7 +14,7 @@
 .mfxButtonManAso , .mfxButtonManAso:armed, .mfxButtonManAso:focused {
     -fx-pref-width: 150;
     -fx-pref-height: 60;
-    -fx-text-alignment:center;
+    -fx-text-alignment:center;  
     -fx-background-color: #E1AFD1;
 }
 

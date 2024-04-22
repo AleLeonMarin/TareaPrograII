@@ -13,8 +13,10 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -151,17 +153,13 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     public void AddToTxt() {
         try {
-            File file = new File("Cuentas_Drag-and-Drop.txt");
-            file.createNewFile(); // Lo crea si no existe
-
-            StringBuilder sb = new StringBuilder();
-            for (Account acc : accounts) {
-                sb.append(acc.getId() + ",")
-                .append(acc.getBalance() + ",")
-                .append(acc.getAccountType() + "\n");
+           
+            BufferedWriter writer = new BufferedWriter(new FileWriter("CuentasAsociados.txt", true));
+            for (Account account : accounts) {
+                writer.append(account.toString());
+                writer.newLine();
             }
-            String content = sb.toString();
-            java.nio.file.Files.write(file.toPath(), content.getBytes());
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
