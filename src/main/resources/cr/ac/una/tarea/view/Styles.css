@@ -53,6 +53,13 @@
     -fx-background-color: #F1EB90;
 }
 
+.mfxBtnPendientes , .mfxBtnPendientes:armed, .mfxBtnPendientes:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8E7AB5;
+}
+
 .mfxBtnSalir , .mfxBtnSalir:armed, .mfxBtnSalir:focused{
     -fx-pref-width: 150;
     -fx-pref-height: 60;
@@ -185,6 +192,7 @@
 .mfxBtnTake > ImageView {-fx-image: url('../resources/Camera.png')}
 .mfxBtnDetail > ImageView {-fx-image: url('../resources/List.png')}
 .mfxBtnResume > ImageView {-fx-image: url('../resources/List.png')}
+.mfxBtnPendientes > ImageView {-fx-image: url('../resources/List.png')}
 .mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
 .mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
 .mfxBtnAdd > ImageView {-fx-image: url('../resources/add.png')}
@@ -213,11 +221,22 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Estilo para el carnet a imprimir en formato PDF
 */
-.backgroundCarnet{
-    -fx-background-image:url('../resources/LogIn.jpg');
-    -fx-background-size: stretch;
+.BackgroundCarnet {
+    -fx-background-image: url("../resources/Carnet.png");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+    
+}
+
+.mfx-text-field-carnet{
+    -fx-border-radius: 35;
+    -fx-background-radius: 20;
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-pref-height: 25;
+    -fx-pref-width: 206;
+    -fx-border-width: 2;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -260,6 +279,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    Estilo para Depositos & Retiros
 */
+
 
 /* ?? | Sin usar
 .overground{

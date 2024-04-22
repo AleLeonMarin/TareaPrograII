@@ -10,7 +10,7 @@
    <left>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="315.0" prefWidth="150.0" spacing="40.0" styleClass="overground" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
-            <MFXButton fx:id="btnManAso" buttonType="RAISED" depthLevel="LEVEL5" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#onActionBtnManAso" prefHeight="44.0" prefWidth="120.0" styleClass="mfxButtonManAso" stylesheets="@Styles.css" text="Mantenimiento Asociados" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+            <MFXButton fx:id="btnManAso" buttonType="RAISED" depthLevel="LEVEL5" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#onActionBtnManAso" prefHeight="44.0" prefWidth="140.0" styleClass="mfxButtonManAso" stylesheets="@Styles.css" text="Mantenimiento Asociados" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></MFXButton>
@@ -26,6 +26,11 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></MFXButton>
+            <MFXButton fx:id="btnPendientes" maxWidth="1.7976931348623157E308" onAction="#onActionBtnPendientes" styleClass="mfxBtnPendientes" text="Ver Pendientes" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </MFXButton>
             <MFXButton fx:id="btnSalir" buttonType="RAISED" depthLevel="LEVEL5" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#onActionBtnSalir" styleClass="mfxBtnSalir" stylesheets="@Styles.css" text="Salir" VBox.vgrow="ALWAYS">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />

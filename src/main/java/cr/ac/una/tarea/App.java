@@ -50,7 +50,7 @@ public class App extends Application {
     }
     public void readCoope() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt" ));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");

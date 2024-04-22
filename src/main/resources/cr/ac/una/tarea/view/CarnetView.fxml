@@ -2,7 +2,6 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,32 +12,16 @@
    <children>
       <VBox layoutX="187.0" layoutY="85.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="vboxCarnet" prefHeight="400.0" prefWidth="545.0" styleClass="backgroundCarnet">
+            <AnchorPane fx:id="carnet" prefHeight="360.0" prefWidth="600.0" styleClass="BackgroundCarnet">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="600.0">
-                     <children>
-                        <Label fx:id="lblCoope" text="Label">
-                           <HBox.margin>
-                              <Insets right="410.0" top="50.0" />
-                           </HBox.margin>
-                        </Label>
-                        <ImageView fx:id="imgVFoto" fitHeight="114.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <MFXTextField fx:id="txfFolio" floatingText="Numero de folio" prefHeight="49.0" prefWidth="133.0" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <MFXTextField fx:id="txfNombre" floatingText="Nombre del Asociado" prefHeight="49.0" prefWidth="132.0" />
-                     </children>
-                  </HBox>
-                  <ImageView fx:id="imgVLogo" fitHeight="146.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblCoope" layoutX="31.0" layoutY="14.0" prefHeight="38.0" prefWidth="195.0" text="Label" />
+                  <ImageView fx:id="imgVLogo" fitHeight="83.0" fitWidth="108.0" layoutX="304.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                  <MFXTextField fx:id="txfNombre" alignment="CENTER" layoutX="66.0" layoutY="109.0" prefHeight="51.0" styleClass="mfx-text-field-carnet" />
+                  <MFXTextField fx:id="txfFolio" alignment="CENTER" layoutX="310.0" layoutY="109.0" styleClass="mfx-text-field-carnet" />
+                  <ImageView fx:id="imgVFoto" fitHeight="128.0" fitWidth="180.0" layoutX="212.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
                </children>
-            </VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+            </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="40.0">
                <children>
                   <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefHeight="42.0" prefWidth="150.0" styleClass="mfxBtnSearch" text="Buscar">
                      <graphic>

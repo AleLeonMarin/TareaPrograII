@@ -27,6 +27,9 @@ public class FuncionariosViewController extends Controller implements Initializa
     private MFXButton btnRetirDepo;
 
     @FXML
+    private MFXButton btnPendientes;
+
+    @FXML
     private MFXButton btnSalir;
 
     @FXML
@@ -50,6 +53,12 @@ public class FuncionariosViewController extends Controller implements Initializa
     @FXML
     void onActionBtnRetirDepo(ActionEvent event) {
         FlowController.getInstance().goView("RetirDepos");
+
+    }
+
+    @FXML
+    void onActionBtnPendientes(ActionEvent event) {
+        FlowController.getInstance().goView("VerPendientesView");
 
     }
 
