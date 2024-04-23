@@ -4,6 +4,7 @@ import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.model.AccountType;
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.model.Cooperativa;
+import cr.ac.una.tarea.model.Pendientes;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.FlowController;
 import javafx.application.Application;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.itextpdf.text.pdf.PdfEFStream;
+
 /**
  * JavaFX App
  */
@@ -28,6 +31,7 @@ public class App extends Application {
     ObservableList<Account> accounts = FXCollections.observableArrayList();
     ObservableList<AccountType> accountType = FXCollections.observableArrayList();
     ObservableList<Associated> associate = FXCollections.observableArrayList();
+    ObservableList<Pendientes> pendientes = FXCollections.observableArrayList();
 
 
     @Override
@@ -43,6 +47,7 @@ public class App extends Application {
         AppContext.getInstance().set("Asociados", associate);
         AppContext.getInstance().set("Cuentas", accounts);
         AppContext.getInstance().set("TiposCuentas", accountType);
+        AppContext.getInstance().set("Pendientes", pendientes);
         
         FlowController.getInstance().InitializeFlow(stage, null);
         FlowController.getInstance().goViewInWindow("LogInView");

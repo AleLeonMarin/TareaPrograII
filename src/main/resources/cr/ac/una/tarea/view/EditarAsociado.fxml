@@ -22,7 +22,7 @@
                   <ImageView fitHeight="35.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="btnEliminar" onAction="#onActionClean" styleClass="mfxBtnDelete" stylesheets="@Styles.css" text="Eliminar Asociado">
+            <MFXButton fx:id="btnEliminar" onAction="#onActionDelete" styleClass="mfxBtnDelete" stylesheets="@Styles.css" text="Eliminar Asociado">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
@@ -48,7 +48,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="142.0" prefWidth="550.0" spacing="20.0">
                <children>
-                  <MFXTextField fx:id="txtFolio" prefHeight="50.0" prefWidth="170.0" promptText="Ingrese el folio" />
+                  <MFXTextField fx:id="txtFolioAsociado" prefHeight="50.0" prefWidth="170.0" promptText="Ingrese el folio" />
                   <MFXTextField fx:id="txfNombre" prefHeight="50.0" prefWidth="170.0" promptText="ingrese el nombre" />
                   <MFXTextField fx:id="txtEdad" prefHeight="50.0" prefWidth="170.0" promptText="Ingrese la edad" />
                </children>
