@@ -4,8 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Pendientes {
 
+    public SimpleStringProperty version;
     public SimpleStringProperty folio; 
     public SimpleStringProperty total; 
+    public SimpleStringProperty tipoDeCuenta;
     public SimpleStringProperty Billetes20Mil;
     public SimpleStringProperty Billetes10Mill;
     public SimpleStringProperty Billetes5Mil;
@@ -21,6 +23,8 @@ public class Pendientes {
     public Pendientes() {
         this.folio = new SimpleStringProperty();
         this.total = new SimpleStringProperty();
+        this.tipoDeCuenta = new SimpleStringProperty();
+        this.version = new SimpleStringProperty();
         this.Billetes20Mil = new SimpleStringProperty();
         this.Billetes10Mill = new SimpleStringProperty();
         this.Billetes5Mil = new SimpleStringProperty();
@@ -55,12 +59,22 @@ public class Pendientes {
         this.Moneda5.set(Moneda5);
 
     }
+    public Pendientes(String version ,String folio , String total , String accountType){
+        this();
+        this.version.set(version);
+        this.folio.set(folio);
+        this.total.set(total);
+        this.tipoDeCuenta.set(accountType);
+
+    }
 
     public Pendientes(Pendientes pendientes){
         
         this();
         this.folio.set(pendientes.getFolio());
         this.total.set(pendientes.getTotal());
+        this.version.set(pendientes.getVersion());
+        this.tipoDeCuenta.set(pendientes.getTipoDeCuenta());
         this.Billetes20Mil.set(pendientes.getBilletes20Mil());
         this.Billetes10Mill.set(pendientes.getBilletes10Mill());
         this.Billetes5Mil.set(pendientes.getBilletes5Mil());
@@ -78,6 +92,8 @@ public class Pendientes {
     public void setPendientes(Pendientes pendientes){
         this.folio.set(pendientes.getFolio());
         this.total.set(pendientes.getTotal());
+        this.version.set(pendientes.getVersion());
+        this.tipoDeCuenta.set(pendientes.getTipoDeCuenta());
         this.Billetes20Mil.set(pendientes.getBilletes20Mil());
         this.Billetes10Mill.set(pendientes.getBilletes10Mill());
         this.Billetes5Mil.set(pendientes.getBilletes5Mil());
@@ -91,6 +107,12 @@ public class Pendientes {
         this.Moneda5.set(pendientes.getMoneda5());
     }
 
+    public String getVersion() {
+        return version.get();
+    }
+    public void setVersion(String version) {
+        this.version.set(version);
+    }
     public String getFolio() {
         return folio.get();
     }
@@ -102,6 +124,12 @@ public class Pendientes {
     }
     public void setTotal(String total) {
         this.total.set(total);
+    }
+    public String getTipoDeCuenta() {
+        return tipoDeCuenta.get();
+    }
+    public void setTipoDeCuenta(String tipoDeCuenta) {
+        this.tipoDeCuenta.set(tipoDeCuenta);
     }
     public String getBilletes20Mil() {
         return Billetes20Mil.get();

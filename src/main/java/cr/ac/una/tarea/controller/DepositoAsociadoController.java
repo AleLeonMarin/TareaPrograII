@@ -1,6 +1,7 @@
 package cr.ac.una.tarea.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import cr.ac.una.tarea.model.Account;
-import cr.ac.una.tarea.model.Pendientes;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -158,7 +158,7 @@ public class DepositoAsociadoController extends Controller implements Initializa
 
         int cantidadCinco = SpinnerCinco.getValue();
         int cantidadDiez = SpinnerDiez.getValue();
-        int cantidadVeinticinco= SpinnerVeintiCinco.getValue();
+        int cantidadVeinticinco = SpinnerVeintiCinco.getValue();
         int cantidadCincuenta = SpinnerCincuenta.getValue();
         int cantidadCien = SpinnerCien.getValue();
         int cantidadQuinientos = SpinnerQuinientos.getValue();
@@ -171,34 +171,55 @@ public class DepositoAsociadoController extends Controller implements Initializa
         String Folio = txfFolio.getText();
         int depositTotal = SumMoney();
 
-        if (cmbCuentas.getSelectionModel().getSelectedItem() == null){
+        if (cmbCuentas.getSelectionModel().getSelectedItem() == null) {
 
             new Mensaje().showModal(Alert.AlertType.ERROR, "Deposito", getStage(),
                     "Debe seleccionar un tipo de cuenta");
             return;
 
         }
+        // Declarar un contador
+        int contador = readCounterFromFile("Pendientes.txt");
+        // Incrementar el contador
+        contador++;
 
-        
-        try{
-            
+        try {
+
+            // Crear un FileWriter para escribir en el archivo
             FileWriter fileWriter = new FileWriter("Pendientes.txt", true);
-            fileWriter.write(Folio + "," +  depositTotal +","+cantidadVeintemil + "," + cantidadDiezmil + "," + cantidadCincomil + "," + cantidadDosmil + "," + cantidadMil + "," + cantidadQuinientos + "," + cantidadCien + "," + cantidadCincuenta + "," + cantidadVeinticinco + "," + cantidadDiez + "," + cantidadCinco + "," + accountType + "\n");
+
+            // Escribir en el archivo con el contador progresivo
+            fileWriter.write(contador + "," + Folio + "," + depositTotal + "," + cantidadVeintemil + ","
+                    + cantidadDiezmil + "," + cantidadCincomil + "," + cantidadDosmil + "," + cantidadMil + ","
+                    + cantidadQuinientos + "," + cantidadCien + "," + cantidadCincuenta + "," + cantidadVeinticinco
+                    + "," + cantidadDiez + "," + cantidadCinco + "," + accountType + "\n");
+
+            // Cerrar el FileWriter
             fileWriter.close();
-            
+
             new Mensaje().showModal(Alert.AlertType.INFORMATION, "Deposito", getStage(),
-                    "Deposito realizado con exito, el total depositado es: "  + depositTotal + " colones");
-        }catch (Exception ex)
-        {
-            Logger.getLogger(DepositoAsociadoController.class.getName()).log(Level.SEVERE, "Error al escribir archivo", ex);
+                    "Deposito realizado con exito, el total depositado es: " + depositTotal + " colones");
+        } catch (Exception ex) {
+            Logger.getLogger(DepositoAsociadoController.class.getName()).log(Level.SEVERE, "Error al escribir archivo",
+                    ex);
             new Mensaje().showModal(Alert.AlertType.ERROR, "Deposito", getStage(),
                     "Error al realizar el deposito");
+        } finally {
+            SpinnerCinco.getValueFactory().setValue(0);
+            SpinnerDiez.getValueFactory().setValue(0);
+            SpinnerVeintiCinco.getValueFactory().setValue(0);
+            SpinnerCincuenta.getValueFactory().setValue(0);
+            SpinnerCien.getValueFactory().setValue(0);
+            SpinnerQuinientos.getValueFactory().setValue(0);
+            SpinnerMil.getValueFactory().setValue(0);
+            SpinnerDosMil.getValueFactory().setValue(0);
+            SpinnerCincoMil.getValueFactory().setValue(0);
+            SpinnerDiezmil.getValueFactory().setValue(0);
+            SpinnerVeintemil.getValueFactory().setValue(0);
+            cmbCuentas.clear();
         }
 
-
-
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -257,6 +278,7 @@ public class DepositoAsociadoController extends Controller implements Initializa
         }
         return accountTypes;
     }
+
     public int SumMoney() {
         return SpinnerCinco.getValue() * 5 + SpinnerDiez.getValue() * 10 + SpinnerVeintiCinco.getValue() * 25 +
                 SpinnerCincuenta.getValue() * 50 + SpinnerCien.getValue() * 100
@@ -264,6 +286,22 @@ public class DepositoAsociadoController extends Controller implements Initializa
                 SpinnerMil.getValue() * 1000 + SpinnerDosMil.getValue() * 2000
                 + SpinnerCincoMil.getValue() * 5000 +
                 SpinnerDiezmil.getValue() * 10000 + SpinnerVeintemil.getValue() * 20000;
+    }
+
+    private static int readCounterFromFile(String fileName) {
+        int contador = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Dividir la línea por comas y tomar el primer elemento como el contador
+                String[] parts = line.split(",");
+                contador = Integer.parseInt(parts[0]);
+            }
+        } catch (IOException | NumberFormatException e) {
+            // Si hay un error, simplemente regresamos 0
+            contador = 0;
+        }
+        return contador;
     }
 
 
