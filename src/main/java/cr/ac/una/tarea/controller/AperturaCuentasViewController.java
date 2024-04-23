@@ -15,9 +15,7 @@ import javafx.scene.input.TransferMode;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import cr.ac.una.tarea.model.Account;
@@ -28,6 +26,9 @@ import cr.ac.una.tarea.util.Mensaje;
 import javafx.scene.control.Alert;
 
 public class AperturaCuentasViewController extends Controller implements Initializable {
+
+    String path = "CuentasAsociados.txt";
+    File filepath = new File(path);
 
     @FXML
     private MFXListView<AccountType> listVAbiertas;
@@ -62,10 +63,9 @@ public class AperturaCuentasViewController extends Controller implements Initial
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accountType = ((ObservableList<AccountType>) AppContext.getInstance().get("TiposCuentas"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
-        readAccount();
         readAsociado();
+        readAccount();
         loadInfo();
-        txfFolio.setAllowEdit(true);
     }
 
     @FXML
@@ -116,17 +116,10 @@ public class AperturaCuentasViewController extends Controller implements Initial
             new Mensaje().showModal(Alert.AlertType.ERROR, "Lista vacía", getStage(),
                     "La lista de cuentas abiertas está vacía.");
             return;
+        } else {
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Agregar Cuenta", getStage(),
+                    "Agregado el tipo de cuenta al asociado exitosamente");
         }
-
-        String _Folio = txfFolio.getText();
-        List<AccountType> removedAccounts = new ArrayList<>(listVAbiertas.getItems());
-        listVAbiertas.getItems().clear();
-        listVDisponibles.getItems().addAll(removedAccounts);
-        // Método externo
-        AddToTxt();
-        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Tipos de cuentas", getStage(),
-                "Aperturas de cuenta al asociado " + _Folio + " fue exitoso");
-        accounts.clear();
     }
 
     @FXML
@@ -139,34 +132,85 @@ public class AperturaCuentasViewController extends Controller implements Initial
             return;  // Exit the method if folio is empty
         }
 
-        boolean found = false;
         for (Associated associated : asociate) {
             if (associated.getFolio().equals(folio)) {
-                txfNombre.setText(associated.getName().toString());
-                found = true;
-                break;
+                txfNombre.setText(associated.getName());
+                  break;
             }
         }
 
-        if (!found) {
-            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
-                    "Folio no encontrado");
+        // Clear listVAbiertas before loading new account types
+        listVAbiertas.getItems().clear();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 3 && parts[0].equals(folio)) {
+                    String accountType = parts[2];
+                    listVAbiertas.getItems().add(new AccountType(accountType));
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(AperturaCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+        }
+
+        verifyAndRemoveDuplicates();
+    }
+
+    public void AddToTxt(String Folio, String Balance, String AccountType) {
+        try {
+            FileWriter writer = new FileWriter(filepath, true); // Append mode
+
+            // Create a new Account object with the provided parameters
+            Account newAccount = new Account(Folio, Balance, AccountType);
+
+            // Append data for the new account
+            writer.write(newAccount.getId() + ",");
+            writer.write(newAccount.getBalance() + ",");
+            writer.write(newAccount.getAccountType() + "\n");
+
+            // Add the new account to the accounts list
+            accounts.add(newAccount);
+
+            writer.close(); // Close the writer
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void AddToTxt() {
+    public void deleteFromTxt(String Folio, String Balance, String AccountType) {
         try {
-            File file = new File("CuentasAsociados.txt");
-            FileWriter writer = new FileWriter(file, true); // Append mode
+            // Create a temporary file
+            File tempFile = new File("temp.txt");
+            FileWriter writer = new FileWriter(tempFile);
 
-            // Append data for each new account
-            for (Account acc : accounts) {
-                writer.write(acc.getId() + ",");
-                writer.write(acc.getBalance() + ",");
-                writer.write(acc.getAccountType() + "\n");
+            BufferedReader br = new BufferedReader(new FileReader(filepath));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String currentFolio = parts[0];
+                String currentBalance = parts[1];
+                String currentAccountType = parts[2];
+
+                // Compare with the parameters to determine if it needs to be deleted
+                if (!currentFolio.equals(Folio) || !currentBalance.equals(Balance) || !currentAccountType.equals(AccountType)) {
+                    // If the current line does not match the parameters, write it to the temporary file
+                    writer.write(line + "\n");
+                }
             }
+            br.close();
+            writer.close();
 
-            writer.close(); // Close the writer
+            // Delete the original file
+            filepath.delete();
+
+            // Rename the temporary file to the original file name
+            tempFile.renameTo(filepath);
+
+            // Optionally, update the accounts list after deletion
+            // accounts.removeIf(account -> account.getId().equals(Folio) && account.getBalance().equals(Balance) && account.getAccountType().equals(AccountType));
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -243,45 +287,51 @@ public class AperturaCuentasViewController extends Controller implements Initial
     private void onDragDroppedListas( DragEvent event , MFXListView<AccountType> lista ){
         String item = event.getDragboard().getString();
         AccountType selectedAccountType = new AccountType(item);
-
-        // Check if the account already exists in the file
         String folio = txfFolio.getText();
-        boolean accountExists = false;
-        try (BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String fileFolio = parts[0];
-                String accountName = parts[2];
 
-                if (folio.equals(fileFolio) && item.equals(accountName)) {
-                    accountExists = true;
-                    break;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (accountExists) {
-            new Mensaje().showModal(Alert.AlertType.WARNING, "Cuenta Duplicada", getStage(),
-                    "La cuenta ya ha sido agregada.");
+        if (lista == listVDisponibles && isBalanceGreaterThanZero(item)) {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Error al mover cuenta", getStage(),
+                    "No se puede mover una cuenta con saldo mayor a 0.");
             return;
         }
 
-        listVAbiertas.getItems().add(selectedAccountType); // Add to listVAbiertas
+        if (lista == listVAbiertas) {
+            // Moving from listVDisponibles to listVAbiertas
+            listVAbiertas.getItems().add(selectedAccountType);
+            AddToTxt(folio, "0", item);
+
+        } else if (lista == listVDisponibles) {
+            // Moving from listVAbiertas to listVDisponibles
+            listVDisponibles.getItems().add(selectedAccountType);
+            deleteFromTxt(folio, "0", item);
+        }
 
         MFXListView<?> listaOrigen = (MFXListView<?>) event.getGestureSource();
         listaOrigen.getItems().remove(selectedAccountType);
         event.setDropCompleted(true);
         event.consume();
 
-        // Agregar cuenta a la ObservableList
-        Account account = new Account(folio, String.valueOf(0), item);
-        accounts.add(account);
-
         // Deselect the dragged item after it's saved
         listaOrigen.getSelectionModel().clearSelection();
+    }
+
+    private boolean isBalanceGreaterThanZero(String accountTypeName) {
+        try (BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 3 && parts[2].equals(accountTypeName)) {
+                    // Assuming balance is stored as the second element in the parts array
+                    double balance = Double.parseDouble(parts[1]);
+                    // Check if balance is greater than zero
+                    return balance > 0;
+                }
+            }
+        } catch (IOException | NumberFormatException ex) {
+            // Handle exceptions appropriately
+            ex.printStackTrace(); // For demonstration purposes
+        }
+        return false;
     }
 
     private void onDragOverListas(DragEvent event , MFXListView<AccountType> lista){
@@ -290,5 +340,17 @@ public class AperturaCuentasViewController extends Controller implements Initial
         }
         event.consume();
     }
+
+    private void verifyAndRemoveDuplicates() {
+        // Iterate over the items in listVAbiertas
+        for (AccountType item : listVAbiertas.getItems()) {
+            // Check if the item exists in listVDisponibles
+            if (listVDisponibles.getItems().contains(item)) {
+                // If it does, remove it from listVDisponibles
+                listVDisponibles.getItems().remove(item);
+            }
+        }
+    }
+
 
 }
