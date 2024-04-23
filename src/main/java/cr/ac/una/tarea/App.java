@@ -26,7 +26,7 @@ import com.itextpdf.text.pdf.PdfEFStream;
 public class App extends Application {
 
     Cooperativa cooperativa = new Cooperativa();
-
+    private static String parameter = " ";
     ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
     ObservableList<Account> accounts = FXCollections.observableArrayList();
     ObservableList<AccountType> accountType = FXCollections.observableArrayList();
@@ -50,6 +50,7 @@ public class App extends Application {
         AppContext.getInstance().set("Pendientes", pendientes);
         
         FlowController.getInstance().InitializeFlow(stage, null);
+        viewByAccessParameter(parameter);
         FlowController.getInstance().goViewInWindow("LogInView");
 
     }
@@ -74,8 +75,22 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-
+        if (args.length > 0) {
+            parameter = args[0];
+        }
         launch();
+    }
+
+    public void viewByAccessParameter(String accessParameter){
+        if (accessParameter.equals("P")) {
+            FlowController.getInstance().goViewInWindow("ProfeView");
+        } 
+        if (accessParameter.equals("F")){
+            FlowController.getInstance().goViewInWindow("FuncionariosView");
+        }
+        if(accessParameter.equals("A")){
+            FlowController.getInstance().goViewInWindow("AsociadosView");
+        }
     }
 
 

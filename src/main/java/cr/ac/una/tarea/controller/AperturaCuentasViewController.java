@@ -66,6 +66,7 @@ public class AperturaCuentasViewController extends Controller implements Initial
         readAsociado();
         readAccount();
         loadInfo();
+        txfFolio.setAllowEdit(true);
     }
 
     @FXML
