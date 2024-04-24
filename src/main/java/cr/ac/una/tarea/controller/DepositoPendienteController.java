@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import cr.ac.una.tarea.model.Account;
+import cr.ac.una.tarea.model.Movimientos;
 import cr.ac.una.tarea.model.Pendientes;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
@@ -132,7 +133,7 @@ public class DepositoPendienteController extends Controller implements Initializ
     }
 
     @FXML
-    void onActionDepositar(ActionEvent event) {
+    void onActionDepositar(ActionEvent event) throws IOException {
 
         if (tbvPendientes.getSelectionModel().getSelectedItem() == null) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
@@ -147,12 +148,17 @@ public class DepositoPendienteController extends Controller implements Initializ
 
         // Obtener el monto total a depositar sumando los valores de los spinners
         int depositAmount = SumMoney();
+        String deposito = String.valueOf(depositAmount);
 
         // Actualizar el saldo en el archivo para el tipo de cuenta seleccionado
         updateBalanceForAccountTypeInFile(folio, selectedAccountType, depositAmount);
         String version = tbvPendientes.getSelectionModel().getSelectedItem().getVersion();
         deleteItem(version);
         tbvPendientes.getItems().remove(tbvPendientes.getSelectionModel().getSelectedItem());
+
+        Movimientos movimientos = new Movimientos(folio, deposito , deposito , "0", selectedAccountType);
+        movimientos.setMovimientos(movimientos);
+        movimientos.createTxtMovements(movimientos);
     }
 
     public void confTable() {
@@ -178,6 +184,7 @@ public class DepositoPendienteController extends Controller implements Initializ
 
     public void loadInfoColumns() {
         try {
+            tbvPendientes.getItems().clear();
             BufferedReader br = new BufferedReader(new FileReader("Pendientes.txt"));
             String line;
 
@@ -268,7 +275,7 @@ public class DepositoPendienteController extends Controller implements Initializ
 
     public void readAsociado() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("CuentasAs,ociados.txt"));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");

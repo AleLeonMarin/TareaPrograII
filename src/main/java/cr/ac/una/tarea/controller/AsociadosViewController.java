@@ -29,7 +29,11 @@ public class AsociadosViewController extends Controller implements Initializable
     @FXML
     private MFXButton btnSalir;
     @FXML
-    private MFXButton btnConsultas;
+    private MFXButton btnConsultaDetallado;
+    @FXML
+    private MFXButton btnConsultaResumido;
+    @FXML
+    private MFXButton btnJuego;
 
     /**
      * Initializes the controller class.
@@ -58,9 +62,22 @@ public class AsociadosViewController extends Controller implements Initializable
     }
 
     @FXML
-    private void onActionBtnConsultas(ActionEvent event) {
+    private void onActionBtnConsultaDetallado(ActionEvent event) {
 
-        FlowController.getInstance().goView("ConsultaCuenta");
+        FlowController.getInstance().goView("EstadoDetalloView");
+
+    }
+    @FXML
+    private void onActionBtnConsultaResumido(ActionEvent event) {
+
+        FlowController.getInstance().goView("EstadoResumidoView");
+
+    }
+
+    @FXML
+    private void onActionBtnJuego(ActionEvent event) {
+
+        FlowController.getInstance().goView("GameView");
 
     }
 

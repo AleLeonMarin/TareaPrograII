@@ -1,6 +1,7 @@
 package cr.ac.una.tarea.controller;
 
 import cr.ac.una.tarea.model.Account;
+import cr.ac.una.tarea.model.Movimientos;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -155,7 +156,7 @@ public class RetirDeposController extends Controller implements Initializable {
     }
 
     @FXML
-    public void onActionDepositar(ActionEvent event) {
+    public void onActionDepositar(ActionEvent event) throws IOException{
         // Verificar si no se ha seleccionado nada en el ComboBox
         if (cmbCuentas.getSelectionModel().getSelectedItem() == null) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
@@ -170,7 +171,11 @@ public class RetirDeposController extends Controller implements Initializable {
 
         // Obtener el monto total a depositar sumando los valores de los spinners
         int depositAmount = SumMoney();
+        String total = String.valueOf(depositAmount);
 
+        Movimientos mov = new Movimientos(folio, total , total, "0", selectedAccountType);
+        mov.setMovimientos(mov);
+        mov.createTxtMovements(mov);
         // Actualizar el saldo en el archivo para el tipo de cuenta seleccionado
         updateBalanceForAccountTypeInFile(folio, selectedAccountType, depositAmount);
         cmbCuentas.clear();
@@ -179,7 +184,7 @@ public class RetirDeposController extends Controller implements Initializable {
     }
 
     @FXML
-    public void onActionRetirar(ActionEvent actionEvent) {
+    public void onActionRetirar(ActionEvent actionEvent) throws IOException {
         // Verificar si no se ha seleccionado nada en el ComboBox
         if (cmbCuentas.getSelectionModel().getSelectedItem() == null) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
@@ -211,6 +216,10 @@ public class RetirDeposController extends Controller implements Initializable {
                 // Mostrar un mensaje informativo con el saldo retirado
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Retirar", getStage(),
                         "El dinero retirado fue de " + withdrawalAmount);
+
+                Movimientos mov = new Movimientos(txfFolio.getText(), String.valueOf(newBalance), "0", String.valueOf(withdrawalAmount), selectedAccountType);
+                mov.setMovimientos(mov);
+                mov.createTxtMovements(mov);
             } else {
                 // Mostrar un mensaje de error si el monto a retirar es mayor que el saldo actual
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(),

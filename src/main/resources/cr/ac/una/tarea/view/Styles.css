@@ -91,6 +91,13 @@
     -fx-background-color: #9E9FA5;
 }
 
+.mfxBtnSummary , .mfxBtnSummary:armed, .mfxBtnSummary:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #AD88C6;
+}
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Estilo configuración de cuentas
 */
@@ -190,8 +197,7 @@
 .mfxBtnCamera > ImageView {-fx-image: url('../resources/Camera.png')}
 .mfxBtnRetake > ImageView {-fx-image: url('../resources/Camera.png')}
 .mfxBtnTake > ImageView {-fx-image: url('../resources/Camera.png')}
-.mfxBtnDetail > ImageView {-fx-image: url('../resources/List.png')}
-.mfxBtnResume > ImageView {-fx-image: url('../resources/List.png')}
+.mfxBtnSummary > ImageView {-fx-image: url('../resources/Accounts.png')}
 .mfxBtnPendientes > ImageView {-fx-image: url('../resources/List.png')}
 .mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
 .mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
@@ -201,6 +207,9 @@
 .mfxBtnEditLogo > ImageView {-fx-image: url('../resources/Logo.png')}
 .mfxBtnRetiro > ImageView {-fx-image: url('../resources/Retiro.png')}
 .mfxBtnLimpiar > ImageView { -fx-image: url('../resources/escoba.png')}
+.mfxBtnRetake > ImageView {-fx-image: url('../resources/ReDo.png')}
+.mfxBtnRegalo > ImageView { -fx-image: url('../resources/Surprise.png')}
+.mfxBtnGameControl > ImageView {-fx-image: url('../resources/GameControl.png')}
  
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Imágenes insertas en las denominaciones (billetes & monedas)
@@ -279,6 +288,20 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    Estilo para Depositos & Retiros
 */
+
+.backgroundGame{
+    -fx-background-image:url('../resources/GameImage.jpg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.mfxBtnGameControl , .mfxBtnGameControl:armed, .mfxBtnGameControl:focused{
+    -fx-background-color: #69DE3F;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
 
 
 /* ?? | Sin usar

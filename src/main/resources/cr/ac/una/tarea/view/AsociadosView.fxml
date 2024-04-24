@@ -14,10 +14,15 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></MFXButton>
-            <MFXButton fx:id="btnConsultas" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnConsultas" styleClass="mfxBtnAccount" text="Consulta de Cuentas" textAlignment="CENTER" wrapText="true">
+            <MFXButton fx:id="btnConsultaDetallado" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnConsultaDetallado" prefHeight="83.0" prefWidth="140.0" styleClass="mfxBtnAccount" text="Estado Cuenta Detallado" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </MFXButton>
+            <MFXButton fx:id="btnConsultaResumido" onAction="#onActionBtnConsultaResumido" styleClass="mfxBtnSummary" text="Estado Cuenta Resumido" textAlignment="CENTER" wrapText="true">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
@@ -26,6 +31,11 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></MFXButton>
+            <MFXButton fx:id="btnJuego" onAction="#onActionBtnJuego" styleClass="mfxBtnGameControl" text="Juego">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </MFXButton>
             <MFXButton fx:id="btnSalir" buttonType="RAISED" depthLevel="LEVEL4" onAction="#onActionBtnSalir" styleClass="mfxBtnSalir" text="Salir" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />

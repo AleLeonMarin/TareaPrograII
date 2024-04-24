@@ -1,6 +1,7 @@
 package cr.ac.una.tarea.model;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Account{
 
@@ -55,11 +56,15 @@ public class Account{
         this.accountType.set(account.getAccountType());
     }
 
-    public String getId(){
+    public String getId() {
         return id.get();
     }
 
-    public void setId(String id){
+    public StringProperty idProperty() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id.set(id);
     }
 
@@ -68,6 +73,9 @@ public class Account{
     }
 
     public void setBalance(String balance){ this.balance.set(balance); }
+    public StringProperty balanceProperty() {
+        return balance;
+    }
 
     public String getAccountType(){
         return accountType.get();
@@ -79,6 +87,10 @@ public class Account{
 
     public String toStringName(){
         return accountType.get();
+    }
+
+    public StringProperty accountTypeProperty() {
+        return accountType;
     }
 
     public String toString(){

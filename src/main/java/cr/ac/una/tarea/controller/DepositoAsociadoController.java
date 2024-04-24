@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import cr.ac.una.tarea.model.Account;
+import cr.ac.una.tarea.model.Movimientos;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -74,6 +75,7 @@ public class DepositoAsociadoController extends Controller implements Initializa
     private MFXTextField txfFolio;
 
     ObservableList<Account> accounts;
+    
 
     @Override
     public void initialize() {
@@ -303,6 +305,8 @@ public class DepositoAsociadoController extends Controller implements Initializa
         }
         return contador;
     }
+
+    
 
 
 }
