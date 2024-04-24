@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.AppContext;
@@ -20,12 +21,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
-public class EstadoResumidoViewController extends Controller implements Initializable{
+public class EstadoResumidoViewController extends Controller implements Initializable {
 
     @FXML
     private MFXButton btnBuscar;
+
+    @FXML
+    private MFXButton btnLimpiar;
 
     @FXML
     private MFXComboBox<String> cmbCuentas;
@@ -61,8 +66,8 @@ public class EstadoResumidoViewController extends Controller implements Initiali
                 }
             }
 
-            for(Account cuenta : accounts){
-                if(cuenta.getId().equals(folio)){
+            for (Account cuenta : accounts) {
+                if (cuenta.getId().equals(folio)) {
                     cmbCuentas.getItems().add(cuenta.getAccountType());
                 }
             }
@@ -76,6 +81,23 @@ public class EstadoResumidoViewController extends Controller implements Initiali
     @FXML
     void onActionCmbCuentas(ActionEvent event) {
 
+        tbVMovimientos.getItems().clear();
+        tbVMovimientos.getColumns().clear();
+        populateTableView();
+        for (Account cuenta : accounts) {
+            if (cuenta.getId().equals(txfFolio.getText())
+                    && cuenta.getAccountType().equals(cmbCuentas.getSelectionModel().getSelectedItem())) {
+                tbVMovimientos.getItems().add(cuenta);
+            }
+        }
+    }
+
+    @FXML
+    void onActionBtnLimpiar(ActionEvent event) {
+        txfFolio.clear();
+        txfNombre.clear();
+        cmbCuentas.getItems().clear();
+
     }
 
     @Override
@@ -86,6 +108,7 @@ public class EstadoResumidoViewController extends Controller implements Initiali
     @Override
     public void initialize() {
 
+        cmbCuentas.getItems().clear();
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         readAsociado();
@@ -119,28 +142,38 @@ public class EstadoResumidoViewController extends Controller implements Initiali
         }
     }
 
-    public void readCuentas(){
-        try{
-        BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"));
-        String line;
+    public void readCuentas() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"));
+            String line;
 
-        while((line = br.readLine()) != null){
-            String[] parts = line.split(",");
-            String folio = parts[0];
-            String saldo = parts[1];
-            String tipoCuenta = parts[2];
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String folio = parts[0];
+                String saldo = parts[1];
+                String tipoCuenta = parts[2];
 
-            Account cuenta = new Account(folio, saldo, tipoCuenta);
-            accounts.add(cuenta);
+                Account cuenta = new Account(folio, saldo, tipoCuenta);
+                accounts.add(cuenta);
 
-            
-
-        }
-        br.close();
-        }catch(IOException e){
+            }
+            br.close();
+        } catch (IOException e) {
             Logger.getLogger(ImpresCarnetController.class.getName()).log(Level.SEVERE, "Error al buscar cuentas", e);
         }
     }
 
+    public void populateTableView() {
+
+        TableColumn<Account, String> colFolio = new TableColumn<>("Folio");
+        colFolio.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn<Account, String> colSaldo = new TableColumn<>("Saldo");
+        colSaldo.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        TableColumn<Account, String> colTipoCuenta = new TableColumn<>("Tipo de Cuenta");
+        colTipoCuenta.setCellValueFactory(new PropertyValueFactory<>("accountType"));
+
+        tbVMovimientos.getColumns().addAll(colFolio, colSaldo, colTipoCuenta);
+
+    }
 
 }

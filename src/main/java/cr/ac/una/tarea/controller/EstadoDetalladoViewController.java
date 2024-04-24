@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.model.Movimientos;
@@ -21,12 +22,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
-public class EstadoDetalladoViewController extends Controller implements Initializable{
+public class EstadoDetalladoViewController extends Controller implements Initializable {
 
     @FXML
     private MFXButton btnBuscar;
+
+    @FXML
+    private MFXButton btnLimpiar;
 
     @FXML
     private MFXComboBox<String> cmbCuentas;
@@ -44,6 +49,7 @@ public class EstadoDetalladoViewController extends Controller implements Initial
     private MFXTextField txfNombre;
 
     ObservableList<Associated> asociate;
+
     ObservableList<Account> accounts;
 
     @FXML
@@ -62,8 +68,8 @@ public class EstadoDetalladoViewController extends Controller implements Initial
                 }
             }
 
-            for(Account cuenta : accounts){
-                if(cuenta.getId().equals(folio)){
+            for (Account cuenta : accounts) {
+                if (cuenta.getId().equals(folio)) {
                     cmbCuentas.getItems().add(cuenta.getAccountType());
                 }
             }
@@ -76,6 +82,41 @@ public class EstadoDetalladoViewController extends Controller implements Initial
 
     @FXML
     void onActionCmbCuentas(ActionEvent event) {
+        tbVMovimientos.getItems().clear();
+        tbVMovimientos.getColumns().clear();
+        populateTableView();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Movimientos.txt"));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String folio = parts[0];
+                String total = parts[1];
+                String depositos = parts[2];
+                String retiros = parts[3];
+                String tipoCuenta = parts[4];
+
+                if (folio.equals(txfFolio.getText())
+                        && tipoCuenta.equals(cmbCuentas.getSelectionModel().getSelectedItem())) {
+                    Movimientos movimientos = new Movimientos(folio, total, depositos, retiros, tipoCuenta);
+                    tbVMovimientos.getItems().add(movimientos);
+                }
+            }
+            br.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void onActionBtnLimpiar(ActionEvent event) {
+        txfFolio.clear();
+        txfNombre.clear();
+        cmbCuentas.getItems().clear();
 
     }
 
@@ -86,7 +127,7 @@ public class EstadoDetalladoViewController extends Controller implements Initial
 
     @Override
     public void initialize() {
-        // TODO Auto-generated method stub
+        cmbCuentas.getItems().clear();
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         readAsociado();
@@ -119,28 +160,41 @@ public class EstadoDetalladoViewController extends Controller implements Initial
         }
     }
 
-    public void readCuentas(){
-        try{
-        BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"));
-        String line;
+    public void readCuentas() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("CuentasAsociados.txt"));
+            String line;
 
-        while((line = br.readLine()) != null){
-            String[] parts = line.split(",");
-            String folio = parts[0];
-            String saldo = parts[1];
-            String tipoCuenta = parts[2];
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String folio = parts[0];
+                String saldo = parts[1];
+                String tipoCuenta = parts[2];
 
-            Account cuenta = new Account(folio, saldo, tipoCuenta);
-            accounts.add(cuenta);
+                Account cuenta = new Account(folio, saldo, tipoCuenta);
+                accounts.add(cuenta);
 
-            
-
-        }
-        br.close();
-        }catch(IOException e){
+            }
+            br.close();
+        } catch (IOException e) {
             Logger.getLogger(ImpresCarnetController.class.getName()).log(Level.SEVERE, "Error al buscar cuentas", e);
         }
     }
 
+    public void populateTableView() {
+
+        TableColumn<Movimientos, String> colFolio = new TableColumn<>("Folio");
+        colFolio.setCellValueFactory(new PropertyValueFactory<>("folio"));
+        TableColumn<Movimientos, String> colTotal = new TableColumn<>("Total");
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        TableColumn<Movimientos, String> colDepositos = new TableColumn<>("Depositos");
+        colDepositos.setCellValueFactory(new PropertyValueFactory<>("depositos"));
+        TableColumn<Movimientos, String> colRetiros = new TableColumn<>("Retiros");
+        colRetiros.setCellValueFactory(new PropertyValueFactory<>("retiros"));
+        TableColumn<Movimientos, String> colTipoDeCuenta = new TableColumn<>("Tipo de Cuenta");
+        colTipoDeCuenta.setCellValueFactory(new PropertyValueFactory<>("tipoDeCuenta"));
+
+        tbVMovimientos.getColumns().addAll(colFolio, colTotal, colDepositos, colRetiros, colTipoDeCuenta);
+    }
 
 }

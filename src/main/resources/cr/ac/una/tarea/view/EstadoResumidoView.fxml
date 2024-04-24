@@ -22,11 +22,20 @@
                </children>
             </HBox>
             <TableView fx:id="tbVMovimientos" prefHeight="253.0" prefWidth="571.0" />
-            <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" styleClass="mfxBtnSearch">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </MFXButton>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" styleClass="mfxBtnSearch" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnLimpiar" onAction="#onActionBtnLimpiar" styleClass="mfxBtnLimpiar" text="Limpiar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

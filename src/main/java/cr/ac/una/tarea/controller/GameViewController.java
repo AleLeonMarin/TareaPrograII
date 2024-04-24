@@ -2,6 +2,7 @@ package cr.ac.una.tarea.controller;
 
 import cr.ac.una.tarea.model.Account;
 import cr.ac.una.tarea.model.Associated;
+import cr.ac.una.tarea.model.Movimientos;
 import cr.ac.una.tarea.util.AppContext;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -80,7 +81,7 @@ public class GameViewController extends Controller implements Initializable {
         }
     }
     @FXML
-    public void onActionGuess(ActionEvent actionEvent) {
+    public void onActionGuess(ActionEvent actionEvent) throws IOException{
         if (cmbCuenta.getSelectionModel().getSelectedItem() == null) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Juego", getStage(),
                     "Debe seleccionar un tipo de cuenta");
@@ -126,7 +127,7 @@ public class GameViewController extends Controller implements Initializable {
     }
 
     // Método para verificar si el numero digitado coincide con el generado aleatorio
-    public void GuessNumber(){
+    public void GuessNumber() throws IOException{
         int TypedNumber;
         String folio = txtFieldBuscarFolio.getText();
         String selectedAcc = cmbCuenta.getSelectedItem().toString();
@@ -160,8 +161,13 @@ public class GameViewController extends Controller implements Initializable {
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Numero Adivinador", getStage(),
                         "El monto deposito fue de " + Price + "₡ a la cuenta " + selectedAcc);
 
+
                 // Agregar el dinero a la cuenta del asociado
                 updateBalanceForAccountTypeInFile(folio, selectedAcc, Integer.parseInt(Price));
+
+                Movimientos mov = new Movimientos(folio, Price, Price,"0", selectedAcc);
+                mov.setMovimientos(mov);
+                mov.createTxtMovements(mov);
                 CleanScreen();
             }
 

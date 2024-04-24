@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.itextpdf.text.pdf.PdfEFStream;
 
 /**
  * JavaFX App
@@ -83,13 +82,13 @@ public class App extends Application {
 
     public void viewByAccessParameter(String accessParameter){
         if (accessParameter.equals("P")) {
-            FlowController.getInstance().goViewInWindow("ProfeView");
+            FlowController.getInstance().goMain("ProfeView");
         } 
         if (accessParameter.equals("F")){
-            FlowController.getInstance().goViewInWindow("FuncionariosView");
+            FlowController.getInstance().goMain("FuncionariosView");
         }
         if(accessParameter.equals("A")){
-            FlowController.getInstance().goViewInWindow("AsociadosView");
+            FlowController.getInstance().goMain("AsociadosView");
         }
     }
 
