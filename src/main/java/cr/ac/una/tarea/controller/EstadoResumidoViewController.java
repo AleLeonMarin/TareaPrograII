@@ -16,6 +16,9 @@ import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.util.HashSet;
+import java.util.Set;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
 public class EstadoResumidoViewController extends Controller implements Initializable {
-
+  
     @FXML
     private MFXButton btnBuscar;
 
@@ -49,7 +52,8 @@ public class EstadoResumidoViewController extends Controller implements Initiali
 
     ObservableList<Associated> asociate;
     ObservableList<Account> accounts;
-
+    ObservableList<Account> addedAccounts = FXCollections.observableArrayList();
+    
     @FXML
     void onActionBtnBuscar(ActionEvent event) {
 
@@ -59,6 +63,7 @@ public class EstadoResumidoViewController extends Controller implements Initiali
 
         try {
 
+            boolean found = false;
             String folio = txfFolio.getText();
             for (Associated asociado : asociate) {
                 if (asociado.getFolio().equals(folio)) {
@@ -69,7 +74,13 @@ public class EstadoResumidoViewController extends Controller implements Initiali
             for (Account cuenta : accounts) {
                 if (cuenta.getId().equals(folio)) {
                     cmbCuentas.getItems().add(cuenta.getAccountType());
+                    found = true;
+                    break;
                 }
+            }
+                     
+            if (!found){
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Folio no encontrado");
             }
 
         } catch (Exception e) {
@@ -80,14 +91,22 @@ public class EstadoResumidoViewController extends Controller implements Initiali
 
     @FXML
     void onActionCmbCuentas(ActionEvent event) {
-
-        tbVMovimientos.getItems().clear();
+        tbVMovimientos.getItems().clear(); // Clear TableView
         tbVMovimientos.getColumns().clear();
         populateTableView();
+
+        String selectedFolio = txfFolio.getText();
+        String selectedAccountType = cmbCuentas.getSelectionModel().getSelectedItem();
+
+        Set<String> addedNames = new HashSet<>(); // Keep track of added names
+
         for (Account cuenta : accounts) {
-            if (cuenta.getId().equals(txfFolio.getText())
-                    && cuenta.getAccountType().equals(cmbCuentas.getSelectionModel().getSelectedItem())) {
-                tbVMovimientos.getItems().add(cuenta);
+            if (cuenta.getId().equals(selectedFolio) && cuenta.getAccountType().equals(selectedAccountType)) {
+                // Check if the name is already added, if not, add the account to the TableView
+                if (!addedNames.contains(cuenta.getId())) {
+                    tbVMovimientos.getItems().add(cuenta);
+                    addedNames.add(cuenta.getId()); // Add the name to the set
+                }
             }
         }
     }
@@ -97,7 +116,7 @@ public class EstadoResumidoViewController extends Controller implements Initiali
         txfFolio.clear();
         txfNombre.clear();
         cmbCuentas.getItems().clear();
-
+        addedAccounts.clear();
     }
 
     @Override
@@ -107,13 +126,15 @@ public class EstadoResumidoViewController extends Controller implements Initiali
 
     @Override
     public void initialize() {
-
+        txfFolio.clear();
         cmbCuentas.getItems().clear();
+        tbVMovimientos.getItems().clear(); // Clear TableView
+        addedAccounts.clear();
+        
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         readAsociado();
         readCuentas();
-        // TODO Auto-generated method stub
     }
 
     public void readAsociado() {
@@ -171,7 +192,7 @@ public class EstadoResumidoViewController extends Controller implements Initiali
         colSaldo.setCellValueFactory(new PropertyValueFactory<>("balance"));
         TableColumn<Account, String> colTipoCuenta = new TableColumn<>("Tipo de Cuenta");
         colTipoCuenta.setCellValueFactory(new PropertyValueFactory<>("accountType"));
-
+        
         tbVMovimientos.getColumns().addAll(colFolio, colSaldo, colTipoCuenta);
 
     }

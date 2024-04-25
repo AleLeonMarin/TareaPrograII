@@ -2,10 +2,8 @@
 
 *.jar
 *.class
-*.txt
-*.jpg
 *.pdf
-*.png
+
 
 #Directorios
 

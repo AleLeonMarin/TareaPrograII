@@ -302,9 +302,3 @@
     -fx-pref-height: 60;
     -fx-text-alignment: center;
 }
-
-
-/* ?? | Sin usar
-.overground{
-    -fx-background-color: rgba(255,255,255,0.1);
-}

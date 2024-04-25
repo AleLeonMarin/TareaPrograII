@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class GameViewController extends Controller implements Initializable {
 
     Random random = new Random();
-    private final int GuessedNumber = new Random().nextInt(100) + 1;
+    private int GuessedNumber = new Random().nextInt(100) + 1;
 
     String Price = "20000";
     String filePathCuentas = "CuentasAsociados.txt";
@@ -168,6 +168,7 @@ public class GameViewController extends Controller implements Initializable {
                 Movimientos mov = new Movimientos(folio, Price, Price,"0", selectedAcc);
                 mov.setMovimientos(mov);
                 mov.createTxtMovements(mov);
+                ResetValues();
                 CleanScreen();
             }
 
@@ -242,5 +243,10 @@ public class GameViewController extends Controller implements Initializable {
         cmbCuenta.getItems().clear();
         txtFieldBuscarFolio.clear();
         txtFieldIngresar.clear();
+    }
+    
+    void ResetValues(){
+        Price = "20000";
+        GuessedNumber = new Random().nextInt(100) + 1;
     }
 }
