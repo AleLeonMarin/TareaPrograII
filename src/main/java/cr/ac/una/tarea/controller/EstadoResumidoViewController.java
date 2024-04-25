@@ -59,6 +59,8 @@ public class EstadoResumidoViewController extends Controller implements Initiali
 
         if (txfFolio.getText().isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio");
+            txfFolio.clear();
+            return;
         }
 
         try {
@@ -130,6 +132,7 @@ public class EstadoResumidoViewController extends Controller implements Initiali
         cmbCuentas.getItems().clear();
         tbVMovimientos.getItems().clear(); // Clear TableView
         addedAccounts.clear();
+        txfNombre.clear();
         
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));

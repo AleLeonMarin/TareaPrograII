@@ -80,6 +80,8 @@ public class RetirDeposController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+        txfFolio.clear();
+        cmbCuentas.getItems().clear();
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         ReadFolio();
         readAsociado();

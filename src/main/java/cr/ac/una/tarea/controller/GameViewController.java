@@ -52,6 +52,9 @@ public class GameViewController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+        txtFieldIngresar.clear();
+        txtFieldBuscarFolio.clear();
+        cmbCuenta.getItems().clear();
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         ReadFolio();

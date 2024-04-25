@@ -58,36 +58,35 @@ public class EstadoDetalladoViewController extends Controller implements Initial
         if (txfFolio.getText().isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio");
             return;
-    }
+        }
 
-    try {
-        String folio = txfFolio.getText();
-        boolean found = false;
-        for (Associated asociado : asociate) {
-            if (asociado.getFolio().equals(folio)) {
-                txfNombre.setText(asociado.getName());
-                found = true;
-                break; // No need to continue searching if the folio is found
-            }
-        }
-        
-        if (!found){
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Folio no encontrado");
-            return;
-        }
- 
-        cmbCuentas.getItems().clear();
-        for (Account cuenta : accounts) {
-            if (cuenta.getId().equals(folio)) {
-                if (!cmbCuentas.getItems().contains(cuenta.getAccountType())) {
-                    cmbCuentas.getItems().add(cuenta.getAccountType());
+        try {
+            String folio = txfFolio.getText();
+            boolean found = false;
+            for (Associated asociado : asociate) {
+                if (asociado.getFolio().equals(folio)) {
+                    txfNombre.setText(asociado.getName());
                 }
             }
-        }
 
-    } catch (Exception e) {
-        new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Error al buscar el folio");
-    }
+            cmbCuentas.getItems().clear();
+            for (Account cuenta : accounts) {
+                if (cuenta.getId().equals(folio)) {
+                    if (!cmbCuentas.getItems().contains(cuenta.getAccountType())) {
+                        cmbCuentas.getItems().add(cuenta.getAccountType());
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            
+             if (!found){
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Folio no encontrado");
+            }
+
+        } catch (Exception e) {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Error al buscar el folio");
+        }
 
     }
 
@@ -143,6 +142,7 @@ public class EstadoDetalladoViewController extends Controller implements Initial
     public void initialize() {
         txfFolio.clear();
         cmbCuentas.getItems().clear();
+        txfNombre.clear();
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         accounts = ((ObservableList<Account>) AppContext.getInstance().get("Cuentas"));
         readAsociado();

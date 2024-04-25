@@ -79,6 +79,8 @@ public class DepositoAsociadoController extends Controller implements Initializa
 
     @Override
     public void initialize() {
+        cmbCuentas.getItems().clear();
+        txfFolio.clear();
         // TODO Auto-generated method stub
         accounts = (ObservableList<Account>) AppContext.getInstance().get("Cuentas");
         readAsociado();

@@ -43,7 +43,14 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
     @Override
     public void initialize() {
-
+        txfNombre.clear();
+        txfApellido.clear();
+        txfEdad.clear();
+        File file = new File("Photos/foto1.jpg");
+        if (file.exists()) {
+            file.delete();
+            imgVFoto.setImage(null);
+        }
     }
 
     @Override
@@ -64,7 +71,7 @@ public class RegistrarAsociadoController extends Controller implements Initializ
             Image image = new Image(file_photo.toURI().toString());
             imgVFoto.setImage(image);
         } else {
-
+          
         }
     }
 
