@@ -136,7 +136,8 @@ public class DepositoAsociadoController extends Controller implements Initializa
     @FXML
     void onActionBtnBuscar(ActionEvent event) {
 
-        String folio = txfFolio.getText();
+        String folio = txfFolio.getText().toUpperCase();
+        txfFolio.setText(folio);
         System.out.println("Folio: " + folio);
         if (folio.isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),

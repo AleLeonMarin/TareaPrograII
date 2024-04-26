@@ -57,34 +57,48 @@ public class EstadoDetalladoViewController extends Controller implements Initial
 
         if (txfFolio.getText().isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio");
+            txfFolio.clear();
             return;
         }
-
+    
         try {
-            String folio = txfFolio.getText();
-            boolean found = false;
+            String folio = txfFolio.getText().toUpperCase();
+            txfFolio.setText(folio); // Convertir a mayúsculas
+    
+            boolean asociadoEncontrado = false;
+    
+            // Buscar asociado
             for (Associated asociado : asociate) {
-                if (asociado.getFolio().equals(folio)) {
+                if (asociado.getFolio().equalsIgnoreCase(folio)) { 
                     txfNombre.setText(asociado.getName());
+                    asociadoEncontrado = true;
+                    break; 
                 }
             }
-
-            cmbCuentas.getItems().clear();
+    
+            if (!asociadoEncontrado) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Asociado no encontrado");
+                return; 
+            }
+    
+            boolean cuentasEncontradas = false;
+    
+            // Buscar cuentas asociadas
             for (Account cuenta : accounts) {
-                if (cuenta.getId().equals(folio)) {
-                    if (!cmbCuentas.getItems().contains(cuenta.getAccountType())) {
-                        cmbCuentas.getItems().add(cuenta.getAccountType());
-                        found = true;
-                        break;
-                    }
+                if (cuenta.getId().equalsIgnoreCase(folio)) { 
+                    cmbCuentas.getItems().add(cuenta.getAccountType());
+                    cuentasEncontradas = true;
                 }
             }
-            
-             if (!found){
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Folio no encontrado");
+    
+            // Mostrar mensaje dependiendo de si se encontraron cuentas o no
+            if (!cuentasEncontradas) {
+                new Mensaje().showModal(Alert.AlertType.WARNING, "Buscar Folio", getStage(), "No se encontraron cuentas asociadas al folio");
+            } else {
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(), "Asociado encontrado");
             }
-
-        } catch (Exception e) {
+    
+        } catch (NullPointerException e) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Error al buscar el folio");
         }
 
@@ -111,10 +125,10 @@ public class EstadoDetalladoViewController extends Controller implements Initial
                 if (folio.equals(txfFolio.getText())
                         && tipoCuenta.equals(cmbCuentas.getSelectionModel().getSelectedItem())) {
                     Movimientos movimientos = new Movimientos(folio, total, depositos, retiros, tipoCuenta);
-                       // Verificar si la fila ya existe en la TableView
-                if (!filaExisteEnTableView(movimientos)) {
-                    tbVMovimientos.getItems().add(movimientos);
-                }
+                    // Verificar si la fila ya existe en la TableView
+                    if (!filaExisteEnTableView(movimientos)) {
+                        tbVMovimientos.getItems().add(movimientos);
+                    }
                 }
             }
             br.close();
@@ -192,7 +206,7 @@ public class EstadoDetalladoViewController extends Controller implements Initial
             }
             br.close();
         } catch (IOException e) {
-            Logger.getLogger(ImpresCarnetController.class.getName()).log(Level.SEVERE, "Error al buscar cuentas", e);
+            Logger.getLogger(EstadoDetalladoViewController.class.getName()).log(Level.SEVERE, "Error al buscar cuentas", e);
         }
     }
 
@@ -211,15 +225,15 @@ public class EstadoDetalladoViewController extends Controller implements Initial
 
         tbVMovimientos.getColumns().addAll(colFolio, colTotal, colDepositos, colRetiros, colTipoDeCuenta);
     }
-    
+
     // Método para verificar si la fila ya existe en la TableView
     private boolean filaExisteEnTableView(Movimientos movimientos) {
-    for (Movimientos fila : tbVMovimientos.getItems()) {
-        if (fila.equals(movimientos)) {
-            return true;
+        for (Movimientos fila : tbVMovimientos.getItems()) {
+            if (fila.equals(movimientos)) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
 
 }

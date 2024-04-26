@@ -67,39 +67,58 @@ public class EditarAsociadoController extends Controller implements Initializabl
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
     @FXML
-        // Verificar que el MFXTextField no este vacío
-        void onActionBuscar(ActionEvent event) {
-            System.out.println(txtFolioAsociado.getText());
+    // Verificar que el MFXTextField no este vacío
+    void onActionBuscar(ActionEvent event) {
+        boolean encontrado = false;
+        System.out.println(txtFolioAsociado.getText());
+        ;
 
-            if (txtFolioAsociado.getText().isEmpty()) {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio");
-            }else{
-    
+        if (txtFolioAsociado.getText().isEmpty() && txfNombre.getText().isEmpty()) {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
+                    "Debe ingresar un folio o un nombre");
+        } else {
+
             try {
-                String folio = txtFolioAsociado.getText();
-    
+                String folio = txtFolioAsociado.getText().toUpperCase();
+                txtFolioAsociado.setText(folio);
+
+                String name = txfNombre.getText();
+                if (!name.isEmpty()) {
+                    name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+                }
+                txfNombre.setText(name);
+
                 for (Associated associate : asociate) {
-                    if (associate.getFolio().equals(folio)) {
-                        txfNombre.setText(associate.getName().toString());
-                        txtEdad.setText(associate.getAge().toString());
+                    if (associate.getFolio().equals(folio) || associate.getName().toString().equalsIgnoreCase(name)) {
+                        txfNombre.setText(associate.getName().toString() + " " + associate.getLastName().toString());
+                        txtFolioAsociado.setText(associate.getFolio().toString());
                         String photo = associate.getFolio() + ".jpg";
                         String path = "./Photos/" + photo;
                         File file = new File(path);
-    
-                        if (file.exists()){
-                            Image image = new Image(file.toURI().toString());
+
+                        if (file.exists()) {
+                            javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
                             imgFoto.setImage(image);
                         }
-    
+                        System.out.println("Asociado encontrado");
+
+                        encontrado = true;
                     }
                 }
+                if (!encontrado) {
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Asociado", getStage(),
+                            "Asociado no encontrado");
+                } else {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Asociado", getStage(),
+                            "Asociado encontrado");
+                }
+
             } catch (Exception e) {
-                Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE,
-                        "Error al buscar asociado", e);
-    
+                e.printStackTrace();
             }
         }
     }
@@ -118,14 +137,14 @@ public class EditarAsociadoController extends Controller implements Initializabl
 
         // Iterar la lista de los asociados
         for (int i = 0; i < asociate.size(); i++) {
-                Associated associate = asociate.get(i);
-                if (associate.getFolio().equals(folio)) {
+            Associated associate = asociate.get(i);
+            if (associate.getFolio().equals(folio)) {
 
-                    associate.setName(txfNombre.getText());
-                    associate.setAge(txtEdad.getText());
-                    Act = true;
-                    break;
-                }
+                associate.setName(txfNombre.getText());
+                associate.setAge(txtEdad.getText());
+                Act = true;
+                break;
+            }
         }
 
         if (Act) {
@@ -146,10 +165,13 @@ public class EditarAsociadoController extends Controller implements Initializabl
                 }
                 String content = sb.toString();
 
-                /* La librería [java.nio.file] permite trabajar con archivos y directorios
-                que contiene un método estático que escribe datos en un archivo por 2 argumentos
-                1. → file.toPath(), convierte el archivo en un objeto Path
-                2. → content.getBytes() convierte el contenido en un byte array */
+                /*
+                 * La librería [java.nio.file] permite trabajar con archivos y directorios
+                 * que contiene un método estático que escribe datos en un archivo por 2
+                 * argumentos
+                 * 1. → file.toPath(), convierte el archivo en un objeto Path
+                 * 2. → content.getBytes() convierte el contenido en un byte array
+                 */
                 java.nio.file.Files.write(file.toPath(), content.getBytes());
 
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Actualizar Asociado", getStage(),
@@ -175,61 +197,61 @@ public class EditarAsociadoController extends Controller implements Initializabl
     }
 
     @FXML
-public void onActionDelete(ActionEvent actionEvent) {
-    if (txtFolioAsociado.getText().isEmpty()) {
-        new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(),
-                "Debe ingresar un folio");
-        return;
-    }
-
-    String folio = txtFolioAsociado.getText();
-    boolean AsoRemovido = false;
-
-    // Iterar a través de la lista de asociados
-    for (int i = 0; i < asociate.size(); i++) {
-        Associated associate = asociate.get(i);
-        if (associate.getFolio().equals(folio)) {
-            asociate.remove(i);
-            AsoRemovido = true;
-            break;
-        }
-    }
-
-    if (AsoRemovido) {
-        // Rewrite the file with the updated list of associates
-        try {
-            File file = new File("Asociados.txt");
-            file.createNewFile(); // Create the file if it doesn't exist
-
-            StringBuilder sb = new StringBuilder();
-            for (Associated associate : asociate) {
-                sb.append(associate.getName()).append(",")
-                        .append(associate.getLastName()).append(",")
-                        .append(associate.getFolio()).append(",")
-                        .append(associate.getAge()).append(",")
-                        .append(associate.getPhoto()).append("\n");
-            }
-            String content = sb.toString();
-            Files.write(file.toPath(), content.getBytes());
-
-            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Asociado", getStage(),
-                    "Asociado eliminado exitosamente");
-            // Clear the text fields after removing the associate
-            txfNombre.clear();
-            txtEdad.clear();
-            imgFoto.setImage(null);
-            txtFolioAsociado.clear();
-        } catch (IOException ex) {
-            Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE,
-                    "Error al escribir archivo", ex);
+    public void onActionDelete(ActionEvent actionEvent) {
+        if (txtFolioAsociado.getText().isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(),
-                    "Error al eliminar asociado del archivo");
+                    "Debe ingresar un folio");
+            return;
         }
-    } else {
-        new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(),
-                "Asociado no encontrado!");
+
+        String folio = txtFolioAsociado.getText();
+        boolean AsoRemovido = false;
+
+        // Iterar a través de la lista de asociados
+        for (int i = 0; i < asociate.size(); i++) {
+            Associated associate = asociate.get(i);
+            if (associate.getFolio().equals(folio)) {
+                asociate.remove(i);
+                AsoRemovido = true;
+                break;
+            }
+        }
+
+        if (AsoRemovido) {
+            // Rewrite the file with the updated list of associates
+            try {
+                File file = new File("Asociados.txt");
+                file.createNewFile(); // Create the file if it doesn't exist
+
+                StringBuilder sb = new StringBuilder();
+                for (Associated associate : asociate) {
+                    sb.append(associate.getName()).append(",")
+                            .append(associate.getLastName()).append(",")
+                            .append(associate.getFolio()).append(",")
+                            .append(associate.getAge()).append(",")
+                            .append(associate.getPhoto()).append("\n");
+                }
+                String content = sb.toString();
+                Files.write(file.toPath(), content.getBytes());
+
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Asociado", getStage(),
+                        "Asociado eliminado exitosamente");
+                // Clear the text fields after removing the associate
+                txfNombre.clear();
+                txtEdad.clear();
+                imgFoto.setImage(null);
+                txtFolioAsociado.clear();
+            } catch (IOException ex) {
+                Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE,
+                        "Error al escribir archivo", ex);
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(),
+                        "Error al eliminar asociado del archivo");
+            }
+        } else {
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(),
+                    "Asociado no encontrado!");
+        }
     }
-}
 
     @FXML
     public void onActionOpenFiles(ActionEvent actionEvent) {

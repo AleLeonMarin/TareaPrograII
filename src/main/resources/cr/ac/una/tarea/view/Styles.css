@@ -302,3 +302,15 @@
     -fx-pref-height: 60;
     -fx-text-alignment: center;
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Estilo para el juego 
+*/
+
+.mfxBtnRegalo , .mfxBtnRegalo:armed, .mfxBtnRegalo:focused{
+    -fx-background-color: #A1EEBD;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
+

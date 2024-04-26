@@ -125,7 +125,10 @@ public class AperturaCuentasViewController extends Controller implements Initial
 
     @FXML
     public void onActionBtnBuscar(ActionEvent actionEvent) {
-        String folio = txfFolio.getText();
+
+        boolean asociadoEncontrado = false;
+        String folio = txfFolio.getText().toUpperCase();
+        txfFolio.setText(folio);
         // Busca un folio vacío
         if (folio.isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
@@ -136,8 +139,18 @@ public class AperturaCuentasViewController extends Controller implements Initial
         for (Associated associated : asociate) {
             if (associated.getFolio().equals(folio)) {
                 txfNombre.setText(associated.getName());
+                asociadoEncontrado = true;
                   break;
             }
+        }
+
+        if(!asociadoEncontrado){
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Asociado", getStage(),
+                    "Asociado no encontrado");
+            return;
+        }else{
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Asociado", getStage(),
+                    "Asociado encontrado");
         }
 
         // Clear listVAbiertas before loading new account types

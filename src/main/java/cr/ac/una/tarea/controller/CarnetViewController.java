@@ -76,6 +76,9 @@ public class CarnetViewController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+
+        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Carnet", getStage(),
+                "Debe buscar asociado por nombre o por folio en los espacios dados");
         cooperativas = ((ObservableList<Cooperativa>) AppContext.getInstance().get("cooperativa"));
         asociate = ((ObservableList<Associated>) AppContext.getInstance().get("Asociados"));
         cargarCoopeInfo();
@@ -87,26 +90,43 @@ public class CarnetViewController extends Controller implements Initializable {
     @FXML
     void onActionBtnBuscar(ActionEvent event) {
 
+        boolean asociadoEncontrado = false;
+
         if (txfFolio.getText().isEmpty() && txfNombre.getText().isEmpty()) {
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Debe ingresar un folio o un nombre");
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
+                    "Debe ingresar un folio o un nombre");
         } else {
-            String folio = txfFolio.getText();
+            String folio = txfFolio.getText().toUpperCase();
+            txfFolio.setText(folio);
+
             String name = txfNombre.getText();
-        
+            if (!name.isEmpty()) {
+                name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+            }
+            txfNombre.setText(name);
+
             for (Associated associate : asociate) {
-                if (associate.getFolio().equals(folio) || associate.getName().toString().contains(name)) {
+                if (associate.getFolio().equals(folio) || associate.getName().toString().equalsIgnoreCase(name)) {
                     txfNombre.setText(associate.getName().toString() + " " + associate.getLastName().toString());
                     txfFolio.setText(associate.getFolio().toString());
                     String photo = associate.getFolio() + ".jpg";
                     String path = "./Photos/" + photo;
                     File file = new File(path);
-        
+
                     if (file.exists()) {
                         javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
                         imgVFoto.setImage(image);
                     }
                     System.out.println("Asociado encontrado");
+
+                    asociadoEncontrado = true;
                 }
+            }
+            if (!asociadoEncontrado) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Asociado", getStage(), "Asociado no encontrado");
+            } else {
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Asociado", getStage(),
+                        "Asociado encontrado");
             }
         }
 
@@ -134,7 +154,6 @@ public class CarnetViewController extends Controller implements Initializable {
             float imageWidth = bufferedImage.getWidth();
             float imageHeight = bufferedImage.getHeight();
             float scale = Math.min(pageWidth / imageWidth, pageHeight / imageHeight);
-            
 
             Image imagen = Image.getInstance(output.getPath());
             imagen.scaleToFit(imageWidth * scale, imageHeight * scale);
@@ -152,7 +171,7 @@ public class CarnetViewController extends Controller implements Initializable {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             txfFolio.clear();
             txfNombre.clear();
             imgVFoto.setImage(null);

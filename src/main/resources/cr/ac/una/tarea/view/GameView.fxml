@@ -17,37 +17,37 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="250.0" prefWidth="774.0" spacing="100.0">
                      <children>
-                        <MFXButton fx:id="btnGenerar" onAction="#onActionGuess" prefHeight="60.0" prefWidth="139.0" styleClass="mfxBtnRegalo" stylesheets="@Styles.css" text="Adivinar...">
-                           <graphic>
-                              <ImageView fitHeight="44.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
+                        <MFXTextField fx:id="txtFieldBuscarFolio" floatingText="Ingrese un folio" prefHeight="50.0" prefWidth="161.0">
                            <HBox.margin>
-                              <Insets bottom="70.0" />
+                              <Insets top="100.0" />
                            </HBox.margin>
-                        </MFXButton>
+                        </MFXTextField>
+                        <MFXComboBox fx:id="cmbCuenta" floatingText="Seleccionar Cuenta" prefHeight="50.0" prefWidth="177.0" />
+                        <MFXTextField fx:id="txtFieldIngresar" floatingText="Ingrese un numero" prefHeight="50.0" prefWidth="170.0">
+                           <HBox.margin>
+                              <Insets right="10.0" top="100.0" />
+                           </HBox.margin>
+                        </MFXTextField>
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="221.0" prefWidth="774.0" spacing="100.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="220.0" prefWidth="856.0" spacing="100.0">
                      <children>
                         <MFXButton fx:id="btnBuscarFolio" onAction="#onActionSearch" prefHeight="96.0" prefWidth="160.0" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
                            <graphic>
                               <ImageView fitHeight="52.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                            <HBox.margin>
-                              <Insets />
+                              <Insets top="80.0" />
                            </HBox.margin>
                         </MFXButton>
-                        <MFXTextField fx:id="txtFieldIngresar" floatingText="Ingrese un numero" prefHeight="50.0" prefWidth="130.0">
+                        <MFXButton fx:id="btnGenerar" onAction="#onActionGuess" prefHeight="60.0" prefWidth="139.0" styleClass="mfxBtnRegalo" stylesheets="@Styles.css" text="Adivinar " wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="44.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
                            <HBox.margin>
-                              <Insets top="100.0" />
+                              <Insets top="80.0" />
                            </HBox.margin>
-                        </MFXTextField>
-                        <MFXTextField fx:id="txtFieldBuscarFolio" floatingText="Ingrese un folio" prefHeight="50.0" prefWidth="130.0">
-                           <HBox.margin>
-                              <Insets top="100.0" />
-                           </HBox.margin>
-                        </MFXTextField>
-                        <MFXComboBox fx:id="cmbCuenta" floatingText="Buscar Cuenta" prefHeight="50.0" prefWidth="130.0" />
+                        </MFXButton>
                      </children>
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />

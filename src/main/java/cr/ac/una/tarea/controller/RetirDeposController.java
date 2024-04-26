@@ -138,7 +138,13 @@ public class RetirDeposController extends Controller implements Initializable {
 
     @FXML
     void onActionBtnBuscar(ActionEvent event) {
-        String folio = txfFolio.getText();
+
+        boolean folioEncontrado = false;
+        boolean cuentaEncontrada = false;
+
+        String folio = txfFolio.getText().toUpperCase();
+        txfFolio.setText(folio);
+
         if (folio.isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
                     "Debe ingresar un folio");
@@ -148,9 +154,15 @@ public class RetirDeposController extends Controller implements Initializable {
         // Limpiar antes de agregar al ComboBox
         cmbCuentas.getItems().clear(); // **No borrar linea
         List<String> accountTypes = searchFolioInFile(folio);
+        folioEncontrado = true;
+        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
+                "Folio encontrado");
 
         if (!accountTypes.isEmpty()) {
             cmbCuentas.setItems(FXCollections.observableArrayList(accountTypes));
+            cuentaEncontrada = true;
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
+                    "Cuentas asociadas al folio " + folio + " encontradas");
         } else {
             new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
                     "No se encontraron cuentas asociadas al folio " + folio);
@@ -158,7 +170,7 @@ public class RetirDeposController extends Controller implements Initializable {
     }
 
     @FXML
-    public void onActionDepositar(ActionEvent event) throws IOException{
+    public void onActionDepositar(ActionEvent event) throws IOException {
         // Verificar si no se ha seleccionado nada en el ComboBox
         if (cmbCuentas.getSelectionModel().getSelectedItem() == null) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
@@ -175,7 +187,7 @@ public class RetirDeposController extends Controller implements Initializable {
         int depositAmount = SumMoney();
         String total = String.valueOf(depositAmount);
 
-        Movimientos mov = new Movimientos(folio, total , total, "0", selectedAccountType);
+        Movimientos mov = new Movimientos(folio, total, total, "0", selectedAccountType);
         mov.setMovimientos(mov);
         mov.createTxtMovements(mov);
         // Actualizar el saldo en el archivo para el tipo de cuenta seleccionado
@@ -219,11 +231,13 @@ public class RetirDeposController extends Controller implements Initializable {
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Retirar", getStage(),
                         "El dinero retirado fue de " + withdrawalAmount);
 
-                Movimientos mov = new Movimientos(txfFolio.getText(), String.valueOf(newBalance), "0", String.valueOf(withdrawalAmount), selectedAccountType);
+                Movimientos mov = new Movimientos(txfFolio.getText(), String.valueOf(newBalance), "0",
+                        String.valueOf(withdrawalAmount), selectedAccountType);
                 mov.setMovimientos(mov);
                 mov.createTxtMovements(mov);
             } else {
-                // Mostrar un mensaje de error si el monto a retirar es mayor que el saldo actual
+                // Mostrar un mensaje de error si el monto a retirar es mayor que el saldo
+                // actual
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(),
                         "El saldo disponible es insuficiente para realizar este retiro");
             }
@@ -232,7 +246,7 @@ public class RetirDeposController extends Controller implements Initializable {
                     "No se pudo encontrar el saldo actual para el tipo de cuenta " + selectedAccountType);
         }
 
-        //  - - - - - - - - - - - - - - - -
+        // - - - - - - - - - - - - - - - -
         cmbCuentas.clear();
         cmbCuentas.getSelectionModel().clearSelection();
         CleanSpinners();
@@ -261,7 +275,8 @@ public class RetirDeposController extends Controller implements Initializable {
             br.close();
 
         } catch (IOException ex) {
-            Logger.getLogger(AperturaCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+            Logger.getLogger(AperturaCuentasViewController.class.getName()).log(Level.SEVERE, "Error al leer archivo",
+                    ex);
         }
 
     }
@@ -349,7 +364,8 @@ public class RetirDeposController extends Controller implements Initializable {
         }
     }
 
-    // Limpiar spinners seleccionados con las denominaciones, después de retirar | depositar
+    // Limpiar spinners seleccionados con las denominaciones, después de retirar |
+    // depositar
     public void CleanSpinners() {
         SpinnerCinco.getValueFactory().setValue(0);
         SpinnerDiez.getValueFactory().setValue(0);
@@ -364,7 +380,8 @@ public class RetirDeposController extends Controller implements Initializable {
         SpinnerVeintemil.getValueFactory().setValue(0);
     }
 
-    // Actualizar el balance para un tipo de cuenta en el archivo al agregar una nueva suma
+    // Actualizar el balance para un tipo de cuenta en el archivo al agregar una
+    // nueva suma
     private void updateBalanceForAccountTypeInFile(String folio, String accountType, int additionalAmount) {
         // Lee el txt existente
         String currentBalanceStr = getBalanceFromAccountType(folio, accountType);
@@ -423,7 +440,7 @@ public class RetirDeposController extends Controller implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(RetirDeposController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
         }
-        return null;  // Retorna nul si el balance para el tipo de cuenta especifica no se encuentra
+        return null; // Retorna nul si el balance para el tipo de cuenta especifica no se encuentra
     }
 
 }

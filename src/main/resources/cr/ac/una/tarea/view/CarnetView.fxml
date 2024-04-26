@@ -16,8 +16,8 @@
                <children>
                   <Label fx:id="lblCoope" layoutX="31.0" layoutY="14.0" prefHeight="38.0" prefWidth="195.0" text="Label" />
                   <ImageView fx:id="imgVLogo" fitHeight="83.0" fitWidth="108.0" layoutX="304.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-                  <MFXTextField fx:id="txfNombre" alignment="CENTER" layoutX="66.0" layoutY="109.0" prefHeight="51.0" styleClass="mfx-text-field-carnet" />
-                  <MFXTextField fx:id="txfFolio" alignment="CENTER" layoutX="310.0" layoutY="109.0" styleClass="mfx-text-field-carnet" />
+                  <MFXTextField fx:id="txfNombre" alignment="CENTER" floatingText="Nombre" layoutX="66.0" layoutY="109.0" prefHeight="51.0" styleClass="mfx-text-field-carnet" />
+                  <MFXTextField fx:id="txfFolio" alignment="CENTER" floatingText="Folio" layoutX="310.0" layoutY="109.0" styleClass="mfx-text-field-carnet" />
                   <ImageView fx:id="imgVFoto" fitHeight="128.0" fitWidth="180.0" layoutX="212.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>

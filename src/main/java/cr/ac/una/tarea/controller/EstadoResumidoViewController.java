@@ -17,6 +17,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,33 +63,47 @@ public class EstadoResumidoViewController extends Controller implements Initiali
             txfFolio.clear();
             return;
         }
-
+    
         try {
-
-            boolean found = false;
-            String folio = txfFolio.getText();
+            String folio = txfFolio.getText().toUpperCase();
+            txfFolio.setText(folio); // Convertir a mayúsculas
+    
+            boolean asociadoEncontrado = false;
+    
+            // Buscar asociado
             for (Associated asociado : asociate) {
-                if (asociado.getFolio().equals(folio)) {
+                if (asociado.getFolio().equalsIgnoreCase(folio)) { 
                     txfNombre.setText(asociado.getName());
+                    asociadoEncontrado = true;
+                    break; 
                 }
             }
-
+    
+            if (!asociadoEncontrado) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Asociado no encontrado");
+                return; 
+            }
+    
+            boolean cuentasEncontradas = false;
+    
+            // Buscar cuentas asociadas
             for (Account cuenta : accounts) {
-                if (cuenta.getId().equals(folio)) {
+                if (cuenta.getId().equalsIgnoreCase(folio)) { 
                     cmbCuentas.getItems().add(cuenta.getAccountType());
-                    found = true;
-                    break;
+                    cuentasEncontradas = true;
                 }
             }
-                     
-            if (!found){
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Folio no encontrado");
+    
+            // Mostrar mensaje dependiendo de si se encontraron cuentas o no
+            if (!cuentasEncontradas) {
+                new Mensaje().showModal(Alert.AlertType.WARNING, "Buscar Folio", getStage(), "No se encontraron cuentas asociadas al folio");
+            } else {
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(), "Asociado encontrado");
             }
-
-        } catch (Exception e) {
+    
+        } catch (NullPointerException e) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(), "Error al buscar el folio");
         }
-
     }
 
     @FXML
@@ -183,7 +198,7 @@ public class EstadoResumidoViewController extends Controller implements Initiali
             }
             br.close();
         } catch (IOException e) {
-            Logger.getLogger(ImpresCarnetController.class.getName()).log(Level.SEVERE, "Error al buscar cuentas", e);
+            Logger.getLogger(EstadoResumidoViewController.class.getName()).log(Level.SEVERE, "Error al buscar cuentas", e);
         }
     }
 

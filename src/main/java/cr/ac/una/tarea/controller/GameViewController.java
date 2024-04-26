@@ -66,21 +66,33 @@ public class GameViewController extends Controller implements Initializable {
     }
 
     public void onActionSearch(ActionEvent actionEvent) {
-        String folio = txtFieldBuscarFolio.getText();
+        boolean folioEncontrado = false;
+        boolean cuentaEncontrada = false;
 
-        if (txtFieldBuscarFolio.getText().isEmpty()) {
+        String folio = txtFieldBuscarFolio.getText().toUpperCase();
+        txtFieldBuscarFolio.setText(folio);
+
+        if (folio.isEmpty()) {
             new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
                     "Debe ingresar un folio");
+            return;
         }
 
-        cmbCuenta.getItems().clear();
+        // Limpiar antes de agregar al ComboBox
+        cmbCuenta.getItems().clear(); // **No borrar linea
         List<String> accountTypes = searchFolioInFile(folio);
+        folioEncontrado = true;
+        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
+                "Folio encontrado");
 
         if (!accountTypes.isEmpty()) {
             cmbCuenta.setItems(FXCollections.observableArrayList(accountTypes));
+            cuentaEncontrada = true;
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
+                    "Cuentas asociadas al folio " + folio + " encontradas");
         } else {
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Buscar Folio", getStage(),
-                    "Folio no encontrado");
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Buscar Folio", getStage(),
+                    "No se encontraron cuentas asociadas al folio " + folio);
         }
     }
     @FXML
@@ -113,19 +125,19 @@ public class GameViewController extends Controller implements Initializable {
 
     private List<String> searchFolioInFile(String folio) {
         List<String> accountTypes = new ArrayList<>();
-
+    
         try (BufferedReader br = new BufferedReader(new FileReader(filePathCuentas))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts[0].equals(folio)) {
+                if (parts[0].equalsIgnoreCase(folio)) { // Comparación sin distinguir mayúsculas y minúsculas
                     accountTypes.add(parts[2]);
                 }
             }
         } catch (IOException ex) {
             Logger.getLogger(RetirDeposController.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
         }
-
+    
         return accountTypes;
     }
 

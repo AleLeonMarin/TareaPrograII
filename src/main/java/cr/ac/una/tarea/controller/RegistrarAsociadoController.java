@@ -103,36 +103,47 @@ public class RegistrarAsociadoController extends Controller implements Initializ
 
     @FXML
     void onActionBtnRegistrar(ActionEvent event) {
-
         try {
-            if (txfNombre.getText() == null || txfNombre.getText().isEmpty()) {
+            String nombre = txfNombre.getText();
+            String apellido = txfApellido.getText();
+    
+            // Convertir la primera letra del nombre a mayúscula y el resto a minúscula
+            if (!nombre.isEmpty()) {
+                nombre = nombre.substring(0, 1).toUpperCase() + nombre.substring(1).toLowerCase();
+            }
+    
+            // Convertir la primera letra del apellido a mayúscula y el resto a minúscula
+            if (!apellido.isEmpty()) {
+                apellido = apellido.substring(0, 1).toUpperCase() + apellido.substring(1).toLowerCase();
+            }
+    
+            if (nombre.isEmpty()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
                         "Debe ingresar el nombre del asociado");
             } else if (txfEdad.getText() == null || txfEdad.getText().isEmpty()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
                         "Debe ingresar la edad del asociado");
-            } else if (txfApellido.getText() == null || txfApellido.getText().isEmpty()) {
+            } else if (apellido.isEmpty()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
                         "Debe ingresar el apellido del asociado");
             } else if (imgVFoto.getImage() == null || imgVFoto.getImage().isError()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(),
                         "Debe tomarse la foto del asociado");
             } else {
-                Associated asociado = new Associated(txfNombre.getText(), txfApellido.getText(), txfEdad.getText(),
-                        "Photo");
+                Associated asociado = new Associated(nombre, apellido, txfEdad.getText(), "Photo");
                 asociado.createFolio();
                 asociado.setAssociated(asociado);
                 RenamePhoto(asociado);
                 asociado.createFile(asociado);
                 new Mensaje().showModal(Alert.AlertType.INFORMATION, "Registrar Asociado", getStage(),
-                        "Asociado registrado con éxito, su numero de folio es: " + asociado.getFolio());
+                        "Asociado registrado con éxito, su número de folio es: " + asociado.getFolio());
                 txfNombre.clear();
                 txfEdad.clear();
                 txfApellido.clear();
                 imgVFoto.setImage(null);
-
+    
                 // camera = (())
-
+    
             }
         } catch (Exception ex) {
             Logger.getLogger(RegistrarAsociadoController.class.getName()).log(Level.SEVERE,
