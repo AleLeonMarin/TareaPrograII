@@ -6,13 +6,21 @@
 package cr.ac.una.tarea.util;
 
 import cr.ac.una.tarea.App;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -20,6 +28,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import cr.ac.una.tarea.controller.Controller;
+import cr.ac.una.tarea.model.Cooperativa;
 import io.github.palexdev.materialfx.css.themes.MFXThemeManager;
 import io.github.palexdev.materialfx.css.themes.Themes;
 
@@ -29,6 +38,8 @@ public class FlowController {
     private static Stage mainStage;
     private static ResourceBundle idioma;
     private static HashMap<String, FXMLLoader> loaders = new HashMap<>();
+
+    private ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
 
     private FlowController() {
     }
@@ -144,8 +155,11 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        // stage.getIcons().add(new
-        // Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+        readCoope();
+        for (Cooperativa cooperativa : cooperativas) {
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -164,8 +178,11 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        // stage.getIcons().add(new
-        // Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+        readCoope();
+        for (Cooperativa cooperativa : cooperativas) {
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
@@ -201,6 +218,26 @@ public class FlowController {
 
     public void salir() {
         this.mainStage.close();
+    }
+
+    public void readCoope() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt" ));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String name = parts[0];
+                String logo = parts[1];
+                Cooperativa cooperativa = new Cooperativa(name, logo);
+                cooperativas.add(cooperativa);
+            }
+            br.close();
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+
+        }
     }
 
 }

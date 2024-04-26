@@ -12,6 +12,11 @@
    <children>
       <VBox alignment="CENTER" layoutX="599.0" layoutY="107.0" prefHeight="200.0" prefWidth="100.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <MFXButton fx:id="btnAddAsociado" onAction="#onActionBtnAsociado" styleClass="mfxBtnAdd" stylesheets="@Styles.css" text="Registrar Asociado" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </MFXButton>
             <MFXButton fx:id="btnBuscar" onAction="#onActionBuscar" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar Asociado">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />

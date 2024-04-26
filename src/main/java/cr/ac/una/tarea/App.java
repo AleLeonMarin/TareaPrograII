@@ -50,7 +50,7 @@ public class App extends Application {
         
         FlowController.getInstance().InitializeFlow(stage, null);
         viewByAccessParameter(parameter);
-        //FlowController.getInstance().goViewInWindow("LogInView");
+        FlowController.getInstance().goViewInWindow("LogInView");
 
     }
     public void readCoope() {

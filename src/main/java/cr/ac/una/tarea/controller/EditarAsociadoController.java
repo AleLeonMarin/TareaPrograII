@@ -2,6 +2,7 @@ package cr.ac.una.tarea.controller;
 
 import cr.ac.una.tarea.model.Associated;
 import cr.ac.una.tarea.util.AppContext;
+import cr.ac.una.tarea.util.FlowController;
 import cr.ac.una.tarea.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -33,6 +34,9 @@ public class EditarAsociadoController extends Controller implements Initializabl
 
     @FXML
     private MFXButton btnActualizar;
+
+    @FXML
+    private MFXButton btnAddAsociado;
 
     @FXML
     private MFXButton btnBuscar;
@@ -178,7 +182,7 @@ public class EditarAsociadoController extends Controller implements Initializabl
                         "Asociado actualizado exitosamente");
             } catch (IOException ex) {
                 Logger.getLogger(EditarAsociadoController.class.getName()).log(Level.SEVERE,
-                        "Error al escribir archivo", ex);
+                        "Error al escribir archivo", ex); 
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Actualizar Asociado", getStage(),
                         "Error al actualizar asociado en el archivo");
             }
@@ -194,6 +198,12 @@ public class EditarAsociadoController extends Controller implements Initializabl
         txtEdad.clear();
         txfNombre.clear();
         imgFoto.setImage(null);
+    }
+
+    @FXML
+    public void onActionBtnAsociado(ActionEvent event){
+        FlowController.getInstance().goViewInWindow("RegistroAsociado");
+
     }
 
     @FXML
