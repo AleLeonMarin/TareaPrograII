@@ -1,1 +1,316 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para el fondo de pantalla
+*/
+.background{
+    -fx-background-image:url('../resources/outterSpace.jpg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para el la clase de los funcionarios
+*/
+.mfxButtonManAso , .mfxButtonManAso:armed, .mfxButtonManAso:focused {
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment:center;  
+    -fx-background-color: #E1AFD1;
+}
+
+.mfxBtnImpreCarnet , .mfxBtnImpreCarnet:armed, .mfxBtnImpreCarnet:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8DDFCB;
+}
+
+.mfxBtnDepos , .mfxBtnDepos:armed, .mfxBtnDepos:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #A5DD9B;
+}
+
+.mfxBtnRetiro , .mfxBtnRetiro:armed, .mfxBtnRetiro:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8B93FF;
+}
+
+.mfxBtnRetir , .mfxBtnRetir:armed, .mfxBtnRetir:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8DDFCB;
+}
+
+.mfxBtnAccount , .mfxBtnAccount:armed, .mfxBtnAccount:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #F1EB90;
+}
+
+.mfxBtnPendientes , .mfxBtnPendientes:armed, .mfxBtnPendientes:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8E7AB5;
+}
+
+.mfxBtnSalir , .mfxBtnSalir:armed, .mfxBtnSalir:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #EB4747;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para la clase de asociados & configuraciones
+*/
+.mfxBtnSearch , .mfxBtnSearch:armed, .mfxBtnSearch:focused{
+    fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #EFB495;
+}
+
+.mfxBtnSave , .mfxBtnSave:armed, .mfxBtnSave:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #8EACCD;
+}
+
+.mfxBtnCamera , .mfxBtnCamera:armed, .mfxBtnCamera:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #9E9FA5;
+}
+
+.mfxBtnSummary , .mfxBtnSummary:armed, .mfxBtnSummary:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #AD88C6;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo configuración de cuentas
+*/
+.mfxBtnDetail , .mfxBtnDetail, .mfxBtnDetail:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #7EAA92;
+}
+
+.mfxBtnResume , .mfxBtnResume:armed, .mfxBtnResume:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #7C9D96;
+}
+
+.separator{
+    -fx-border-color: #222831;
+    -fx-background-color: #222831;
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para la clase de Profesores
+*/
+
+.mfxButtonManCuentas , .mfxButtonManCuentas:armed, .mfxButtonManCuentas:focused{
+    -fx-background-color: #50C4ED;
+    -fx-pref-height: 60;
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonManCoope , .mfxButtonManCoope:armed, .mfxButtonManCoope:focused{
+    -fx-background-color: #836FFF;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 60px;
+    -fx-text-alignment: center;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para el Mantenimiento de Cuentas
+*/
+
+.mfxBtnAdd , .mfxBtnAdd:armed, .mfxBtnAdd:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #7C9D96;
+}
+
+.mxfBtnEdit ,.mxfBtnEdit:armed, .mxfBtnEdit:focused {
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #59CE8F;
+}
+
+.mfxBtnDelete ,.mfxBtnDelete:armed, .mfxBtnDelete:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #FE0000;
+}
+
+.mfxBtnLimpiar, .mfxBtnLimpiar:armed, .mfxBtnLimpiar:focused{
+     fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #EFE495;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para el Mantenimiento de Cooperativa
+*/
+.mfxBtnEditLogo , .mfxBtnEditLogo:armed, .mfxBtnEditLogo:focused{
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+    -fx-background-color: #22A699;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo de botones | ImageViews | rutas de fotos
+    Imágenes insertadas en los MFXButtons
+*/
+.mfxButtonManAso > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxBtnImpreCarnet > ImageView {-fx-image: url('../resources/card.png')}
+.mfxBtnAccount > ImageView {-fx-image: url('../resources/Accounts.png')}
+.mfxBtnDepos > ImageView {-fx-image: url('../resources/Money.png')}
+.mfxBtnSalir > ImageView {-fx-image: url('../resources/Salir.png')}
+.mfxBtnSearch > ImageView {-fx-image: url('../resources/Search.png')}
+.mfxBtnSave > ImageView {-fx-image: url('../resources/Save.png')}
+.mfxBtnCamera > ImageView {-fx-image: url('../resources/Camera.png')}
+.mfxBtnRetake > ImageView {-fx-image: url('../resources/Camera.png')}
+.mfxBtnTake > ImageView {-fx-image: url('../resources/Camera.png')}
+.mfxBtnSummary > ImageView {-fx-image: url('../resources/Accounts.png')}
+.mfxBtnPendientes > ImageView {-fx-image: url('../resources/List.png')}
+.mfxButtonManCuentas > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxButtonManCoope > ImageView{-fx-image: url('../resources/Hammer.png');}
+.mfxBtnAdd > ImageView {-fx-image: url('../resources/add.png')}
+.mfxBtnDelete > ImageView {-fx-image: url('../resources/delete.png')}
+.mxfBtnEdit > ImageView {-fx-image: url('../resources/edit.png')}
+.mfxBtnEditLogo > ImageView {-fx-image: url('../resources/Logo.png')}
+.mfxBtnRetiro > ImageView {-fx-image: url('../resources/Retiro.png')}
+.mfxBtnLimpiar > ImageView { -fx-image: url('../resources/escoba.png')}
+.mfxBtnRetake > ImageView {-fx-image: url('../resources/ReDo.png')}
+.mfxBtnRegalo > ImageView { -fx-image: url('../resources/Surprise.png')}
+.mfxBtnGameControl > ImageView {-fx-image: url('../resources/GameControl.png')}
+ 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Imágenes insertas en las denominaciones (billetes & monedas)
+*/
+.ImageViewMil {-fx-image: url('../resources/UnRojo.jpg')}
+.ImageViewDosMil {-fx-image: url('../resources/DosMil.jpg')}
+.ImageViewCincoMil {-fx-image: url('../resources/CincoMil.jpg')}
+.ImageViewDiezMil {-fx-image: url('../resources/10Mil.jpeg')}
+.ImageViewVeinteMil {-fx-image: url('../resources/20Mil.jpg')}
+.ImageViewCinco {-fx-image: url('../resources/MonedaCinco.png')}
+.ImageViewDiez {-fx-image: url('../resources/Moneda10.png')}
+.ImageViewVeintiCinco {-fx-image: url('../resources/MonedaVeinticinco.jpg')}
+.ImageViewCincuenta {-fx-image: url('../resources/MonedaCincuenta.png')}
+.ImageViewCien {-fx-image: url('../resources/MonedaCien.png')}
+.ImageViewQuinientos {-fx-image: url('../resources/MonedaQuinientos.png')}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Estilo para el carnet a imprimir en formato PDF
+*/
+.BackgroundCarnet {
+    -fx-background-image: url("../resources/Carnet.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+    
+}
+
+.mfx-text-field-carnet{
+    -fx-border-radius: 35;
+    -fx-background-radius: 20;
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-pref-height: 25;
+    -fx-pref-width: 206;
+    -fx-border-width: 2;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Estilo para la Camara
+*/
+.backgroundRoot{
+    -fx-background-image:url('../resources/CamBackground.jpeg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+.mfxButtonTakePhoto , .mfxButtonTakePhoto:armed, .mfxButtonTakePhoto:focused{
+    -fx-background-color: #59CE8F;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonRetakePhoto , .mfxButtonRetakePhoto:armed, .mfxButtonRetakePhoto:focused{
+    -fx-background-color: #7EAA92;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonSavePhoto , .mfxButtonSavePhoto:armed, .mfxButtonSavePhoto:focused{
+    -fx-background-color: #50C4ED;
+   -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
+
+.mfxButtonExitCam , .mfxButtonExitCam:armed, .mfxButtonExitCam:focused{
+    -fx-background-color: #FE0000;
+   -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Estilo para Depositos & Retiros
+*/
+
+.backgroundGame{
+    -fx-background-image:url('../resources/GameImage.jpg');
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.mfxBtnGameControl , .mfxBtnGameControl:armed, .mfxBtnGameControl:focused{
+    -fx-background-color: #69DE3F;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Estilo para el juego 
+*/
+
+.mfxBtnRegalo , .mfxBtnRegalo:armed, .mfxBtnRegalo:focused{
+    -fx-background-color: #A1EEBD;
+    -fx-pref-width: 150;
+    -fx-pref-height: 60;
+    -fx-text-alignment: center;
+}
 

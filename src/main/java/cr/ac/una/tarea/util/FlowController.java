@@ -6,11 +6,17 @@
 package cr.ac.una.tarea.util;
 
 import cr.ac.una.tarea.App;
-import cr.ac.una.tarea.controller.Controller;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +27,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
+import cr.ac.una.tarea.controller.Controller;
+import cr.ac.una.tarea.model.Cooperativa;
+import io.github.palexdev.materialfx.css.themes.MFXThemeManager;
+import io.github.palexdev.materialfx.css.themes.Themes;
 
 public class FlowController {
 
@@ -29,6 +38,8 @@ public class FlowController {
     private static Stage mainStage;
     private static ResourceBundle idioma;
     private static HashMap<String, FXMLLoader> loaders = new HashMap<>();
+
+    private ObservableList<Cooperativa> cooperativas = FXCollections.observableArrayList();
 
     private FlowController() {
     }
@@ -72,7 +83,8 @@ public class FlowController {
                         loaders.put(name, loader);
                     } catch (Exception ex) {
                         loader = null;
-                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Creando loader [" + name + "].", ex);
+                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE,
+                                "Creando loader [" + name + "].", ex);
                     }
                 }
             }
@@ -80,12 +92,15 @@ public class FlowController {
         return loader;
     }
 
-    public void goMain() {
+    public void goMain(String viewName) {
         try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
+            this.mainStage.setScene(
+                    new Scene(FXMLLoader.load(App.class.getResource("view/" + viewName + ".fxml"), this.idioma)));
+            MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
             this.mainStage.show();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
+            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE,
+                    "Error inicializando la vista base.", ex);
         }
     }
 
@@ -109,8 +124,9 @@ public class FlowController {
         }
         switch (location) {
             case "Center":
-                ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().clear();
-                ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().add(loader.getRoot());
+                VBox vBox = ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter());
+                vBox.getChildren().clear();
+                vBox.getChildren().add(loader.getRoot());
                 break;
             case "Top":
                 break;
@@ -130,6 +146,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.setStage(stage);
         stage.getScene().setRoot(loader.getRoot());
+        MFXThemeManager.addOn(stage.getScene(), Themes.DEFAULT, Themes.LEGACY);
+
     }
 
     public void goViewInWindow(String viewName) {
@@ -137,8 +155,11 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        //stage.getIcons().add(new Image("cr/ac/una/unaplanilla/resources/Usuario-48.png"));
-        stage.setTitle("Cooperativa UNA-KIDS");
+        readCoope();
+        for (Cooperativa cooperativa : cooperativas) {
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -146,10 +167,10 @@ public class FlowController {
         controller.setStage(stage);
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);
+        MFXThemeManager.addOn(scene, Themes.DEFAULT, Themes.LEGACY);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-
     }
 
     public void goViewInWindowModal(String viewName, Stage parentStage, Boolean resizable) {
@@ -157,8 +178,11 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        //stage.getIcons().add(new Image("cr/ac/una/unaplanilla/resources/Usuario-48.png"));
-        stage.setTitle("UNA PLANILLA");
+        readCoope();
+        for (Cooperativa cooperativa : cooperativas) {
+            stage.setTitle(cooperativa.getName());
+            stage.getIcons().add(new Image(cooperativa.getLogo()));
+        }
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
@@ -167,17 +191,19 @@ public class FlowController {
         controller.setStage(stage);
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);
+        MFXThemeManager.addOn(scene, Themes.DEFAULT, Themes.LEGACY);
         stage.setScene(scene);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(parentStage);
         stage.centerOnScreen();
         stage.showAndWait();
+
     }
-    
+
     public Controller getController(String viewName) {
         return getLoader(viewName).getController();
     }
-    
+
     public void limpiarLoader(String view) {
         this.loaders.remove(view);
     }
@@ -185,13 +211,33 @@ public class FlowController {
     public static void setIdioma(ResourceBundle idioma) {
         FlowController.idioma = idioma;
     }
-    
+
     public void initialize() {
         this.loaders.clear();
     }
 
     public void salir() {
         this.mainStage.close();
+    }
+
+    public void readCoope() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Cooperativa.txt" ));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String name = parts[0];
+                String logo = parts[1];
+                Cooperativa cooperativa = new Cooperativa(name, logo);
+                cooperativas.add(cooperativa);
+            }
+            br.close();
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, "Error al leer archivo", ex);
+
+        }
     }
 
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tarea.controller;
 
 import cr.ac.una.tarea.util.FlowController;
@@ -13,32 +9,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 
-/**
- * FXML Controller class
- *
- * @author aletr
- */
 public class ProfeViewController extends Controller implements Initializable {
 
     @FXML
+    public MFXButton btnSalir;
+
+    @FXML
     private MFXButton btnManCuentas;
+
     @FXML
     private MFXButton btmManCoope;
+
     @FXML
     private BorderPane root;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    public void initialize(URL url, ResourceBundle rb) {}
 
     @Override
-    public void initialize() {
-        
-    }
+    public void initialize() {}
 
     @FXML
     private void onActionBtnManCuentas(ActionEvent event) {
@@ -47,7 +36,11 @@ public class ProfeViewController extends Controller implements Initializable {
 
     @FXML
     private void onActionBtmManCoope(ActionEvent event) {
-        
+        FlowController.getInstance().goView("ManCooperativa");
     }
-    
+
+    @FXML
+    public void onActionBtnSalir(ActionEvent actionEvent) {
+        FlowController.getInstance().salir();
+    }
 }

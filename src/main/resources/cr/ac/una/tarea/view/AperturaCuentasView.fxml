@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXListView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.AperturaCuentasViewController">
+   <children>
+      <HBox alignment="CENTER" layoutX="132.0" layoutY="117.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="255.0" spacing="30.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <MFXTextField fx:id="txfFolio" editable="false" floatingText="Número de Folio" prefHeight="49.0" prefWidth="175.0" />
+                  <MFXTextField fx:id="txfNombre" editable="false" floatingText="Nombre" prefHeight="50.0" prefWidth="133.0" />
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefWidth="150.0" styleClass="mfxBtnSearch" stylesheets="@Styles.css" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" styleClass="mfxBtnSave" stylesheets="@Styles.css" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="83.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnLimpiar" onAction="#onActionBtnLimpiar" prefHeight="54.0" prefWidth="150.0" styleClass="mfxBtnLimpiar" stylesheets="@Styles.css" text="Limpiar">
+                     <graphic>
+                        <ImageView fitHeight="83.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" styleClass="myLabel" stylesheets="@Styles.css" text="Cuentas disponibles" textFill="WHITE" />
+                  <MFXListView fx:id="listVDisponibles" maxWidth="1.7976931348623157E308" onDragDetected="#onDragDetectedDisponibles" onDragDropped="#onDragDroppedDisponibles" onDragOver="#onDragOverDisponibles" prefHeight="350.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="118.0" styleClass="myLabel" stylesheets="@Styles.css" text="Cuentas a aperturar" textFill="WHITE" />
+                  <MFXListView fx:id="listVAbiertas" maxWidth="1.7976931348623157E308" onDragDetected="#onDragDetectedAbiertas" onDragDropped="#onDragDroppedAbiertas" onDragOver="#onDragOverAbiertas" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

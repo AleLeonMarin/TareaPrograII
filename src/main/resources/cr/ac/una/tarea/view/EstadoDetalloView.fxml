@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.EstadoDetalladoViewController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="500.0" prefWidth="700.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <MFXTextField fx:id="txfFolio" floatingText="Ingrese el Folio" prefHeight="51.0" prefWidth="175.0" />
+                  <MFXTextField fx:id="txfNombre" floatingText="Ingrese el Nombre" prefHeight="51.0" prefWidth="175.0" />
+                  <MFXComboBox fx:id="cmbCuentas" floatingText="Tipo De Cuenta" onAction="#onActionCmbCuentas" prefHeight="42.0" prefWidth="160.0" />
+                  <ImageView fx:id="imgVFoto" fitHeight="106.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <TableView fx:id="tbVMovimientos" prefHeight="253.0" prefWidth="571.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" styleClass="mfxBtnSearch" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnLimpiar" onAction="#onActionBtnLimpiar" styleClass="mfxBtnLimpiar" text="Limpiar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

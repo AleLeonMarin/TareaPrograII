@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1389.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.DepositoPendienteController">
+   <children>
+      <StackPane minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="670.0" prefWidth="1298.0">
+               <children>
+                  <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="670.0" prefWidth="0.0" spacing="150.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="tbvPendientes" prefHeight="538.0" prefWidth="265.0">
+                           <VBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" stylesheets="@Styles.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Separator>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefHeight="670.0" prefWidth="0.0" spacing="60.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewVeinteMil" />
+                              <Spinner fx:id="SpinnerVeintemil" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewDiezMil" />
+                              <Spinner fx:id="SpinnerDiezmil" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" pickOnBounds="false" prefHeight="80.0" prefWidth="298.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewCincoMil" />
+                              <Spinner fx:id="SpinnerCincoMil" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewDosMil" />
+                              <Spinner fx:id="SpinnerDosMil" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" styleClass="ImageViewMil" />
+                              <Spinner fx:id="SpinnerMil" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="116.0" layoutY="10.0" prefHeight="670.0" prefWidth="0.0" spacing="25.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewQuinientos" />
+                              <Spinner fx:id="SpinnerQuinientos" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="83.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewCien" />
+                              <Spinner fx:id="SpinnerCien" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewCincuenta" />
+                              <Spinner fx:id="SpinnerCincuenta" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewVeintiCinco" />
+                              <Spinner fx:id="SpinnerVeintiCinco" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewDiez" />
+                              <Spinner fx:id="SpinnerDiez" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="318.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="85.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" styleClass="ImageViewCinco" />
+                              <Spinner fx:id="SpinnerCinco" prefHeight="42.0" prefWidth="150.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="670.0" prefWidth="238.0" spacing="60.0">
+                     <children>
+                        <MFXButton fx:id="btnDepositar" maxWidth="1.7976931348623157E308" onAction="#onActionDepositar" prefHeight="80.0" prefWidth="210.0" styleClass="mfxBtnDepos" stylesheets="@Styles.css" text="Depositar">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </MFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </children></StackPane>
+   </children>
+   <padding>
+      <Insets right="10.0" />
+   </padding>
+</AnchorPane>

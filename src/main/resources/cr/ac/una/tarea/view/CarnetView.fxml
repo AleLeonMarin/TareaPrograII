@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tarea.controller.CarnetViewController">
+   <children>
+      <VBox layoutX="187.0" layoutY="85.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="carnet" prefHeight="360.0" prefWidth="600.0" styleClass="BackgroundCarnet">
+               <children>
+                  <Label fx:id="lblCoope" layoutX="31.0" layoutY="14.0" prefHeight="38.0" prefWidth="195.0" text="Label" />
+                  <ImageView fx:id="imgVLogo" fitHeight="83.0" fitWidth="108.0" layoutX="304.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                  <MFXTextField fx:id="txfNombre" alignment="CENTER" floatingText="Nombre" layoutX="66.0" layoutY="109.0" prefHeight="51.0" styleClass="mfx-text-field-carnet" />
+                  <MFXTextField fx:id="txfFolio" alignment="CENTER" floatingText="Folio" layoutX="310.0" layoutY="109.0" styleClass="mfx-text-field-carnet" />
+                  <ImageView fx:id="imgVFoto" fitHeight="128.0" fitWidth="180.0" layoutX="212.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="40.0">
+               <children>
+                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefHeight="42.0" prefWidth="150.0" styleClass="mfxBtnSearch" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnGuardarPDF" onAction="#onActionSavePdf" styleClass="mfxBtnImpreCarnet" text="Generar">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></MFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

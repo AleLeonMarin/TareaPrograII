@@ -1,0 +1,19 @@
+#Archivos Binarios
+
+*.jar
+*.class
+*.pdf
+
+
+#Directorios
+
+target/
+.idea/
+.vscode/
+CoopeLogos/
+
+#Otros
+
+dependency-reduced-pom.xml
+nbactions.xml
+tarea.iml

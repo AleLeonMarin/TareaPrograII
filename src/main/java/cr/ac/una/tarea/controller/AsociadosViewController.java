@@ -4,6 +4,7 @@
  */
 package cr.ac.una.tarea.controller;
 
+import cr.ac.una.tarea.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,35 +29,61 @@ public class AsociadosViewController extends Controller implements Initializable
     @FXML
     private MFXButton btnSalir;
     @FXML
-    private MFXButton btnConsultas;
+    private MFXButton btnConsultaDetallado;
+    @FXML
+    private MFXButton btnConsultaResumido;
+    @FXML
+    private MFXButton btnJuego;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+
+    }
 
     @FXML
     private void onActionBtnRegistrar(ActionEvent event) {
+
+        FlowController.getInstance().goView("RegistrarAsociado");
     }
 
     @FXML
     private void onActionBtnDepositos(ActionEvent event) {
+
+        FlowController.getInstance().goView("DepositoAsociados");
     }
 
     @FXML
     private void onActionBtnSalir(ActionEvent event) {
+
+        FlowController.getInstance().salir();
     }
 
     @FXML
-    private void onActionBtnConsultas(ActionEvent event) {
+    private void onActionBtnConsultaDetallado(ActionEvent event) {
+
+        FlowController.getInstance().goView("EstadoDetalloView");
+
+    }
+    @FXML
+    private void onActionBtnConsultaResumido(ActionEvent event) {
+
+        FlowController.getInstance().goView("EstadoResumidoView");
+
+    }
+
+    @FXML
+    private void onActionBtnJuego(ActionEvent event) {
+
+        FlowController.getInstance().goView("GameView");
+
     }
 
     @Override
     public void initialize() {
-        
+        // --
     }
-    
+
 }
